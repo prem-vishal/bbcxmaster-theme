@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "kb_portal": {
+      "type": "knowledge-base",
+      "settings": {}
+    }
+  },
+  "order": [
+    "kb_portal"
+  ]
+}

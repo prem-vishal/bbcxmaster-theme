@@ -1,0 +1,440 @@
+{% comment %}
+  BBCxMaster — Returns & Refunds Policy Page Section
+  Luxury private-commerce editorial design matching Privacy & Shipping policy pages.
+  Background hero: returns-policy-bg.png
+  Contact: support@bbcxmaster.com
+{% endcomment %}
+
+{{ 'luxury-theme.css' | asset_url | stylesheet_tag }}
+
+<article class="returns-page">
+
+  <!-- ===================== 1. HERO ===================== -->
+  <header class="returns-hero" aria-labelledby="returns-hero-title">
+    <div class="returns-hero__media">
+      <img
+        src="{{ 'returns-policy-bg.png' | asset_url }}"
+        alt="BBCxMaster — Luxury care, returns and customer support"
+        class="returns-hero__img"
+        loading="eager"
+        width="1920"
+        height="1080"
+      >
+      <div class="returns-hero__overlay"></div>
+    </div>
+
+    <div class="returns-hero__content page-width">
+      <nav class="luxury-breadcrumbs" aria-label="Breadcrumb navigation">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="{{ shop.url }}">Home</a></li>
+          <li class="breadcrumb-separator" aria-hidden="true">/</li>
+          <li class="breadcrumb-item active" aria-current="page">Returns & Refunds</li>
+        </ol>
+      </nav>
+
+      <span class="returns-hero__kicker">CUSTOMER CARE &amp; AFTER-SALES</span>
+      <h1 id="returns-hero-title" class="returns-hero__title">Returns &amp; Refunds Policy</h1>
+      <p class="returns-hero__subtitle">
+        Clear, transparent guidelines for returns, replacements, and refunds.
+      </p>
+
+      <div class="returns-last-updated">
+        <span class="returns-last-updated__icon" aria-hidden="true"></span>
+        <span>Last updated: <time datetime="2026-09">September 2026</time></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== 2. TRUST PILLARS ===================== -->
+  <section class="returns-trust-cards" aria-label="Policy highlights">
+    <div class="page-width">
+      <div class="trust-cards__inner">
+        <div class="trust-card">
+          <span class="trust-card__num" aria-hidden="true">01</span>
+          <span class="trust-card__label">CONTACT FIRST</span>
+        </div>
+        <div class="trust-card">
+          <span class="trust-card__num" aria-hidden="true">02</span>
+          <span class="trust-card__label">EVIDENCE-BASED RESOLUTION</span>
+        </div>
+        <div class="trust-card">
+          <span class="trust-card__num" aria-hidden="true">03</span>
+          <span class="trust-card__label">HYGIENE SAFEGUARD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. MAIN CONTENT ===================== -->
+  <div class="page-width returns-main-layout">
+    <div class="returns-body-content">
+
+      <!-- Intro -->
+      <section class="returns-section">
+        <p class="returns-lead">
+          At BBCxMaster, your satisfaction is important to us. If you experience a problem with your order or need assistance with a return or refund, please contact us at <a href="mailto:support@bbcxmaster.com" class="luxury-link">support@bbcxmaster.com</a> before sending any product back.
+        </p>
+      </section>
+
+      <!-- Section: How to Request -->
+      <section class="returns-section" id="how-to-request">
+        <h2 class="returns-section__title">How to Request a Return or Refund</h2>
+        <p>Please contact us at <strong><a href="mailto:support@bbcxmaster.com" class="luxury-link">support@bbcxmaster.com</a></strong> before returning any product.</p>
+        <p>Include:</p>
+        <ul class="returns-list">
+          <li>Your order number</li>
+          <li>Name and email address used for the order</li>
+          <li>Reason for your request</li>
+          <li>Photos or video of the product when applicable</li>
+          <li>Photos of the packaging and shipping label when applicable</li>
+        </ul>
+        <div class="returns-alert-box">
+          <strong>Important:</strong> Do not send a product back without receiving return instructions from BBCxMaster.
+        </div>
+      </section>
+
+      <!-- Section: Damaged, Defective, Wrong or Missing -->
+      <section class="returns-section" id="damaged-defective">
+        <h2 class="returns-section__title">Damaged, Defective, Wrong or Missing Products</h2>
+        <p>If your order arrives damaged, defective, incorrect, or missing an item, contact us as soon as possible.</p>
+        <p>Please provide clear photos or video showing the issue, together with photos of the package and shipping label.</p>
+        <p>After reviewing the evidence, we will work with our fulfillment partner to determine the appropriate resolution. Depending on the circumstances, this may include:</p>
+        <ul class="returns-list">
+          <li>A replacement or reshipment</li>
+          <li>A full or partial refund</li>
+          <li>A return, if requested by our fulfillment partner</li>
+        </ul>
+        <p class="returns-subtext">CJdropshipping requires supporting evidence for many after-sales claims, including photos or videos, and may require the product to be returned if its dispute team requests it.</p>
+      </section>
+
+      <!-- Section: Change of Mind -->
+      <section class="returns-section" id="change-of-mind">
+        <h2 class="returns-section__title">Returns for Change of Mind or Customer Preference</h2>
+        <p>Returns for change of mind, personal preference, or ordering the wrong product or SKU are subject to the applicable product and fulfillment conditions.</p>
+        <p>CJdropshipping does not generally accept disputes simply because a buyer does not like a product or ordered the wrong item or SKU.</p>
+        <p>If BBCxMaster authorizes a customer-preference return, the product must be:</p>
+        <ul class="returns-list">
+          <li>Unused</li>
+          <li>Unworn</li>
+          <li>Unwashed</li>
+          <li>In its original packaging</li>
+          <li>In resalable condition</li>
+        </ul>
+        <p>Contact us before sending the product back so we can provide the appropriate return instructions.</p>
+      </section>
+
+      <!-- Section: Return Shipping -->
+      <section class="returns-section" id="return-shipping">
+        <h2 class="returns-section__title">Return Shipping</h2>
+        <p>For an approved customer-preference return, the customer may be responsible for the return shipping costs.</p>
+        <p>We do not provide a prepaid return label for every return.</p>
+        <p>If a physical return is required, we will provide the appropriate return address and instructions after reviewing the request.</p>
+        <p><strong>Do not send returns to an address found on the product packaging or elsewhere on our website without authorization.</strong></p>
+      </section>
+
+      <!-- Section: Return Destination -->
+      <section class="returns-section" id="return-destination">
+        <h2 class="returns-section__title">Return Destination</h2>
+        <p>Products that require a physical return may need to be returned to a CJdropshipping warehouse in China.</p>
+        <p>CJdropshipping states that international returns can be expensive and may take a long time to arrive.</p>
+        <p>We will provide the appropriate return instructions for your specific order.</p>
+      </section>
+
+      <!-- Section: Intimate and Hygiene Products -->
+      <section class="returns-section" id="intimate-hygiene">
+        <h2 class="returns-section__title">Intimate and Hygiene Products</h2>
+        <p>For hygiene and safety reasons, intimate and personal-use products may not be eligible for return once opened, worn, or used.</p>
+        <p>This may include:</p>
+        <ul class="returns-list">
+          <li>Intimate toys and personal wellness devices</li>
+          <li>Products that come into direct contact with intimate areas</li>
+          <li>Lingerie or bodywear that has been worn or washed</li>
+          <li>Opened hygiene-sensitive products</li>
+        </ul>
+        <p>If an item is defective or arrives damaged, please contact us with photos or video so we can review the issue.</p>
+      </section>
+
+      <!-- Section: Refunds -->
+      <section class="returns-section" id="refunds">
+        <h2 class="returns-section__title">Refunds</h2>
+        <p>Once an approved refund has been confirmed, the refund will be issued to the original payment method where applicable.</p>
+        <p>After we issue the refund, your bank or payment provider may require additional processing time before the funds appear in your account.</p>
+      </section>
+
+      <!-- Section: Replacements and Reshipments -->
+      <section class="returns-section" id="replacements">
+        <h2 class="returns-section__title">Replacements and Reshipments</h2>
+        <p>Where appropriate, we may provide a replacement or reshipment for products that arrive damaged, defective, incorrect, or missing.</p>
+        <p>The exact resolution depends on the circumstances of the order and the applicable fulfillment partner's after-sales process.</p>
+      </section>
+
+      <!-- Section: Order Cancellation -->
+      <section class="returns-section" id="cancellation">
+        <h2 class="returns-section__title">Order Cancellation</h2>
+        <p>If you need to cancel an order, contact us as soon as possible at: <strong><a href="mailto:support@bbcxmaster.com" class="luxury-link">support@bbcxmaster.com</a></strong></p>
+        <p>Cancellation may not be possible once an order has been processed or shipped by our fulfillment partner.</p>
+      </section>
+
+      <!-- Section: Lost or Undelivered Orders -->
+      <section class="returns-section" id="lost-orders">
+        <h2 class="returns-section__title">Lost or Undelivered Orders</h2>
+        <p>If your order has not arrived within the expected delivery period, contact us with your order number and tracking information.</p>
+        <p>We will investigate the shipment with our fulfillment partner and carrier.</p>
+      </section>
+
+      <!-- Section: Incorrect Shipping Address -->
+      <section class="returns-section" id="incorrect-address">
+        <h2 class="returns-section__title">Incorrect Shipping Address</h2>
+        <p>Customers are responsible for providing a complete and accurate shipping address.</p>
+        <p>Orders that are delayed, returned, or otherwise affected because of an incorrect or incomplete address may not qualify for a refund or free replacement.</p>
+      </section>
+
+      <!-- Section: Customs and Unclaimed Packages -->
+      <section class="returns-section" id="customs-unclaimed">
+        <h2 class="returns-section__title">Customs and Unclaimed Packages</h2>
+        <p>Customers are responsible for complying with applicable local customs requirements.</p>
+        <p>If a package is refused, abandoned, or returned because the recipient does not complete required customs procedures or does not collect the package, the available resolution will depend on the circumstances and the applicable carrier and fulfillment policy.</p>
+      </section>
+
+      <!-- Section: Contact Us -->
+      <section class="returns-section returns-contact-card" id="contact-us">
+        <h2 class="returns-section__title">Contact Us</h2>
+        <p>For all return, refund, replacement, or order-related questions:</p>
+        <p class="returns-contact-details">
+          <strong>BBCxMaster Customer Care</strong><br>
+          Email: <a href="mailto:support@bbcxmaster.com" class="luxury-link">support@bbcxmaster.com</a>
+        </p>
+        <p class="returns-subtext"><em>Please contact us before sending any product back.</em></p>
+      </section>
+
+    </div>
+  </div>
+
+{% stylesheet %}
+  .returns-page {
+    background-color: var(--color-luxury-bg, #0a0a0a);
+    color: var(--color-luxury-text, #f5f1ec);
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .returns-hero {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 80px 0 60px;
+  }
+
+  .returns-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .returns-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .returns-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.75) 0%,
+      rgba(10, 10, 10, 0.88) 60%,
+      rgba(10, 10, 10, 0.98) 100%
+    );
+  }
+
+  .returns-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .returns-hero__kicker {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-luxury-accent, #9e2f45);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .returns-hero__title {
+    font-family: var(--font-heading-family, 'Playfair Display', serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #fff;
+    margin: 0 0 16px;
+    line-height: 1.15;
+  }
+
+  .returns-hero__subtitle {
+    font-size: 1.05rem;
+    color: var(--color-luxury-text-secondary, #c7c3bd);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .returns-last-updated {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--color-luxury-text-secondary, #9a9a9a);
+  }
+
+  /* Trust Cards */
+  .returns-trust-cards {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--color-luxury-border, rgba(255, 255, 255, 0.08));
+    border-bottom: 1px solid var(--color-luxury-border, rgba(255, 255, 255, 0.08));
+    padding: 24px 0;
+  }
+
+  .trust-cards__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .trust-cards__inner {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  .trust-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-luxury-border, rgba(255, 255, 255, 0.06));
+    border-radius: 4px;
+  }
+
+  .trust-card__num {
+    font-family: var(--font-heading-family, 'Playfair Display', serif);
+    font-size: 1.25rem;
+    color: var(--color-luxury-accent, #9e2f45);
+    font-weight: 700;
+  }
+
+  .trust-card__label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* Content Layout */
+  .returns-main-layout {
+    padding-top: 50px;
+    padding-bottom: 80px;
+  }
+
+  .returns-body-content {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+
+  .returns-lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #fff;
+    margin-bottom: 40px;
+  }
+
+  .returns-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-luxury-border, rgba(255, 255, 255, 0.06));
+  }
+
+  .returns-section:last-child {
+    border-bottom: none;
+  }
+
+  .returns-section__title {
+    font-family: var(--font-heading-family, 'Playfair Display', serif);
+    font-size: 1.45rem;
+    color: #fff;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .returns-section p {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--color-luxury-text-secondary, #d2ceca);
+    margin: 0 0 14px;
+  }
+
+  .returns-list {
+    margin: 12px 0 20px 24px;
+    padding: 0;
+    line-height: 1.9;
+    color: var(--color-luxury-text-secondary, #d2ceca);
+    font-size: 0.98rem;
+  }
+
+  .returns-list li {
+    margin-bottom: 6px;
+  }
+
+  .returns-alert-box {
+    background: rgba(158, 47, 69, 0.1);
+    border-left: 3px solid var(--color-luxury-accent, #9e2f45);
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.95rem;
+    color: #fff;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .returns-subtext {
+    font-size: 0.88rem !important;
+    color: var(--color-luxury-text-secondary, #9a9a9a) !important;
+  }
+
+  .luxury-link {
+    color: var(--color-luxury-accent, #9e2f45);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+  }
+
+  .luxury-link:hover {
+    opacity: 0.8;
+  }
+
+  .returns-contact-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--color-luxury-border, rgba(255, 255, 255, 0.08));
+    padding: 30px;
+    border-radius: 6px;
+  }
+
+  .returns-contact-details {
+    font-size: 1.05rem !important;
+    line-height: 1.8 !important;
+    color: #fff !important;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Returns Policy",
+  "settings": []
+}
+{% endschema %}
+
+</article>

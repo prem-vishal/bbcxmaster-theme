@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "founder_hero": {
+      "type": "premium-landing",
+      "settings": {
+        "kicker": "The Art of Discretion",
+        "heading": "Premium BDSM Gear, Luxury Lingerie & Adult Wellness Accessories",
+        "subtitle": "Explore intimate essentials with a focus on comfort, privacy and informed choice.",
+        "bio": "<p><strong>BBCxMaster</strong> brings together BDSM gear, lingerie, intimate accessories and roleplay styles for adults who value privacy and clear product information. Browse restraints, cuffs, collars, gags, impact-play tools, chastity accessories, lingerie and sensory toys in one place. Each product page is your starting point for choosing a style, size or variant that suits your needs.</p><p>New to a category? Start with the collection that matches your interest, then use product details to compare materials, dimensions, included pieces and care instructions. Our Knowledge Base covers practical topics such as sizing, lubricant compatibility, cleaning, consent, communication and safer play. It is designed to help you shop with more confidence before you add an item to your cart.</p><p>Privacy matters throughout the experience. BBCxMaster provides discreet packaging, private billing information and tracked worldwide delivery. Before ordering, review the shipping and returns pages for delivery options and eligibility that apply to your location and chosen product.</p><ul><li>Browse BDSM, lingerie, roleplay and adult-wellness collections</li><li>Use product details to compare fit, features and care requirements</li><li>Read beginner-friendly sizing and safety guides before trying something new</li><li>Check shipping, returns and support information before purchase</li></ul><p>Whether you are exploring a first accessory, choosing a gift or building a more considered collection, select products that match your preferences and experience level. Clear communication, consent and following the manufacturer’s care guidance are part of a positive experience.</p>",
+        "cta_label": "Shop the Collection",
+        "cta_link": "shopify://collections"
+      }
+    },
+    "popular_categories": {
+      "type": "popular-categories",
+      "settings": {}
+    },
+    "promo_banner": {
+      "type": "promo-banner",
+      "settings": {
+        "title": "UP TO 30% OFF",
+        "subtitle": "ON SELECTED ITEMS",
+        "button_text": "SHOP NOW",
+        "button_link": ""
+      }
+    },
+    "luxury_blog": {
+      "type": "luxury-blog",
+      "settings": {}
+    }
+  },
+  "order": [
+    "founder_hero",
+    "popular_categories",
+    "promo_banner",
+    "luxury_blog"
+  ]
+}

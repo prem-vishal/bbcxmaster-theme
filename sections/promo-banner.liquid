@@ -1,0 +1,145 @@
+{% comment %}
+  Fallback background (used only when no merchant bg_image is set) is served via
+  promo_banner_1785888918839_1600.jpg, a delivery-sized variant of the original
+  promo_banner_1785888918839.jpg. The full-resolution original is intentionally
+  preserved untouched in assets/ and not referenced directly here, since this is a
+  CSS background-image (srcset doesn't apply) and this section is typically rendered
+  below the fold.
+{% endcomment %}
+<section class="promo-banner" style="background-image: url('{{ section.settings.bg_image | default: 'promo_banner_1785888918839_1600.jpg' | asset_url }}');">
+  <div class="promo-banner__overlay"></div>
+  <div class="promo-banner__content page-width">
+    <div class="promo-banner__text-container">
+      <h2 class="promo-banner__title">{{ section.settings.title }}</h2>
+      <p class="promo-banner__subtitle">{{ section.settings.subtitle }}</p>
+      <a href="{{ section.settings.button_link | default: '/collections/new-arrivals' }}" class="button promo-banner__button">{{ section.settings.button_text }}</a>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .promo-banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    margin-top: 40px;
+    border: 1px solid rgba(158, 47, 69, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .promo-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.2) 100%);
+    z-index: 1;
+  }
+  .promo-banner__content {
+    position: relative;
+    z-index: 2;
+  }
+  .promo-banner__text-container {
+    max-width: 500px;
+  }
+  .promo-banner__title {
+    font-family: var(--font-body--family);
+    font-size: 42px;
+    color: var(--color-luxury-accent);
+    margin: 0 0 10px 0;
+    font-weight: 300;
+  }
+  .promo-banner__subtitle {
+    font-family: var(--font-body--family);
+    font-size: 16px;
+    color: #a1a1aa;
+    letter-spacing: 0.1em;
+    margin: 0 0 30px 0;
+  }
+  .promo-banner__button {
+    background-color: #7b0a0a !important; /* Deep red matching the whip */
+    border-color: #7b0a0a !important;
+    color: #fff !important;
+    padding: 12px 30px;
+  }
+  .promo-banner__button:hover {
+    background-color: transparent !important;
+    color: #7b0a0a !important;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .promo-banner {
+      padding: 60px 0;
+      margin-top: 24px;
+    }
+    .promo-banner__title {
+      font-size: 28px;
+    }
+    .promo-banner__overlay {
+      background: linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.8) 100%);
+    }
+    .promo-banner__text-container {
+      max-width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .promo-banner {
+      padding: 40px 0;
+      margin-top: 16px;
+    }
+    .promo-banner__title {
+      font-size: 24px;
+    }
+    .promo-banner__subtitle {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .promo-banner__button {
+      padding: 10px 24px;
+      font-size: 13px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Promo Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "UP TO 30% OFF"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "ON SELECTED ITEMS"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Banner"
+    }
+  ]
+}
+{% endschema %}

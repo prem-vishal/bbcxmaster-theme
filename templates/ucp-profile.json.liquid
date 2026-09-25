@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "merchant": {
+    "name": "{{ shop.name }}",
+    "url": "{{ shop.url }}",
+    "logo": "{{ settings.logo | image_url: width: 600 }}",
+    "description": "{{ shop.description | default: shop.name }}",
+    "contact": {
+      "email": "support@bbcxmaster.com",
+      "phone": "{{ shop.phone }}",
+      "address": {
+        "streetAddress": "123 Commerce St",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "postalCode": "10001",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "capabilities": {
+    "productDiscovery": {
+      "search": true,
+      "filter": ["category", "price", "material", "color", "size"],
+      "sort": ["relevance", "price_asc", "price_desc", "newest", "bestselling"],
+      "recommendations": true
+    },
+    "cartManagement": {
+      "add": true,
+      "update": true,
+      "remove": true,
+      "view": true,
+      "coupon": true
+    },
+    "checkout": {
+      "guest": true,
+      "express": ["shop_pay", "apple_pay", "google_pay"],
+      "paymentMethods": ["credit_card", "paypal", "shop_pay", "klarna"],
+      "shippingCalculation": true,
+      "taxCalculation": true
+    },
+    "orders": {
+      "track": true,
+      "history": true,
+      "reorder": true,
+      "returns": true
+    },
+    "customer": {
+      "account": true,
+      "wishlist": true,
+      "preferences": true
+    }
+  },
+  "inventory": {
+    "realTimeStock": true,
+    "multiLocation": false,
+    "preOrder": true,
+    "backOrder": false
+  },
+  "fulfillment": {
+    "shippingZones": ["US", "CA", "UK", "EU", "AU", "INTL"],
+    "shippingMethods": ["standard", "express", "overnight"],
+    "pickup": false,
+    "deliveryEstimates": true
+  },
+  "policies": {
+    "returnPolicyUrl": "{{ shop.url }}/pages/return-policy",
+    "shippingPolicyUrl": "{{ shop.url }}/pages/shipping-policy",
+    "privacyPolicyUrl": "{{ shop.url }}/pages/privacy-policy",
+    "termsOfServiceUrl": "{{ shop.url }}/pages/terms-of-service",
+    "warranty": "Manufacturer warranty on all products"
+  },
+  "analytics": {
+    "events": ["view_item", "add_to_cart", "begin_checkout", "purchase", "search"],
+    "consent": "GDPR_CCPA_COMPLIANT"
+  },
+  "aiAgent": {
+    "mcpEndpoint": "{{ shop.url }}/api/ucp/mcp",
+    "supportedActions": [
+      "search_products",
+      "get_product_details",
+      "add_to_cart",
+      "view_cart",
+      "checkout",
+      "track_order",
+      "initiate_return"
+    ],
+    "authentication": "none_required_public"
+  }
+}

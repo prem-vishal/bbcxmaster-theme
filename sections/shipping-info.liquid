@@ -1,0 +1,890 @@
+{% comment %}
+  BBCxMaster — Shipping Policy Page
+  Luxury private-commerce editorial design.
+  Matches Privacy Policy / About Us visual identity.
+  All policy content is real HTML (SEO-friendly, selectable, accessible).
+{% endcomment %}
+
+{{ 'luxury-theme.css' | asset_url | stylesheet_tag }}
+
+<!-- Schema.org FAQ structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does shipping take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Order processing takes 1 to 3 business days (Monday–Friday). Domestic US standard delivery then takes 3–5 business days; priority express 1–3 business days; international express 5–10 business days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my package be discreet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All BBCxMaster orders are shipped in 100% plain, unmarked outer boxes or opaque poly-mailers with no brand logos or product descriptions on the exterior, under a neutral sender name."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I track my order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once your order is processed and handed to the carrier, an email confirmation containing a real-time tracking link is sent automatically. Allow up to 24 hours after dispatch for courier portals to update."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if my package is delayed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Transit times are estimates provided by carriers. Weather, holidays, or customs may occasionally cause delays. Our Client Concierge team actively monitors shipments and can assist with status updates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I entered the wrong address?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contact our Client Concierge team as soon as possible at support@bbcxmaster.com. If the order has not yet shipped, we will correct the delivery address; once shipped, changes depend on the carrier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if my package arrives damaged?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your shipment arrives with exterior or contents damage, contact our Client Concierge support within 48 hours of delivery with photos so we can immediately resolve or replace your items."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you ship internationally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, BBCxMaster offers worldwide express shipping to select destination countries (5–10 business days). Any customs duties or import taxes are the responsibility of the recipient."
+      }
+    }
+  ]
+}
+</script>
+
+<article class="ship-page">
+
+  <!-- ===================== 1. HERO ===================== -->
+  <header class="ship-hero" aria-labelledby="ship-hero-title">
+    <div class="ship-hero__bg">
+      <img
+        src="{{ 'shipping_hero_1920.png' | asset_url }}"
+        alt="Luxury black parcel being prepared for discreet shipping in a dark studio with warm champagne lighting"
+        class="ship-hero__img"
+        loading="eager"
+        width="1920"
+        height="1080">
+      <div class="ship-hero__overlay" aria-hidden="true"></div>
+    </div>
+
+    <div class="ship-hero__inner page-width">
+      <div class="ship-hero__left">
+        <span class="ship-eyebrow">Shipping & Delivery</span>
+        <h1 id="ship-hero-title" class="ship-hero__title">Shipping Policy</h1>
+        <p class="ship-hero__desc">Discreet delivery. Carefully packed. Delivered with confidence.</p>
+      </div>
+      <div class="ship-hero__right" aria-hidden="true">
+        <span class="ship-hero__word">Private</span>
+        <span class="ship-hero__word">Secure</span>
+        <span class="ship-hero__word">Discreet</span>
+        <span class="ship-hero__line"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== 2. TRUST BANNER ===================== -->
+  <section class="ship-trust page-width" aria-label="Discreet shipping promise">
+    <div class="ship-trust__card">
+      <div class="ship-trust__icon-wrap" aria-hidden="true">
+        <svg class="ship-trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+      </div>
+      <div class="ship-trust__center">
+        <h2 class="ship-trust__title">Discreet From Checkout to Delivery</h2>
+        <p class="ship-trust__text">We understand that privacy matters. Every order is handled with care and packaged discreetly.</p>
+      </div>
+      <div class="ship-trust__right" aria-hidden="true">
+        <span class="ship-trust__divider"></span>
+        <span class="ship-trust__label">Shipped With Care</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. QUICK INFO CARDS ===================== -->
+  <section class="ship-quick page-width" aria-label="Shipping highlights">
+    <div class="ship-quick__grid">
+      <div class="ship-quick__card">
+        <svg class="ship-quick__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+        <h3 class="ship-quick__title">Discreet Packaging</h3>
+        <p class="ship-quick__text">Your order is packed carefully and discreetly to protect your privacy.</p>
+      </div>
+      <div class="ship-quick__card">
+        <svg class="ship-quick__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="1" y="5" width="14" height="12" rx="1"/><path d="M15 9h4l3 3v5h-7z"/><circle cx="5.5" cy="19" r="2"/><circle cx="18.5" cy="19" r="2"/></svg>
+        <h3 class="ship-quick__title">Reliable Delivery</h3>
+        <p class="ship-quick__text">We work with trusted shipping partners to deliver your order safely.</p>
+      </div>
+      <div class="ship-quick__card">
+        <svg class="ship-quick__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <h3 class="ship-quick__title">Track Your Order</h3>
+        <p class="ship-quick__text">Tracking information is provided when available after your order ships.</p>
+      </div>
+      <div class="ship-quick__card">
+        <svg class="ship-quick__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3 class="ship-quick__title">Secure Handling</h3>
+        <p class="ship-quick__text">Orders are handled securely from processing through delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4–12. MAIN CONTENT ===================== -->
+  <div class="ship-main page-width">
+
+    <!-- Mobile collapsible TOC -->
+    <details class="ship-toc-mobile">
+      <summary class="ship-toc-mobile__summary">
+        <span>On this page</span>
+        <svg class="ship-toc-mobile__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <nav aria-label="On this page">
+        <ul class="ship-toc-mobile__list">
+          <li><a href="#overview">Shipping Overview</a></li>
+          <li><a href="#processing">Order Processing</a></li>
+          <li><a href="#delivery-times">Delivery Times</a></li>
+          <li><a href="#charges">Shipping Charges</a></li>
+          <li><a href="#tracking">Tracking Your Order</a></li>
+          <li><a href="#discreet">Discreet Packaging</a></li>
+          <li><a href="#issues">Delivery Issues</a></li>
+          <li><a href="#international">International Shipping</a></li>
+          <li><a href="#incorrect-address">Incorrect Address</a></li>
+          <li><a href="#lost-damaged">Lost or Damaged Packages</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </details>
+
+    <!-- Sticky sidebar TOC (desktop) -->
+    <aside class="ship-sidebar" aria-label="Table of contents">
+      <div class="ship-sidebar__box">
+        <h2 class="ship-sidebar__title">On this page</h2>
+        <ul class="ship-sidebar__list">
+          <li><a href="#overview">Shipping Overview</a></li>
+          <li><a href="#processing">Order Processing</a></li>
+          <li><a href="#delivery-times">Delivery Times</a></li>
+          <li><a href="#charges">Shipping Charges</a></li>
+          <li><a href="#tracking">Tracking Your Order</a></li>
+          <li><a href="#discreet">Discreet Packaging</a></li>
+          <li><a href="#issues">Delivery Issues</a></li>
+          <li><a href="#international">International Shipping</a></li>
+          <li><a href="#incorrect-address">Incorrect Address</a></li>
+          <li><a href="#lost-damaged">Lost or Damaged Packages</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="ship-content">
+
+      <!-- 5. Shipping Overview -->
+      <section id="overview" class="ship-section" aria-labelledby="ship-overview-h">
+        <span class="ship-eyebrow ship-eyebrow--section">Shipping Overview</span>
+        <h2 id="ship-overview-h" class="ship-h2">Everything You Need to Know</h2>
+        <div class="ship-card">
+          <p>At BBCxMaster, every package is handled with exceptional care, precision, and complete confidentiality. From the moment your order is placed to its final arrival at your door, our streamlined fulfillment workflow prioritizes privacy, protection, and reliable transit.</p>
+          <p>Please note that <strong>order processing time</strong> is distinct from <strong>shipping / transit time</strong>. Processing refers to the time required to verify, inspect, and discreetly pack your order before it is handed to the carrier.</p>
+        </div>
+      </section>
+
+      <!-- 6. Order Processing -->
+      <section id="processing" class="ship-section" aria-labelledby="ship-processing-h">
+        <h2 id="ship-processing-h" class="ship-h2">Order Processing</h2>
+        <div class="ship-card">
+          <ul class="ship-list">
+            <li><strong>Processing window:</strong> Standard order verification, quality check, and discreet packaging take <strong>1 to 3 business days</strong> (Monday–Friday).</li>
+            <li><strong>Weekends & holidays:</strong> Processing occurs on business days only; weekends and public holidays are excluded and may extend the processing window.</li>
+            <li><strong>Same / next-day dispatch priority:</strong> Orders placed before <strong>2:00 PM EST</strong> are prioritized for dispatch on the same or next business day.</li>
+            <li><strong>After payment is confirmed:</strong> Once payment is verified, your order enters our fulfillment queue, where each item is inspected, secured, and sealed in plain, unmarked outer packaging before carrier collection.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7. Delivery Times -->
+      <section id="delivery-times" class="ship-section" aria-labelledby="ship-times-h">
+        <h2 id="ship-times-h" class="ship-h2">Delivery Times</h2>
+        <div class="ship-times-grid">
+          <div class="ship-card ship-times__domestic">
+            <h3 class="ship-h3">Domestic Shipping</h3>
+            <ul class="ship-list">
+              <li><strong>Standard Discreet Ground</strong> — United States (contiguous 48): <strong>3–5 business days</strong></li>
+              <li><strong>Priority Express Courier</strong> — United States (domestic): <strong>1–3 business days</strong></li>
+            </ul>
+          </div>
+          <div class="ship-card ship-times__intl">
+            <h3 class="ship-h3">International Shipping</h3>
+            <ul class="ship-list">
+              <li><strong>International Express Freight</strong> — Canada, Europe, UK, Australia & worldwide select destinations: <strong>5–10 business days</strong></li>
+              <li>Availability and transit times depend on destination customs and local courier partners.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ship-card ship-card--note">
+          <p><strong>Please note:</strong> Delivery times are estimates provided by carriers and are not guaranteed. Transit may be affected by:</p>
+          <ul class="ship-list ship-list--inline">
+            <li>Carrier delays</li>
+            <li>Weather</li>
+            <li>Holidays</li>
+            <li>Customs</li>
+            <li>Incorrect address information</li>
+            <li>Other circumstances outside our control</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 8. Shipping Charges -->
+      <section id="charges" class="ship-section" aria-labelledby="ship-charges-h">
+        <h2 id="ship-charges-h" class="ship-h2">Shipping Charges</h2>
+        <div class="ship-card">
+          <p>Shipping costs are calculated based on your selected shipping method and destination. Current options:</p>
+          <div class="ship-table-wrap">
+            <table class="ship-table">
+              <thead>
+                <tr>
+                  <th scope="col">Shipping Option</th>
+                  <th scope="col">Coverage</th>
+                  <th scope="col">Estimated Transit</th>
+                  <th scope="col">Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Shipping Option"><strong>Standard Discreet Ground</strong></td>
+                  <td data-label="Coverage">United States (contiguous 48)</td>
+                  <td data-label="Transit">3–5 business days</td>
+                  <td data-label="Rate"><span class="ship-gold">FREE</span> on orders $75+</td>
+                </tr>
+                <tr>
+                  <td data-label="Shipping Option"><strong>Priority Express Courier</strong></td>
+                  <td data-label="Coverage">United States (domestic)</td>
+                  <td data-label="Transit">1–3 business days</td>
+                  <td data-label="Rate">Calculated at checkout</td>
+                </tr>
+                <tr>
+                  <td data-label="Shipping Option"><strong>International Express Freight</strong></td>
+                  <td data-label="Coverage">Canada, Europe, UK, AU & worldwide</td>
+                  <td data-label="Transit">5–10 business days</td>
+                  <td data-label="Rate">Calculated at checkout</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ship-small">Exact shipping costs for your order are always displayed at checkout before payment.</p>
+        </div>
+      </section>
+
+      <!-- 9. Tracking -->
+      <section id="tracking" class="ship-section" aria-labelledby="ship-tracking-h">
+        <h2 id="ship-tracking-h" class="ship-h2">Track Your Order</h2>
+        <div class="ship-card">
+          <p>As soon as your shipment is processed and handed to our logistics partner, an automated dispatch notice with your official tracking number is sent via email (and SMS if opted in). Please allow up to 24 hours after dispatch for courier tracking portals to display initial scan points.</p>
+
+          <ol class="ship-timeline" aria-label="Order tracking stages">
+            <li class="ship-timeline__step">
+              <span class="ship-timeline__dot" aria-hidden="true"></span>
+              <span class="ship-timeline__label">Order Placed</span>
+            </li>
+            <li class="ship-timeline__step">
+              <span class="ship-timeline__dot" aria-hidden="true"></span>
+              <span class="ship-timeline__label">Order Processed</span>
+            </li>
+            <li class="ship-timeline__step">
+              <span class="ship-timeline__dot" aria-hidden="true"></span>
+              <span class="ship-timeline__label">Shipped</span>
+            </li>
+            <li class="ship-timeline__step">
+              <span class="ship-timeline__dot" aria-hidden="true"></span>
+              <span class="ship-timeline__label">In Transit</span>
+            </li>
+            <li class="ship-timeline__step">
+              <span class="ship-timeline__dot ship-timeline__dot--end" aria-hidden="true"></span>
+              <span class="ship-timeline__label">Delivered</span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 10. Discreet Packaging -->
+      <section id="discreet" class="ship-section" aria-labelledby="ship-discreet-h">
+        <div class="ship-discreet">
+          <div class="ship-discreet__media">
+            <img
+              src="{{ 'shipping_hero_1920.png' | asset_url }}"
+              alt="Premium plain black packaging prepared for discreet delivery"
+              class="ship-discreet__img"
+              loading="lazy"
+              width="1920"
+              height="1080">
+            <div class="ship-discreet__scrim" aria-hidden="true"></div>
+          </div>
+          <div class="ship-discreet__body">
+            <span class="ship-eyebrow ship-eyebrow--section">Discreet Packaging</span>
+            <h2 id="ship-discreet-h" class="ship-h2">Discreet by Design</h2>
+            <p>We know privacy is important. Orders are packaged with discretion so your purchase remains private throughout the delivery process.</p>
+            <ul class="ship-list">
+              <li>Shipped in 100% plain, unmarked outer boxes or opaque poly-mailers</li>
+              <li>No brand logos or product descriptions on the exterior</li>
+              <li>Neutral sender name on shipping labels</li>
+              <li>Neutral corporate billing descriptor on your statement</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Delivery Issues -->
+      <section id="issues" class="ship-section" aria-labelledby="ship-issues-h">
+        <h2 id="ship-issues-h" class="ship-h2">Delivery Issues</h2>
+        <div class="ship-issues-grid">
+          <div class="ship-card ship-issue">
+            <h3 class="ship-h3">Delivery Delays</h3>
+            <p>Transit times are carrier estimates. If your package has exceeded the estimated delivery window or tracking shows no movement for 5 consecutive business days, contact our support team so we can initiate a trace with the carrier.</p>
+          </div>
+          <div id="incorrect-address" class="ship-card ship-issue">
+            <h3 class="ship-h3">Incorrect Address</h3>
+            <p>If you entered an incorrect delivery address, contact us as soon as possible. If the order has not yet shipped, we will correct the address; once shipped, corrections depend on the carrier's capabilities. Please double-check your address at checkout.</p>
+          </div>
+          <div id="lost-damaged" class="ship-card ship-issue">
+            <h3 class="ship-h3">Lost Packages</h3>
+            <p>If tracking indicates your package was delivered but it has not arrived, or the parcel appears lost in transit, reach out to our support team so we can open an investigation with the carrier.</p>
+          </div>
+          <div class="ship-card ship-issue">
+            <h3 class="ship-h3">Damaged Packages</h3>
+            <p>If your package arrives with exterior damage impacting the items inside, take photos of the original packaging and contact us within <strong>48 hours of receipt</strong> for immediate resolution.</p>
+          </div>
+          <div class="ship-card ship-issue">
+            <h3 class="ship-h3">Returned Packages</h3>
+            <p>Packages that cannot be delivered (e.g., due to an incomplete address or unclaimed at a carrier facility) may be returned to us. If your order is returned, contact our support team to arrange reshipment.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. International Shipping -->
+      <section id="international" class="ship-section" aria-labelledby="ship-intl-h">
+        <h2 id="ship-intl-h" class="ship-h2">International Shipping</h2>
+        <div class="ship-card">
+          <p>We ship internationally to select destinations via express freight (5–10 business days). Availability and transit times depend on destination customs and local courier partners.</p>
+          <ul class="ship-list">
+            <li><strong>Customs & import duties:</strong> Customs regulations, import taxes, and inspection procedures vary by destination country.</li>
+            <li><strong>Customer responsibility:</strong> Any local duties or import taxes imposed by destination customs are the responsibility of the recipient.</li>
+            <li><strong>Customs delays:</strong> International transit times are estimates and may vary depending on local customs processing.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 13. FAQ -->
+      <section id="faq" class="ship-section" aria-labelledby="ship-faq-h">
+        <div class="ship-faq-head">
+          <h2 id="ship-faq-h" class="ship-h2">Frequently Asked Questions</h2>
+          <div class="ship-divider" aria-hidden="true"></div>
+        </div>
+
+        <div class="ship-faq">
+          <details class="ship-faq__item">
+            <summary class="ship-faq__q"><span>How long does shipping take?</span><svg class="ship-faq__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="ship-faq__a"><p>Order processing takes 1 to 3 business days (Monday–Friday). Domestic US standard delivery then takes 3–5 business days; priority express 1–3 business days; international express 5–10 business days.</p></div>
+          </details>
+          <details class="ship-faq__item">
+            <summary class="ship-faq__q"><span>Will my package be discreet?</span><svg class="ship-faq__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="ship-faq__a"><p>Yes. All BBCxMaster orders are shipped in 100% plain, unmarked outer boxes or opaque poly-mailers with no brand logos or product descriptions on the exterior, under a neutral sender name.</p></div>
+          </details>
+          <details class="ship-faq__item">
+            <summary class="ship-faq__q"><span>How do I track my order?</span><svg class="ship-faq__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="ship-faq__a"><p>Once your order is processed and handed to the carrier, an email confirmation containing a real-time tracking link is sent automatically. Allow up to 24 hours after dispatch for courier portals to update.</p></div>
+          </details>
+          <details class="ship-faq__item">
+            <summary class="ship-faq__q"><span>What happens if my package is delayed?</span><svg class="ship-faq__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="ship-faq__a"><p>Transit times are estimates provided by carriers. Weather, holidays, or customs may occasionally cause delays. Our Client Concierge team actively monitors shipments and can assist with status updates.</p></div>
+          </details>
+          <details class="ship-faq__item">
+            <summary class="ship-faq__q"><span>What if I entered the wrong address?</span><svg class="ship-faq__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="ship-faq__a"><p>Contact our Client Concierge team as soon as possible at <a href="mailto:support@bbcxmaster.com" class="ship-link">support@bbcxmaster.com</a>. If the order has not yet shipped, we will correct the delivery address; once shipped, changes depend on the carrier.</p></div>
+          </details>
+          <details class="ship-faq__item">
+            <summary class="ship-faq__q"><span>What happens if my package arrives damaged?</span><svg class="ship-faq__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="ship-faq__a"><p>If your shipment arrives with exterior or contents damage, contact our Client Concierge support within 48 hours of delivery with photos so we can immediately resolve or replace your items.</p></div>
+          </details>
+          <details class="ship-faq__item">
+            <summary class="ship-faq__q"><span>Do you ship internationally?</span><svg class="ship-faq__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="ship-faq__a"><p>Yes, BBCxMaster offers worldwide express shipping to select destination countries (5–10 business days). International delivery availability and transit times depend on destination customs and local courier partners.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 14. Contact CTA -->
+      <section id="contact" class="ship-section" aria-labelledby="ship-contact-h">
+        <div class="ship-cta">
+          <span class="ship-eyebrow ship-eyebrow--section">Need Help?</span>
+          <h2 id="ship-contact-h" class="ship-h2">We're Here to Help</h2>
+          <p class="ship-cta__text">If you have questions about your order or delivery, our support team is here to help.</p>
+          <a href="/pages/contact" class="ship-btn">Contact Us <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </section>
+
+    </div><!-- /.ship-content -->
+  </div><!-- /.ship-main -->
+
+  <!-- ===================== 15. FINAL BRAND SECTION ===================== -->
+  <section class="ship-final" aria-label="BBCxMaster brand promise">
+    <div class="ship-final__bg" aria-hidden="true">
+      <img src="{{ 'shipping_hero_1920.png' | asset_url }}" alt="" class="ship-final__img" loading="lazy" width="1920" height="1080">
+      <div class="ship-final__scrim"></div>
+    </div>
+    <div class="ship-final__content">
+      <span class="ship-final__tag">Private &bull; Careful &bull; Delivered</span>
+      <h2 class="ship-final__title">Your Privacy Travels With You.</h2>
+      <div class="ship-divider ship-divider--center" aria-hidden="true"></div>
+    </div>
+  </section>
+
+</article>
+
+<style>
+  /* ============ Base ============ */
+  .ship-page {
+    background-color: var(--color-luxury-bg, #090909);
+    color: var(--color-luxury-text-secondary, #b9b9b9);
+    font-family: var(--font-body-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+    line-height: 1.7;
+  }
+  .ship-page .page-width {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .ship-accent { color: var(--color-luxury-accent, #9E2F45); font-weight: 700; }
+  .ship-link { color: var(--color-luxury-accent, #9E2F45); text-decoration: underline; }
+  .ship-link:hover, .ship-link:focus-visible { color: #ffffff; }
+  .ship-small { font-size: 0.85rem; color: #8a8a8a; }
+
+  /* ============ Eyebrow / headings / divider ============ */
+  .ship-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-luxury-accent, #9E2F45);
+    margin-bottom: 12px;
+  }
+  .ship-eyebrow--section { letter-spacing: 2.5px; }
+  .ship-h2 {
+    font-family: var(--font-heading-family, 'Playfair Display', Georgia, serif);
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.4px;
+    margin: 0 0 18px;
+    line-height: 1.25;
+  }
+  .ship-h3 {
+    font-family: var(--font-heading-family, 'Playfair Display', Georgia, serif);
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 10px;
+  }
+  .ship-divider {
+    width: 64px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-luxury-accent, #9E2F45), rgba(158, 47, 69, 0.05));
+  }
+  .ship-divider--center { margin: 22px auto 0;   background: linear-gradient(90deg, rgba(158,47,69,0.05), var(--color-luxury-accent, #9E2F45), rgba(158,47,69,0.05)); }
+
+  /* ============ Hero ============ */
+  .ship-hero {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(158, 47, 69, 0.2);
+  }
+  .ship-hero__bg, .ship-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ship-hero__img { object-fit: cover; object-position: center 40%; }
+  .ship-hero__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(9,9,9,0.92) 0%, rgba(9,9,9,0.72) 45%, rgba(9,9,9,0.55) 100%),
+                linear-gradient(180deg, rgba(9,9,9,0.35) 0%, rgba(9,9,9,0.85) 100%);
+  }
+  .ship-hero__inner {
+    position: relative; z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .ship-hero__title {
+    font-family: var(--font-heading-family, 'Playfair Display', Georgia, serif);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0 0 16px;
+    letter-spacing: 0.5px;
+  }
+  .ship-hero__desc {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: #d6d6d6;
+    max-width: 440px;
+    margin: 0;
+  }
+  .ship-hero__right {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+    text-align: right;
+  }
+  .ship-hero__word {
+    font-family: var(--font-heading-family, 'Playfair Display', Georgia, serif);
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .ship-hero__line {
+    width: 90px; height: 1px; margin-top: 8px;
+    background: linear-gradient(90deg, rgba(158,47,69,0.05), var(--color-luxury-accent, #9E2F45));
+  }
+
+  /* ============ Trust banner ============ */
+  .ship-trust { margin-top: -1px; }
+  .ship-trust__card {
+    display: flex; align-items: center; gap: 28px;
+    background: var(--color-luxury-card, #111111);
+    border: 1px solid rgba(158, 47, 69, 0.25);
+    border-radius: 10px;
+    padding: 28px 34px;
+    margin-top: -44px;
+    position: relative; z-index: 5;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  }
+  .ship-trust__icon-wrap {
+    flex-shrink: 0;
+    width: 64px; height: 64px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--color-luxury-accent, #9E2F45);
+    border-radius: 50%;
+    color: var(--color-luxury-accent, #9E2F45);
+  }
+  .ship-trust__icon { width: 28px; height: 28px; }
+  .ship-trust__center { flex: 1; }
+  .ship-trust__title {
+    font-family: var(--font-heading-family, 'Playfair Display', Georgia, serif);
+    font-size: 1.25rem; color: #ffffff; margin: 0 0 6px; font-weight: 600;
+  }
+  .ship-trust__text { margin: 0; color: var(--color-luxury-text-secondary, #b3b3b3); font-size: 0.95rem; }
+  .ship-trust__right { display: flex; align-items: center; gap: 20px; }
+  .ship-trust__divider { width: 1px; align-self: stretch; background: rgba(158, 47, 69, 0.3); }
+  .ship-trust__label {
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--color-luxury-accent, #9E2F45); white-space: nowrap;
+  }
+
+  /* ============ Quick info cards ============ */
+  .ship-quick { margin-top: 56px; }
+  .ship-quick__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .ship-quick__card {
+    background: var(--color-luxury-card, #111111);
+    border: 1px solid var(--color-luxury-border, #262626);
+    border-radius: 10px;
+    padding: 28px 24px;
+    transition: border-color 0.3s ease;
+  }
+  .ship-quick__card:hover, .ship-quick__card:focus-within { border-color: rgba(158, 47, 69, 0.4); }
+  .ship-quick__icon {
+    width: 30px; height: 30px;
+    stroke: var(--color-luxury-accent, #9E2F45);
+    margin-bottom: 16px;
+  }
+  .ship-quick__title { font-size: 1.02rem; color: #ffffff; font-weight: 600; margin: 0 0 8px; }
+  .ship-quick__text { font-size: 0.9rem; color: var(--color-luxury-text-secondary, #a3a3a3); margin: 0; line-height: 1.6; }
+
+  /* ============ Main layout ============ */
+  .ship-main {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 48px;
+    margin-top: 72px;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+  .ship-sidebar { position: sticky; top: 90px; }
+  .ship-sidebar__box {
+    background: var(--color-luxury-card, #111111);
+    border: 1px solid var(--color-luxury-border, #262626);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .ship-sidebar__title {
+    font-family: var(--font-heading-family, serif);
+    font-size: 1.02rem; color: #ffffff;
+    margin: 0 0 16px; padding-bottom: 12px;
+    border-bottom: 1px solid rgba(158, 47, 69, 0.2);
+  }
+  .ship-sidebar__list, .ship-toc-mobile__list { list-style: none; margin: 0; padding: 0; }
+  .ship-sidebar__list li { margin-bottom: 10px; }
+  .ship-sidebar__list a {
+    color: var(--color-luxury-text-secondary, #a1a1aa);
+    text-decoration: none; font-size: 0.87rem;
+    transition: color 0.2s ease;
+  }
+  .ship-sidebar__list a:hover, .ship-sidebar__list a:focus-visible { color: var(--color-luxury-accent, #9E2F45); }
+
+  /* Mobile TOC */
+  .ship-toc-mobile {
+    display: none;
+    background: var(--color-luxury-card, #111111);
+    border: 1px solid var(--color-luxury-border, #262626);
+    border-radius: 10px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .ship-toc-mobile__summary {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px;
+    color: #ffffff; font-weight: 600; font-size: 0.95rem;
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  .ship-toc-mobile__summary::-webkit-details-marker { display: none; }
+  .ship-toc-mobile__summary:focus-visible { outline: 2px solid var(--color-luxury-accent, #9E2F45); outline-offset: -2px; }
+  .ship-toc-mobile__chevron { width: 18px; height: 18px; stroke: var(--color-luxury-accent, #9E2F45); transition: transform 0.3s ease; }
+  .ship-toc-mobile[open] .ship-toc-mobile__chevron { transform: rotate(180deg); }
+  .ship-toc-mobile__list { padding: 4px 20px 18px; border-top: 1px solid var(--color-luxury-border, #262626); }
+  .ship-toc-mobile__list li { margin-top: 12px; }
+  .ship-toc-mobile__list a {
+    color: var(--color-luxury-text-secondary, #a1a1aa);
+    text-decoration: none; font-size: 0.9rem;
+  }
+  .ship-toc-mobile__list a:hover, .ship-toc-mobile__list a:focus-visible { color: var(--color-luxury-accent, #9E2F45); }
+
+  /* ============ Sections & cards ============ */
+  .ship-section { margin-bottom: 56px; scroll-margin-top: 100px; }
+  .ship-card {
+    background: var(--color-luxury-card, #111111);
+    border: 1px solid var(--color-luxury-border, #262626);
+    border-radius: 10px;
+    padding: 28px 30px;
+    color: #cfcfcf;
+    font-size: 0.96rem;
+  }
+  .ship-card p { margin: 0 0 14px; }
+  .ship-card p:last-child { margin-bottom: 0; }
+  .ship-card--note { border-color: rgba(158, 47, 69, 0.3); margin-top: 20px; }
+  .ship-list { padding-left: 20px; margin: 0 0 12px; }
+  .ship-list li { margin-bottom: 10px; }
+  .ship-list--inline { display: flex; flex-wrap: wrap; gap: 6px 22px; list-style: none; padding-left: 0; }
+  .ship-list--inline li { margin-bottom: 0; }
+
+  .ship-times-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* ============ Table ============ */
+  .ship-table-wrap { overflow-x: auto; border: 1px solid var(--color-luxury-border, #262626); border-radius: 8px; margin: 16px 0; }
+  .ship-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 640px; }
+  .ship-table th {
+    background: #161616;
+    color: var(--color-luxury-accent, #9E2F45);
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.2px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--color-luxury-border, #262626);
+  }
+  .ship-table td { padding: 15px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.92rem; }
+  .ship-table tr:last-child td { border-bottom: none; }
+
+  /* ============ Tracking timeline ============ */
+  .ship-timeline {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 28px 0 6px;
+    padding: 0;
+    position: relative;
+  }
+  .ship-timeline::before {
+    content: "";
+    position: absolute;
+    top: 7px; left: 6%; right: 6%;
+    height: 1px;
+    background: rgba(158, 47, 69, 0.35);
+  }
+  .ship-timeline__step {
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    position: relative; z-index: 1;
+    flex: 1;
+  }
+  .ship-timeline__dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--color-luxury-accent, #9E2F45);
+    background: var(--color-luxury-bg, #090909);
+  }
+  .ship-timeline__dot--end { background: var(--color-luxury-accent, #9E2F45); }
+  .ship-timeline__label {
+    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    color: #d6d6d6; text-align: center;
+  }
+
+  /* ============ Discreet by design ============ */
+  .ship-discreet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-luxury-border, #262626);
+    background: var(--color-luxury-card, #111111);
+  }
+  .ship-discreet__media { position: relative; min-height: 320px; }
+  .ship-discreet__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ship-discreet__scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(9,9,9,0) 55%, rgba(17,17,17,0.95) 100%);
+  }
+  .ship-discreet__body { padding: 44px 40px; }
+  .ship-discreet__body p { color: #cfcfcf; font-size: 0.98rem; margin: 0 0 16px; }
+
+  /* ============ Issues grid ============ */
+  .ship-issues-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .ship-issue { scroll-margin-top: 100px; }
+  .ship-issue p { margin: 0; font-size: 0.92rem; }
+
+  /* ============ FAQ ============ */
+  .ship-faq-head { text-align: center; margin-bottom: 32px; }
+  .ship-faq { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .ship-faq__item {
+    background: var(--color-luxury-card, #111111);
+    border: 1px solid var(--color-luxury-border, #262626);
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+  }
+  .ship-faq__item[open] { border-color: rgba(158, 47, 69, 0.45); }
+  .ship-faq__q {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 18px 22px;
+    color: #ffffff; font-weight: 600; font-size: 1rem;
+  }
+  .ship-faq__q::-webkit-details-marker { display: none; }
+  .ship-faq__q:focus-visible { outline: 2px solid var(--color-luxury-accent, #9E2F45); outline-offset: -2px; }
+  .ship-faq__chev { width: 18px; height: 18px; stroke: var(--color-luxury-accent, #9E2F45); flex-shrink: 0; transition: transform 0.3s ease; }
+  .ship-faq__item[open] .ship-faq__chev { transform: rotate(180deg); }
+  .ship-faq__a { padding: 0 22px 18px; color: var(--color-luxury-text-secondary, #a8a8a8); font-size: 0.94rem; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 14px; }
+  .ship-faq__a p { margin: 0; }
+
+  /* ============ Contact CTA ============ */
+  .ship-cta {
+    text-align: center;
+    background: linear-gradient(160deg, #141414 0%, var(--color-luxury-card, #111111) 100%);
+    border: 1px solid rgba(158, 47, 69, 0.35);
+    border-radius: 12px;
+    padding: 56px 32px;
+  }
+  .ship-cta__text { max-width: 480px; margin: 0 auto 28px; color: var(--color-luxury-text-secondary, #b3b3b3); }
+  .ship-btn {
+    display: inline-block;
+    padding: 14px 34px;
+    background: transparent;
+    border: 1px solid var(--color-luxury-accent, #9E2F45);
+    color: var(--color-luxury-accent, #9E2F45);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .ship-btn:hover, .ship-btn:focus-visible {
+    background: var(--color-luxury-accent, #9E2F45);
+    color: #090909;
+    outline: none;
+  }
+
+  /* ============ Final brand section ============ */
+  .ship-final { position: relative; min-height: 340px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .ship-final__bg { position: absolute; inset: 0; }
+  .ship-final__img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+  .ship-final__scrim { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(9,9,9,0.72) 0%, rgba(9,9,9,0.93) 80%); }
+  .ship-final__content { position: relative; z-index: 2; text-align: center; padding: 70px 20px; }
+  .ship-final__tag {
+    font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--color-luxury-accent, #9E2F45);
+    display: block; margin-bottom: 18px;
+  }
+  .ship-final__title {
+    font-family: var(--font-heading-family, 'Playfair Display', Georgia, serif);
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+    color: #ffffff; font-weight: 600; margin: 0;
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 1024px) {
+    .ship-quick__grid { grid-template-columns: repeat(2, 1fr); }
+    .ship-main { grid-template-columns: 1fr; gap: 0; }
+    .ship-sidebar { display: none; }
+    .ship-toc-mobile { display: block; }
+  }
+
+  @media (max-width: 768px) {
+    .ship-hero { min-height: 440px; }
+    .ship-hero__inner { flex-direction: column; align-items: flex-start; justify-content: center; padding-top: 60px; padding-bottom: 60px; }
+    .ship-hero__right { flex-direction: row; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .ship-hero__line { width: 60px; margin-top: 0; }
+    .ship-trust__card { flex-direction: column; text-align: center; padding: 28px 22px; }
+    .ship-trust__right { flex-direction: column; gap: 12px; }
+    .ship-trust__divider { width: 60px; height: 1px; align-self: center; }
+    .ship-quick__grid { grid-template-columns: 1fr; }
+    .ship-times-grid { grid-template-columns: 1fr; }
+    .ship-discreet { grid-template-columns: 1fr; }
+    .ship-discreet__media { min-height: 240px; }
+    .ship-discreet__scrim { background: linear-gradient(180deg, rgba(9,9,9,0) 55%, rgba(17,17,17,0.95) 100%); }
+    .ship-discreet__body { padding: 28px 22px; }
+    .ship-timeline { flex-direction: column; gap: 0; align-items: flex-start; padding-left: 8px; }
+    .ship-timeline::before { top: 10px; bottom: 10px; left: 14px; right: auto; width: 1px; height: auto; }
+    .ship-timeline__step { flex-direction: row; align-items: center; padding: 14px 0; }
+    .ship-timeline__label { text-align: left; }
+    .ship-cta { padding: 44px 22px; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .ship-page *, .ship-page *::before, .ship-page *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Shipping Info Section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Shipping Info Section"
+    }
+  ]
+}
+{% endschema %}

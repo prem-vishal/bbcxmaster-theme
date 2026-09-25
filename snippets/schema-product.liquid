@@ -1,0 +1,108 @@
+{%- comment -%}
+  Product schema for rich search results and e-commerce data.
+  Includes availability, pricing, ratings, and offer details.
+  Supports GTIN, MPN, and review metafields for enhanced schema.
+{%- endcomment -%}
+
+{%- if request.page_type == 'product' and product != blank -%}
+  {%- assign product_image_url = product.featured_media.preview_image | image_url: width: 800 -%}
+  {%- if product_image_url != blank -%}
+    {%- unless product_image_url contains 'https:' -%}{% assign product_image_url = product_image_url | prepend: 'https:' %}{% endunless -%}
+  {%- endif -%}
+  {%- comment -%}
+    Google/Merchant Center prefer multiple real gallery images (>=800px) over a single
+    600px featured image. Build the array from product.media (images only, real gallery
+    assets, nothing fabricated) instead of just the featured image.
+  {%- endcomment -%}
+  {%- assign product_gallery_urls = '' -%}
+  {%- for media in product.media -%}
+    {%- if media.media_type == 'image' -%}
+      {%- assign gallery_url = media.preview_image | image_url: width: 800 -%}
+      {%- unless gallery_url contains 'https:' -%}{% assign gallery_url = gallery_url | prepend: 'https:' %}{% endunless -%}
+      {%- assign product_gallery_urls = product_gallery_urls | append: gallery_url | append: '||' -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign product_gallery_list = product_gallery_urls | split: '||' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "description": {{ product.description | strip_html | truncatewords: 30 | json }},
+    "url": {{ product.url | prepend: request.origin | json }},
+    {% if product_gallery_list.size > 0 %}
+      "image": [
+        {% for gallery_url in product_gallery_list %}{{ gallery_url | json }}{% unless forloop.last %},{% endunless %}{% endfor %}
+      ],
+    {% elsif product.featured_media %}
+      "image": {{ product_image_url | json }},
+    {% endif %}
+    "brand": {
+      "@type": "Brand",
+      "name": {{ shop.name | json }}
+    },
+    {% if product.selected_or_first_available_variant.sku != blank %}
+      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {% endif %}
+    {% if product.metafields.seo.gtin != blank %}
+      "gtin13": {{ product.metafields.seo.gtin | json }},
+    {% endif %}
+    {% if product.metafields.seo.mpn != blank %}
+      "mpn": {{ product.metafields.seo.mpn | json }},
+    {% endif %}
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": {{ shop.currency | json }},
+      {% comment %}
+        Uses divided_by: 100.0 on the raw cents integer rather than the money/
+        money_without_currency filters: those format using the shop's money_format
+        setting, which can include thousands separators or comma-decimal locales
+        (e.g. "1,234.56" or "1.234,56") that are not valid schema.org/JSON decimal
+        values. divided_by: 100.0 always yields a plain period-decimal number
+        regardless of the shop's display locale.
+      {% endcomment %}
+      "lowPrice": "{{ product.price_min | divided_by: 100.0 }}",
+      "highPrice": "{{ product.price_max | divided_by: 100.0 }}",
+      "offerCount": {{ product.variants | size }},
+      "offers": [
+        {% for variant in product.variants %}
+          {% assign variant_image_url = variant.featured_image | image_url: width: 600 | default: product_image_url %}
+          {% if variant_image_url != blank %}{% unless variant_image_url contains 'https:' %}{% assign variant_image_url = variant_image_url | prepend: 'https:' %}{% endunless %}{% endif %}
+          {
+            "@type": "Offer",
+            "url": {{ variant.url | prepend: request.origin | json }},
+            "priceCurrency": {{ shop.currency | json }},
+            "price": "{{ variant.price | divided_by: 100.0 }}",
+            "availability": "{% if variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+            "itemCondition": "https://schema.org/NewCondition",
+            {% if variant_image_url != blank %}"image": {{ variant_image_url | json }},{% endif %}
+            {% if variant.sku != blank %}"sku": {{ variant.sku | json }},{% endif %}
+            {% if variant.barcode != blank %}"gtin13": {{ variant.barcode | json }},{% endif %}
+            {% comment %}
+              No "shippingDetails" block: real shipping cost/regions/handling time
+              aren't available as theme settings, and this brand ships worldwide, so a
+              single hardcoded country/rate would misrepresent actual shipping to Google
+              and to Merchant Center. Add settings.shipping_* fields and a shippingDetails
+              block here once real rates exist rather than guessing.
+            {% endcomment %}
+            {% comment %} 30-day window matches the published FAQ policy copy; returnFees/returnMethod are left unspecified since they aren't confirmed anywhere on-site. {% endcomment %}
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 30
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }{%- if product.metafields.reviews.aggregate_rating -%}
+    ,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ product.metafields.reviews.aggregate_rating.value | json }},
+      "reviewCount": {{ product.metafields.reviews.aggregate_rating.count | json }},
+      "bestRating": "5",
+      "worstRating": "1"
+    }{%- endif -%}
+  }
+  </script>
+{%- endif -%}

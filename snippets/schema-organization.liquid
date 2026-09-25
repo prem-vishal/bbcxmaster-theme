@@ -1,0 +1,77 @@
+{% comment %}
+  Organization schema for brand identity and trust signals.
+  Renders comprehensive structured data for search engines.
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "{{ request.origin | append: '/' | escape }}#organization",
+  "name": "{{ shop.name | escape }}",
+  "url": "{{ request.origin | append: '/' | escape }}",
+  {% if settings.logo != blank %}
+    {% assign logo_url = settings.logo | image_url: width: 600 %}
+    {% if logo_url != blank %}
+      {% unless logo_url contains '//' %}{% assign logo_url = logo_url | prepend: 'https:' %}{% endunless %}
+      "logo": {{ logo_url | json }},
+    {% endif %}
+  {% endif %}
+  "description": {{ shop.description | default: shop.name | json }},
+  {% liquid
+    assign social_links = ''
+    if settings.social_facebook_link != blank
+      assign social_links = social_links | append: settings.social_facebook_link | append: '||'
+    endif
+    if settings.social_instagram_link != blank
+      assign social_links = social_links | append: settings.social_instagram_link | append: '||'
+    endif
+    if settings.social_twitter_link != blank
+      assign social_links = social_links | append: settings.social_twitter_link | append: '||'
+    endif
+    if settings.social_youtube_link != blank
+      assign social_links = social_links | append: settings.social_youtube_link | append: '||'
+    endif
+    if settings.social_tiktok_link != blank
+      assign social_links = social_links | append: settings.social_tiktok_link | append: '||'
+    endif
+    if settings.social_pinterest_link != blank
+      assign social_links = social_links | append: settings.social_pinterest_link | append: '||'
+    endif
+    assign social_link_list = social_links | split: '||'
+  %}
+  "sameAs": [
+    {% for social_link in social_link_list %}"{{ social_link | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+  {% comment %}
+    No "address" block: an Organization's registered address must be a real, static
+    business address supplied by the merchant — never derived from request.country
+    (that's the visitor's location, not the business's). Omit until a real address exists.
+  {% endcomment %}
+  {% if shop.phone != blank %},
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "telephone": {{ shop.phone | json }}
+  }
+  {% endif %}
+}
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "{{ request.origin | append: '/' | escape }}#website",
+    "name": "{{ shop.name | escape }}",
+  "url": "{{ request.origin | escape }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ request.origin | escape }}/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>

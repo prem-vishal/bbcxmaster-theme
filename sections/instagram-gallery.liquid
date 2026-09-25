@@ -1,0 +1,176 @@
+{% comment %}
+  Instagram gallery grid. Hosts `_instagram-post` blocks, each linking to a real post/profile URL.
+{% endcomment %}
+
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+%}
+
+<div
+  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+></div>
+
+<div
+  class="section section--{{ section.settings.section_width }}{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %} spacing-style instagram-gallery"
+  style="{% render 'spacing-style', settings: section.settings %}"
+  data-testid="instagram-gallery"
+>
+  <div
+    class="instagram-gallery__header"
+    data-reveal
+  >
+    <p class="luxury-kicker">{{ section.settings.kicker }}</p>
+    <h2 class="instagram-gallery__heading">{{ section.settings.heading }}</h2>
+    {% if section.settings.profile_link != blank %}
+      <a
+        href="{{ section.settings.profile_link }}"
+        class="instagram-gallery__link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ section.settings.profile_label | default: 'Follow along' }}
+      </a>
+    {% endif %}
+  </div>
+
+  <div
+    class="instagram-gallery__grid"
+    data-reveal-group
+  >
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .instagram-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3xl);
+  }
+
+  .instagram-gallery__header {
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .instagram-gallery__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: var(--font-size--h2);
+    margin: 0;
+  }
+
+  .instagram-gallery__link {
+    color: var(--luxury-accent);
+    font-size: var(--font-size--sm);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    width: fit-content;
+  }
+
+  .instagram-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-md);
+  }
+
+  @media screen and (min-width: 750px) {
+    .instagram-gallery__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Instagram Gallery",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "_instagram-post"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Follow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "@BBCxMaster"
+    },
+    {
+      "type": "url",
+      "id": "profile_link",
+      "label": "Instagram profile link"
+    },
+    {
+      "type": "text",
+      "id": "profile_label",
+      "label": "Profile link label",
+      "default": "Follow along"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Gallery",
+      "category": "t:categories.storytelling"
+    }
+  ]
+}
+{% endschema %}

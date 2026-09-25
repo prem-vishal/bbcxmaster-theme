@@ -1,0 +1,117 @@
+{% doc %}
+  Renders an accessible breadcrumb trail plus a matching BreadcrumbList JSON-LD block, so the
+  visible markup and the structured data always agree. Automatically no-ops on page types that
+  don't have a natural breadcrumb trail (home, cart, search, etc).
+{% enddoc %}
+
+{% liquid
+  assign crumb_titles = ''
+  assign crumb_urls = ''
+
+  assign crumb_titles = crumb_titles | append: shop.name | append: '||'
+  assign crumb_urls = crumb_urls | append: routes.root_url | append: '||'
+
+  case request.page_type
+    when 'product'
+      if collection.handle != blank
+        assign crumb_titles = crumb_titles | append: collection.title | append: '||'
+        assign crumb_urls = crumb_urls | append: collection.url | append: '||'
+      endif
+      assign crumb_titles = crumb_titles | append: product.title | append: '||'
+      assign crumb_urls = crumb_urls | append: product.url | append: '||'
+    when 'collection'
+      assign crumb_titles = crumb_titles | append: collection.title | append: '||'
+      assign crumb_urls = crumb_urls | append: collection.url | append: '||'
+    when 'article'
+      assign crumb_titles = crumb_titles | append: blog.title | append: '||'
+      assign crumb_urls = crumb_urls | append: blog.url | append: '||'
+      assign crumb_titles = crumb_titles | append: article.title | append: '||'
+      assign crumb_urls = crumb_urls | append: article.url | append: '||'
+    when 'blog'
+      assign crumb_titles = crumb_titles | append: blog.title | append: '||'
+      assign crumb_urls = crumb_urls | append: blog.url | append: '||'
+    when 'page'
+      assign crumb_titles = crumb_titles | append: page.title | append: '||'
+      assign crumb_urls = crumb_urls | append: page.url | append: '||'
+  endcase
+
+  assign crumb_title_list = crumb_titles | split: '||'
+  assign crumb_url_list = crumb_urls | split: '||'
+%}
+
+{% if crumb_title_list.size > 1 %}
+  <nav
+    class="breadcrumb-nav"
+    aria-label="Breadcrumb"
+  >
+    <ol class="breadcrumb-nav__list">
+      {% for crumb_title in crumb_title_list %}
+        <li class="breadcrumb-nav__item">
+          {% if forloop.last %}
+            <span aria-current="page">{{ crumb_title }}</span>
+          {% else %}
+            <a href="{{ crumb_url_list[forloop.index0] }}">{{ crumb_title }}</a>
+            <span class="breadcrumb-nav__separator" aria-hidden="true">/</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {% for crumb_title in crumb_title_list %}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "name": {{ crumb_title | json }},
+            "item": {{ crumb_url_list[forloop.index0] | prepend: request.origin | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  </script>
+
+{% endif %}
+
+{% stylesheet %}
+  .breadcrumb-nav {
+    width: min(100%, 1200px);
+    margin-inline: auto;
+    padding-block: var(--padding-md);
+  }
+
+  .breadcrumb-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gap-3xs);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-size--xs);
+    color: var(--color-foreground-subdued);
+  }
+
+  .breadcrumb-nav__item {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3xs);
+  }
+
+  .breadcrumb-nav__item a {
+    color: var(--color-foreground-subdued);
+    text-decoration: none;
+  }
+
+  .breadcrumb-nav__item a:hover {
+    color: var(--luxury-accent);
+  }
+
+  .breadcrumb-nav__separator {
+    opacity: 0.5;
+  }
+{% endstylesheet %}

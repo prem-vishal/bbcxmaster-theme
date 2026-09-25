@@ -1,0 +1,18 @@
+{%- comment -%}
+  Heading and subheading fonts drive the largest text on every template (H1/H2 and the
+  hero kicker/subtitle), so they're the most likely LCP element and get fetchpriority high.
+  Body and accent fonts back smaller, less LCP-critical text and stay low priority so they
+  don't compete with the heading font for bandwidth during initial load.
+{%- endcomment -%}
+{%- unless settings.type_heading_font.system? -%}
+  {{ settings.type_heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'high' }}
+{%- endunless -%}
+{%- unless settings.type_subheading_font.system? -%}
+  {{ settings.type_subheading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'high' }}
+{%- endunless -%}
+{%- unless settings.type_body_font.system? -%}
+  {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+{%- endunless -%}
+{%- unless settings.type_accent_font.system? -%}
+  {{ settings.type_accent_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+{%- endunless -%}

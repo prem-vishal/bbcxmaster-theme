@@ -1,0 +1,31 @@
+{%- comment -%}
+  Collection SEO fallback content.
+  Used when collection.description is blank in Shopify Admin.
+{%- endcomment -%}
+
+{%- assign handle = collection.handle | downcase -%}
+
+{%- case handle -%}
+  {%- when 'men' or 'mens-adult-toys-and-gear' -%}
+    Discover premium men's intimate wellness products at BBCxMaster. From chastity cages and cock rings to masturbators and sensory toys, all crafted from body-safe materials for comfortable, confident play.
+  {%- when 'women' or 'womens-adult-toys-and-gear' -%}
+    Explore premium women's intimate wellness at BBCxMaster. Luxurious lingerie, powerful vibrators, dildos, and sensory toys designed for comfort, confidence, and pleasure.
+  {%- when 'couples' or 'couples-intimacy' -%}
+    Elevate couples intimacy with BBCxMaster's curated selection of bondage sets, roleplay accessories, and shared pleasure toys. Body-safe materials, expert guides, and discreet shipping.
+  {%- when 'bdsm' or 'bondage' -%}
+    Professional-grade BDSM gear for beginners and experienced players. Handcuffs, rope, paddles, floggers, gags, and complete restraint sets — all body-safe and built for real use.
+  {%- when 'roleplay' or 'costumes' -%}
+    Bring fantasies to life with BBCxMaster's roleplay collection. From teacher and nurse costumes to leather harnesses and fantasy masks, all designed for comfort and confidence.
+  {%- when 'luxury' or 'luxury-lingerie' -%}
+    Indulge in luxury with BBCxMaster's premium collection. High-end lingerie, designer BDSM accessories, and exclusive intimate products for those who demand the finest.
+  {%- when 'new-arrivals' -%}
+    Fresh arrivals at BBCxMaster. Discover the latest adult toys, luxury lingerie, and premium BDSM gear. New products added weekly — be the first to experience them.
+  {%- when 'best-sellers' -%}
+    The most-loved products at BBCxMaster. Our best-selling adult toys, BDSM essentials, and luxury lingerie — trusted by thousands for quality, safety, and satisfaction.
+  {%- when 'sale' -%}
+    Premium intimate wellness at unbeatable prices. Shop BBCxMaster's sale collection for discounted adult toys, BDSM gear, and luxury lingerie. Limited stock — don't miss out.
+  {%- when 'all' -%}
+    Explore the complete BBCxMaster collection of premium adult wellness and BDSM products. From luxury lingerie and restraints to sensory toys and intimate care, every product is body-safe, discreetly packaged, and curated for quality.
+  {%- else -%}
+    Discover premium adult wellness and BDSM products at BBCxMaster. Body-safe, discreetly packaged, and curated for quality. Discreet shipping worldwide.
+  {%- endcase -%}

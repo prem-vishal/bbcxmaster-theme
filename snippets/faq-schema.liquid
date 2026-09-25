@@ -1,0 +1,34 @@
+{%- comment -%}
+  FAQ JSON-LD Schema for pages with FAQ sections
+  Include in article.json, page.json templates where FAQ blocks exist
+  Requires FAQ blocks in section schema with type: "faq", settings: "question", "answer"
+{%- endcomment -%}
+
+{%- if section.blocks != blank -%}
+  {%- capture faq_items -%}
+  [
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'faq' -%}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ block.settings.answer | strip_html | json }}
+          }
+        }{%- unless forloop.last %},{% endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+  {%- endcapture -%}
+
+  {%- if faq_items != '[]' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": {{ faq_items }}
+  }
+  </script>
+  {%- endif -%}
+{%- endif -%}

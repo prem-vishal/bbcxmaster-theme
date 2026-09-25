@@ -1,0 +1,112 @@
+{%- assign section_settings = section.settings -%}
+
+<section class="about-cta">
+  <div class="page-width">
+    <div class="about-cta__inner">
+      <h2 class="about-cta__heading">Ready to explore?</h2>
+      <p class="about-cta__text">Browse our complete collection and discover the standard that discretion deserves.</p>
+      <a href="{{ section_settings.button_link }}" class="about-cta__button button">
+        {{ section_settings.button_label }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-cta {
+    padding: 120px 0;
+    text-align: center;
+    background-color: var(--color-background-secondary);
+  }
+
+  .about-cta__inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .about-cta__heading {
+    font-family: var(--font-heading--family);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin: 0 0 20px;
+    color: var(--color-foreground);
+  }
+
+  .about-cta__text {
+    font-family: var(--font-body--family);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin: 0 0 40px;
+    color: var(--color-foreground-rgb);
+    opacity: 0.85;
+  }
+
+  .about-cta__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    font-family: var(--font-body--family);
+    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: var(--style-border-radius-buttons-primary);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .about-cta__button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .about-cta__button svg {
+    transition: transform 0.3s ease;
+  }
+
+  .about-cta__button:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-cta {
+      padding: 80px 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About CTA",
+  "tag": "section",
+  "class": "about-cta-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Explore the Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About CTA"
+    }
+  ]
+}
+{% endschema %}

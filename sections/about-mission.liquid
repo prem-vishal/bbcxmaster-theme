@@ -1,0 +1,104 @@
+{%- assign section_settings = section.settings -%}
+
+<section class="about-mission">
+  <div class="page-width">
+    {%- if section_settings.label != blank -%}
+      <span class="about-mission__label">{{ section_settings.label }}</span>
+    {%- endif -%}
+    {%- if section_settings.heading != blank -%}
+      <h2 class="about-mission__heading">{{ section_settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section_settings.text != blank -%}
+      <div class="about-mission__text rte">{{ section_settings.text }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-mission {
+    padding: 100px 0;
+    background-color: var(--color-background);
+  }
+
+  .about-mission__label {
+    display: block;
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-luxury-accent);
+    margin-bottom: 20px;
+  }
+
+  .about-mission__heading {
+    font-family: var(--font-heading--family);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 40px;
+    max-width: 900px;
+    color: var(--color-foreground);
+  }
+
+  .about-mission__text {
+    font-family: var(--font-body--family);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.8;
+    max-width: 720px;
+    color: var(--color-foreground-rgb);
+    opacity: 0.9;
+  }
+
+  .about-mission__text p {
+    margin: 0 0 24px;
+  }
+
+  .about-mission__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-mission {
+      padding: 60px 0;
+    }
+
+    .about-mission__heading {
+      margin-bottom: 28px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About Mission",
+  "tag": "section",
+  "class": "about-mission-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Our Mission"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Redefining Luxury Intimacy"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>BBCxMaster was founded on a simple belief: intimacy deserves the same standard of craftsmanship, discretion, and care as any luxury pursuit. We exist to bridge the gap between premium quality and complete privacy, offering a curated collection of adult wellness products, luxury BDSM gear, and intimate accessories that meet the expectations of modern, discerning adults.</p><p>Every product we offer is selected with intention — for its material integrity, design sophistication, and ability to enhance consensual exploration. From the moment you browse our collection to the instant your order arrives, the experience is designed to feel as refined as the products themselves.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Mission"
+    }
+  ]
+}
+{% endschema %}

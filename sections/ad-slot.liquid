@@ -1,0 +1,69 @@
+{%- doc -%}
+  A theme-editor-addable Revive Adserver ad unit. Drop it into any
+  template (home page, collection page, blog post, page) via the theme
+  editor's "Add section" picker to create sidebar, in-content, or mobile
+  ad placements without touching template code.
+{%- enddoc -%}
+
+<div class="section ad-slot-section spacing-style">
+  {% render 'ad-slot', placement: section.settings.placement, zone_id: section.settings.zone_id_override %}
+</div>
+
+{% stylesheet %}
+  .ad-slot-section {
+    display: flex;
+    justify-content: center;
+    padding-block: var(--padding-md);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ad slot",
+  "tag": "section",
+  "class": "shopify-section--ad-slot",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Requires the Advertising (Revive Adserver) settings under Theme settings to be configured with a server URL, delivery ID, and at least one zone ID."
+    },
+    {
+      "type": "select",
+      "id": "placement",
+      "label": "Placement type",
+      "info": "Controls the default zone ID (from Theme settings) and the responsive size/visibility rules used for this slot.",
+      "options": [
+        {
+          "value": "sidebar",
+          "label": "Sidebar (desktop only)"
+        },
+        {
+          "value": "in_content",
+          "label": "In-content"
+        },
+        {
+          "value": "mobile",
+          "label": "Mobile (mobile only)"
+        },
+        {
+          "value": "header",
+          "label": "Header banner"
+        }
+      ],
+      "default": "in_content"
+    },
+    {
+      "type": "text",
+      "id": "zone_id_override",
+      "label": "Zone ID override",
+      "info": "Optional. Use this to serve a different zone than this placement's default, e.g. a second in-content zone further down a long article."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ad slot",
+      "category": "t:categories.layout"
+    }
+  ]
+}
+{% endschema %}

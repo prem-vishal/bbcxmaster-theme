@@ -1,0 +1,241 @@
+{% comment %}
+  Site-wide age-verification interstitial.
+
+  HOW THIS WORKS
+  - Pure client-side UX gate: full page markup (including product/blog content) is always
+    present in the initial HTML response. This overlay only hides it visually via CSS/JS.
+  - On first visit (or after the 30-day localStorage flag expires) the overlay is shown and
+    background scrolling/focus is blocked until "I am 18 or older" is clicked.
+  - Confirmation is stored as a timestamp in localStorage (key `bbcx_age_verified_until`) so
+    returning visitors within 30 days are not re-gated.
+
+  WHAT THIS PROVIDES
+  - A deliberate speed bump / consent click before browsing adult content, satisfying the
+    common "self-declaration" pattern many adult-goods sites use as a UX/liability deterrent.
+  - Reasonable protection against casual/incidental exposure for a typical browser visitor.
+
+  WHAT THIS DOES NOT PROVIDE — READ BEFORE ASSUMING THIS IS "COMPLIANT"
+  - This is NOT legal age verification. It does not confirm identity or age in any
+    verifiable way, and does NOT satisfy jurisdiction-specific age-verification statutes
+    (e.g. UK Online Safety Act, various US state laws) that require actual ID/age checks.
+  - It provides NO server-side or edge-level access control. All content is retrievable by:
+      * disabling JavaScript in the browser,
+      * viewing page source / using curl, wget, or any scraper,
+      * search-engine crawlers and other bots (by design — this keeps the site indexable),
+      * manually setting `localStorage.bbcx_age_verified_until` to a future timestamp via
+        devtools, which permanently bypasses the gate on that browser,
+      * direct navigation to any deep link (product/collection/blog URLs render the same
+        whether or not the gate has been dismissed),
+      * a cached copy of the page (the gate re-runs client-side on each load, but a cached
+        HTML snapshot viewed offline/via a proxy still contains the ungated content).
+  - Do not represent this snippet, on its own, as meeting any jurisdiction's legal
+    age-verification requirements. If stricter verification (ID checks, region-specific
+    blocking, server-side enforcement) is legally required for this store's markets,
+    that requires a separate, legally-reviewed solution (e.g. a third-party age-verification
+    service integrated at checkout/storefront-access level) — consult legal counsel.
+{% endcomment %}
+
+{% if settings.enable_age_verification %}
+  <div
+    id="age-verification-gate"
+    class="age-verification-gate"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="age-verification-heading"
+    aria-describedby="age-verification-body"
+  >
+    <div class="age-verification-gate__panel">
+      <p class="age-verification-gate__brand">{{ shop.name }}</p>
+      <h2 id="age-verification-heading" class="age-verification-gate__heading">
+        {{ settings.age_verification_heading | default: 'You must be 18 or older to enter' }}
+      </h2>
+      <p id="age-verification-body" class="age-verification-gate__body">
+        {{ settings.age_verification_body | default: 'This site contains adult content, including BDSM and sexual-wellness products, and is intended for adults only.' }}
+      </p>
+      <div class="age-verification-gate__actions">
+        <button type="button" class="age-verification-gate__confirm" data-age-gate-confirm>
+          {{ settings.age_verification_confirm_label | default: "I am 18 or older — Enter" }}
+        </button>
+        <a href="https://www.google.com" class="age-verification-gate__decline">
+          {{ settings.age_verification_decline_label | default: "I am under 18 — Leave" }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {% style %}
+    .age-verification-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(10, 8, 9, 0.96);
+      backdrop-filter: blur(6px);
+    }
+
+    .age-verification-gate[hidden] {
+      display: none;
+    }
+
+    .age-verification-gate__panel {
+      max-width: 26rem;
+      width: 100%;
+      text-align: center;
+      color: #f5f1f2;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .age-verification-gate__brand {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin: 0;
+    }
+
+    .age-verification-gate__heading {
+      font-size: 1.375rem;
+      margin: 0;
+    }
+
+    .age-verification-gate__body {
+      font-size: 0.9375rem;
+      opacity: 0.85;
+      margin: 0 0 0.5rem;
+    }
+
+    .age-verification-gate__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .age-verification-gate__confirm {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      padding: 0.875rem 1.5rem;
+      background: #9E2F45;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .age-verification-gate__decline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.75rem 1rem;
+      color: #f5f1f2;
+      opacity: 0.6;
+      font-size: 0.875rem;
+      text-decoration: underline;
+    }
+  {% endstyle %}
+
+  <script>
+    (function () {
+      var STORAGE_KEY = 'bbcx_age_verified_until';
+      var THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+      var gate = document.getElementById('age-verification-gate');
+      if (!gate) return;
+
+      var confirmBtn = gate.querySelector('[data-age-gate-confirm]');
+      var previouslyFocused = null;
+
+      function isVerified() {
+        try {
+          var expiry = window.localStorage.getItem(STORAGE_KEY);
+          return !!expiry && Number(expiry) > Date.now();
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function getFocusable() {
+        return Array.prototype.slice.call(
+          gate.querySelectorAll('a[href], button:not([disabled])')
+        );
+      }
+
+      // Keep keyboard focus cycling within the gate while it's open (Tab/Shift+Tab wrap).
+      function trapFocus(event) {
+        if (event.key !== 'Tab') return;
+        var focusable = getFocusable();
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+
+      // Mark every other direct child of <body> as inert so background content can't
+      // accidentally receive keyboard or pointer focus while the gate is open. Browsers
+      // without `inert` support still get the keydown-based focus trap above as a fallback.
+      function setBackgroundInert(state) {
+        var children = document.body.children;
+        for (var i = 0; i < children.length; i++) {
+          var el = children[i];
+          if (el === gate) continue;
+          if (state) {
+            el.setAttribute('inert', '');
+          } else {
+            el.removeAttribute('inert');
+          }
+        }
+      }
+
+      function openGate() {
+        previouslyFocused = document.activeElement;
+        document.documentElement.style.overflow = 'hidden';
+        // This inline script runs before the rest of <body> has been parsed, so the
+        // siblings we need to mark inert don't exist yet — apply once the DOM is ready.
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function () {
+            if (!gate.hidden) setBackgroundInert(true);
+          });
+        } else {
+          setBackgroundInert(true);
+        }
+        document.addEventListener('keydown', trapFocus, true);
+        if (confirmBtn) confirmBtn.focus();
+      }
+
+      function closeGate() {
+        gate.hidden = true;
+        document.documentElement.style.overflow = '';
+        setBackgroundInert(false);
+        document.removeEventListener('keydown', trapFocus, true);
+        if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+          previouslyFocused.focus();
+        }
+      }
+
+      if (isVerified()) {
+        gate.hidden = true;
+      } else {
+        openGate();
+        if (confirmBtn) {
+          confirmBtn.addEventListener('click', function () {
+            try {
+              window.localStorage.setItem(STORAGE_KEY, String(Date.now() + THIRTY_DAYS_MS));
+            } catch (e) {}
+            closeGate();
+          });
+        }
+      }
+    })();
+  </script>
+{% endif %}

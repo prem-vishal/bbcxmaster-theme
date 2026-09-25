@@ -1,0 +1,464 @@
+
+
+<script
+  src="{{ 'results-list.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% javascript %}
+  const url = new URL(window.location.href);
+  if (url.hash) {
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        const card = document.getElementById(url.hash.slice(1));
+        if (card) {
+          card.scrollIntoView({ behavior: 'instant' });
+        }
+      },
+      { once: true }
+    );
+  }
+{% endjavascript %}
+
+{% comment %} We always render this full-width, as the child blocks have width: page/full settings {% endcomment %}
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+%}
+
+{% render 'collection-wrapper-styles' %}
+
+<div
+  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+></div>
+{% # theme-check-disable-next-line UnknownFilter %}
+<collection-component view-event-payload="{{ collection | standard_event_data: 'view' | escape }}">
+  <results-list
+    class="section product-grid-container{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+    style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
+    section-id="{{ section.id }}"
+    infinite-scroll="{% if collection.handle == 'all' %}false{% else %}{{ section.settings.enable_infinite_scroll }}{% endif %}"
+  >
+    {% render 'skip-to-content-link', href: '#ResultsList', text: 'accessibility.skip_to_results_list' %}
+
+    <div
+      class="collection-wrapper grid gap-style{% if section.settings.product_grid_width == 'full-width' %} collection-wrapper--grid-full-width{% endif %}"
+    >
+      {%- if collection.handle == 'all' -%}
+        {%- comment -%}
+          When on the "all" collection page, render products grouped into
+          category sections instead of a single flat grid.
+
+          Products are sourced from each category collection via the
+          global collections[] object (collections[handle].products),
+          which reliably returns products in that collection. Duplicate
+          products across overlapping collections are prevented by
+          tracking displayed IDs in a comma-delimited string.
+
+          NOTE: assign inside {% capture %} does not persist, so we use
+          a count-first pass to determine if a category has new products,
+          then a render pass that updates displayed_ids.
+        {%- endcomment -%}
+
+        {%- assign category_handles = 'bdsm,bondage,chastity,body-harnesses,roleplay,couples,men,women,accessories,adult-toys,babydoll-lingerie,bodysuits-for-every-occasion,lubricants,lingerie' | split: ',' -%}
+        {%- assign displayed_ids = ',' -%}
+
+        {%- comment -%}
+          Inline style for product grid desktop columns (computed from
+          section settings via the card-size utility). Injected directly
+          on each grid <ul> as an inline style attribute.
+        {%- endcomment -%}
+        {%- capture _card_size -%}
+          {%- render 'util-product-grid-card-size', section: section -%}
+        {%- endcapture -%}
+        {%- assign _card_size = _card_size | strip -%}
+
+        <div
+          id="ResultsList"
+          class="
+            grid main-collection-grid
+            {%- if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif -%}
+            {%- if section.settings.product_grid_width == 'full-width' %} collection-wrapper--full-width{% endif -%}
+          "
+          style="
+            --grid--margin--mobile: 0{% if section.settings.product_grid_width == 'centered' and section.settings.full_width_on_mobile == false %} var(--margin-lg){% else %} 0{% endif %};
+            --grid-column--desktop: var(--{% if section.settings.product_grid_width == 'centered' %}centered{% else %}full-width{% endif %});
+            --grid-column--mobile: var(--{% if section.settings.full_width_on_mobile %}full-width{% else %}{% if section.settings.product_grid_width == 'centered' %}centered{% else %}full-width{% endif %}{% endif %});
+            --padding-inline-start: {{ section.settings.padding-inline-start }}px;
+            --padding-inline-end: {{ section.settings.padding-inline-end }}px;
+          "
+        >
+          <div
+            style="
+              grid-column: var(--full-width);
+              --product-grid-gap-mobile: {{ section.settings.columns_gap_vertical | at_most: 12 }}px {{ section.settings.columns_gap_horizontal | at_most: 12 }}px;
+              --product-grid-gap-desktop: {{ section.settings.columns_gap_vertical }}px {{ section.settings.columns_gap_horizontal }}px;
+              container-type: inline-size;
+              container-name: product-grid;
+            "
+          >
+            {%- for category_handle in category_handles -%}
+              {%- assign current_collection = collections[category_handle] -%}
+              {%- if current_collection != blank and current_collection.products_count > 0 -%}
+                {%- assign category_products = current_collection.products | where: 'available' -%}
+
+                {%- comment -%}
+                  Pass 1: count how many new (not-yet-displayed) products
+                  this category has. We do NOT modify displayed_ids here
+                  so the count is accurate.
+                {%- endcomment -%}
+                {%- assign new_product_count = 0 -%}
+                {%- for product in category_products -%}
+                  {%- capture id_check %},{{ product.id }},{% endcapture -%}
+                  {%- unless displayed_ids contains id_check -%}
+                    {%- assign new_product_count = new_product_count | plus: 1 -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+
+                {%- if new_product_count > 0 -%}
+                  <div class="category-section" data-category="{{ category_handle }}">
+                    <div class="category-section__header">
+                      <h2 class="category-section__title">{{ current_collection.title }}</h2>
+                      <a href="{{ current_collection.url }}" class="category-section__view-all">View all</a>
+                    </div>
+                    <ul
+                      class="product-grid product-grid--{{ section.id }} product-grid--grid"
+                      data-testid="product-grid"
+                      product-grid-view="default"
+                      role="list"
+                      style="--mobile-columns: 2; --product-grid-columns-desktop: repeat(auto-fill, minmax({{ _card_size }}, 1fr));"
+                    >
+                      {%- comment -%}
+                        Pass 2: render only new products and add their IDs
+                        to displayed_ids so subsequent categories skip them.
+                      {%- endcomment -%}
+                      {%- for product in category_products -%}
+                        {%- if product.available and product.id != blank -%}
+                          {%- capture id_check_r %},{{ product.id }},{% endcapture -%}
+                          {%- unless displayed_ids contains id_check_r -%}
+                            {%- assign displayed_ids = displayed_ids | append: product.id | append: ',' -%}
+                            <li
+                              class="product-grid__item product-grid__item--{{ forloop.index0 }}"
+                              data-product-id="{{ product.id }}"
+                              data-product-collection="{{ category_handle }}"
+                              ref="cards[]"
+                            >
+                              {% content_for 'block',
+                                type: '_product-card',
+                                id: 'product-card',
+                                closest.product: product,
+                                product_view_context: 'collection'
+                              %}
+                            </li>
+                          {%- endunless -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- comment -%}
+              Remaining products not in any curated category collection.
+              We paginate collection.products (the "all" collection) and
+              show any products not yet displayed in a category above.
+            {%- endcomment -%}
+            {%- paginate collection.products by 250 -%}
+              {%- assign has_remaining = false -%}
+              {%- for product in collection.products -%}
+                {%- if product.available and product.id != blank -%}
+                  {%- capture id_check_remaining %},{{ product.id }},{% endcapture -%}
+                  {%- unless displayed_ids contains id_check_remaining -%}
+                    {%- assign has_remaining = true -%}
+                  {%- endunless -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- if has_remaining -%}
+                <div class="category-section" data-category="other">
+                  <div class="category-section__header">
+                    <h2 class="category-section__title">All Other Products</h2>
+                  </div>
+                  <ul
+                    class="product-grid product-grid--{{ section.id }} product-grid--grid"
+                    data-testid="product-grid"
+                    product-grid-view="default"
+                    role="list"
+                    style="--mobile-columns: 2; --product-grid-columns-desktop: repeat(auto-fill, minmax({{ _card_size }}, 1fr));"
+                  >
+                    {%- for product in collection.products -%}
+                      {%- if product.available and product.id != blank -%}
+                        {%- capture id_check_other %},{{ product.id }},{% endcapture -%}
+                        {%- unless displayed_ids contains id_check_other -%}
+                           {%- assign displayed_ids = displayed_ids | append: product.id | append: ',' -%}
+                          <li
+                            class="product-grid__item product-grid__item--{{ forloop.index0 }}"
+                            data-product-id="{{ product.id }}"
+                            data-product-collection="other"
+                            ref="cards[]"
+                          >
+                            {% content_for 'block',
+                              type: '_product-card',
+                              id: 'product-card',
+                              closest.product: product,
+                              product_view_context: 'collection'
+                            %}
+                          </li>
+                        {%- endunless -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+
+              {%- if paginate.pages > 1 -%}
+                <div class="category-section__pagination">
+                  {% render 'pagination-controls', paginate: paginate %}
+                </div>
+              {%- endif -%}
+            {%- endpaginate -%}
+          </div>
+        </div>
+      {%- else -%}
+        {% content_for 'block',
+          type: 'filters',
+          id: 'filters',
+          results: collection,
+          results_size: collection.products_count
+        %}
+
+        {% assign products_per_page = 24 %}
+
+        {% if section.settings.enable_infinite_scroll == false %}
+          {% assign products_per_page = section.settings.products_per_page %}
+        {% endif %}
+
+        {% paginate collection.products by products_per_page %}
+          {% assign available_products = collection.products | where: 'available' %}
+          
+          {%- comment -%}
+            ItemList JSON-LD for product grids is emitted by schema-collection.liquid
+            (rendered in layout/theme.liquid), scoped to CollectionPage > mainEntity >
+            ItemList. Do NOT render itemlist-schema here - it would produce a second,
+            conflicting ItemList on the same collection page. The standalone
+            itemlist-schema snippet is still used on product-list grids where there is
+            no CollectionPage context (e.g. homepage, search).
+          {%- endcomment -%}
+
+          {% capture children %}
+            {% for product in available_products %}
+              <li
+                id="{{ section.id }}-{{ product.id }}"
+                class="product-grid__item product-grid__item--{{ forloop.index0 }}"
+                data-page="{{ paginate.current_page }}"
+                data-product-id="{{ product.id }}"
+                ref="cards[]"
+              >
+                {% content_for 'block',
+                  type: '_product-card',
+                  id: 'product-card',
+                  closest.product: product,
+                  product_view_context: 'collection'
+                %}
+              </li>
+            {% endfor %}
+          {% endcapture %}
+
+          {% render 'product-grid',
+            section: section,
+            children: children,
+            products: available_products,
+            paginate: paginate,
+            enable_infinite_scroll: section.settings.enable_infinite_scroll
+          %}
+        {% endpaginate %}
+      {%- endif -%}
+    </div>
+  </results-list>
+</collection-component>
+
+{% schema %}
+{
+  "name": "t:names.collection_container",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout_type",
+      "label": "t:settings.type",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:options.grid"
+        },
+        {
+          "value": "organic",
+          "label": "t:options.editorial"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "select",
+      "id": "product_card_size",
+      "label": "t:settings.card_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:options.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.large"
+        },
+        {
+          "value": "extra-large",
+          "label": "t:options.extra_large"
+        }
+      ],
+      "default": "medium",
+      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
+    },
+    {
+      "type": "select",
+      "id": "mobile_product_card_size",
+      "label": "t:settings.mobile_card_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:options.small"
+        },
+        {
+          "value": "large",
+          "label": "t:options.large"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_infinite_scroll",
+      "label": "t:settings.auto_load_products",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "t:settings.products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 24,
+      "visible_if": "{{ section.settings.enable_infinite_scroll == false }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "select",
+      "id": "product_grid_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "centered",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "centered"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width_on_mobile",
+      "label": "t:settings.full_width_on_mobile",
+      "default": true,
+      "visible_if": "{{ section.settings.product_grid_width != 'full-width' }}"
+    },
+    {
+      "type": "range",
+      "id": "columns_gap_horizontal",
+      "label": "t:settings.horizontal_gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "columns_gap_vertical",
+      "label": "t:settings.vertical_gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:content.section_layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": []
+}
+{% endschema %}

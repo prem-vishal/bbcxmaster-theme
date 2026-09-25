@@ -1,0 +1,165 @@
+{%- assign section_settings = section.settings -%}
+
+<section class="about-privacy">
+  <div class="page-width">
+    <div class="about-privacy__inner">
+      <div class="about-privacy__content">
+        {%- if section_settings.label != blank -%}
+          <span class="about-privacy__label">{{ section_settings.label }}</span>
+        {%- endif -%}
+        {%- if section_settings.heading != blank -%}
+          <h2 class="about-privacy__heading">{{ section_settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section_settings.text != blank -%}
+          <div class="about-privacy__text rte">{{ section_settings.text }}</div>
+        {%- endif -%}
+      </div>
+      <div class="about-privacy__visual">
+        <div class="about-privacy__badge">
+          <svg class="about-privacy__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span class="about-privacy__badge-text">Encrypted & Secure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-privacy {
+    padding: 100px 0;
+    background-color: var(--color-background);
+  }
+
+  .about-privacy__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-privacy__label {
+    display: block;
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-luxury-accent);
+    margin-bottom: 20px;
+  }
+
+  .about-privacy__heading {
+    font-family: var(--font-heading--family);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin: 0 0 32px;
+    color: var(--color-foreground);
+  }
+
+  .about-privacy__text {
+    font-family: var(--font-body--family);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-foreground-rgb);
+    opacity: 0.9;
+  }
+
+  .about-privacy__text p {
+    margin: 0 0 20px;
+  }
+
+  .about-privacy__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-privacy__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-privacy__badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius);
+    background: var(--color-background-secondary);
+    text-align: center;
+  }
+
+  .about-privacy__icon {
+    color: var(--color-luxury-accent);
+    width: 64px;
+    height: 64px;
+  }
+
+  .about-privacy__badge-text {
+    font-family: var(--font-subheading--family);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+  }
+
+  @media screen and (max-width: 989px) {
+    .about-privacy__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .about-privacy__visual {
+      order: -1;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-privacy {
+      padding: 60px 0;
+    }
+
+    .about-privacy__badge {
+      padding: 40px 28px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About Privacy",
+  "tag": "section",
+  "class": "about-privacy-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Privacy Promise"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Privacy, Our Priority"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>At BBCxMaster, discretion isn't a feature — it's a promise. Every transaction is processed through encrypted, bank-grade secure checkout. Your billing statement displays a neutral descriptor that reveals nothing about the contents of your order.</p><p>Packaging is plain, unmarked, and shipped without any external indication of its contents. We do not include invoices or product descriptions inside the package unless you specifically request one. Your personal data is handled with the same rigor as your order, protected by industry-standard security measures and never shared with third parties for unauthorized purposes.</p><p>Whether you're exploring for the first time or building a trusted collection, you can shop with the certainty that your privacy is fully protected at every step.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Privacy"
+    }
+  ]
+}
+{% endschema %}

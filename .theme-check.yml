@@ -1,0 +1,18 @@
+# Shopify Theme Check configuration.
+# https://github.com/Shopify/theme-check
+#
+# Starts from Shopify's recommended rule set (the same baseline Dawn and other
+# official themes ship with) rather than a hand-picked subset, so this repo gets
+# the standard set of checks without us guessing which rules matter.
+extends: theme-check:recommended
+
+ignore:
+  # Non-theme directories in this repo: internal dev-tool wrappers, SEO audit
+  # reports, and blog-copy drafts. None of these are read by Shopify at runtime,
+  # so scanning them only adds noise/false positives to theme lint results.
+  - vendor/**
+  - 21st/**
+  - uipro/**
+  - bbcxmaster.com-audit/**
+  - bbcxmaster.com-audit-2/**
+  - journal-articles/**

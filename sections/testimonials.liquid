@@ -1,0 +1,179 @@
+{% comment %}
+  Customer reviews / testimonials carousel. Hosts `_testimonial-item` blocks in a
+  horizontally scrollable, scroll-snapped row.
+{% endcomment %}
+
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+%}
+
+<div
+  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+></div>
+
+<div
+  class="section section--{{ section.settings.section_width }}{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %} spacing-style testimonials"
+  style="{% render 'spacing-style', settings: section.settings %}"
+  data-testid="testimonials"
+>
+  <div
+    class="testimonials__header"
+    data-reveal
+  >
+    <p class="luxury-kicker">{{ section.settings.kicker }}</p>
+    <h2 class="testimonials__heading">{{ section.settings.heading }}</h2>
+  </div>
+
+  <div
+    class="testimonials__track"
+    tabindex="0"
+    role="region"
+    aria-label="{{ section.settings.heading }}"
+  >
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3xl);
+  }
+
+  .testimonials__header {
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .testimonials__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: var(--font-size--h2);
+    margin: 0;
+  }
+
+  .testimonials__track {
+    display: flex;
+    gap: var(--gap-xl);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-block-end: var(--padding-md);
+    scrollbar-width: thin;
+  }
+
+  .testimonials__track > * {
+    scroll-snap-align: start;
+    flex: 0 0 min(22rem, 85vw);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "_testimonial-item"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Reviews"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "testimonial-1": {
+          "type": "_testimonial-item",
+          "settings": {
+            "rating": 5,
+            "quote": "Add a real customer quote here.",
+            "name": "Customer Name"
+          }
+        },
+        "testimonial-2": {
+          "type": "_testimonial-item",
+          "settings": {
+            "rating": 5,
+            "quote": "Add a real customer quote here.",
+            "name": "Customer Name"
+          }
+        },
+        "testimonial-3": {
+          "type": "_testimonial-item",
+          "settings": {
+            "rating": 5,
+            "quote": "Add a real customer quote here.",
+            "name": "Customer Name"
+          }
+        }
+      },
+      "block_order": ["testimonial-1", "testimonial-2", "testimonial-3"]
+    }
+  ]
+}
+{% endschema %}
