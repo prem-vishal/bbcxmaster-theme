@@ -1,0 +1,892 @@
+{% comment %}
+  BBCxMaster - Terms of Service Page Section
+  Premium dark-luxury visual identity. Preserves all existing legal content.
+  Customer-facing URL: /pages/terms-of-service
+{% endcomment %}
+
+<article class="terms-page">
+
+  <!-- Hero Section -->
+  <header class="terms-hero">
+    <div class="terms-hero__media">
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ 'terms_hero_750.webp' | asset_url }}" type="image/webp">
+        <source media="(max-width: 750px)" srcset="{{ 'terms_hero_750.jpg' | asset_url }}" type="image/jpeg">
+        <source media="(max-width: 1440px)" srcset="{{ 'terms_hero_1440.webp' | asset_url }}" type="image/webp">
+        <source media="(max-width: 1440px)" srcset="{{ 'terms_hero_1440.jpg' | asset_url }}" type="image/jpeg">
+        <img
+          src="{{ 'terms_hero_1920.webp' | asset_url }}"
+          alt="BBCxMaster — Private training room, master instructing student with rules and presentation board"
+          class="terms-hero__img"
+          loading="eager"
+          width="1920"
+          height="1080"
+        >
+      </picture>
+      <div class="terms-hero__overlay"></div>
+    </div>
+
+    <div class="terms-hero__content">
+      <nav class="luxury-breadcrumbs" aria-label="Breadcrumb navigation">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="{{ shop.url }}">Home</a></li>
+          <li class="breadcrumb-separator" aria-hidden="true">/</li>
+          <li class="breadcrumb-item active" aria-current="page">Terms of Service</li>
+        </ol>
+      </nav>
+
+      <span class="terms-hero__kicker">LEGAL &amp; TERMS</span>
+      <h1 class="terms-hero__title">Terms of Service</h1>
+      <p class="terms-hero__subtitle">
+        Please review the terms that govern your use of BBCxMaster and purchases made through our website.
+      </p>
+
+      <div class="terms-last-updated">
+        <span class="terms-last-updated__icon" aria-hidden="true"></span>
+        <span>Last updated: <time datetime="2026-08">August 2026</time></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Trust Cards -->
+  <section class="terms-trust-cards" aria-label="Trust pillars">
+    <div class="trust-cards__inner">
+      <div class="trust-card">
+        <span class="trust-card__num" aria-hidden="true">01</span>
+        <span class="trust-card__label">LEGAL TRANSPARENCY</span>
+      </div>
+      <div class="trust-card">
+        <span class="trust-card__num" aria-hidden="true">02</span>
+        <span class="trust-card__label">DISCRETION</span>
+      </div>
+      <div class="trust-card">
+        <span class="trust-card__num" aria-hidden="true">03</span>
+        <span class="trust-card__label">ACCOUNTABILITY</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="terms-intro-wrapper">
+    <div class="terms-intro">
+      <p class="terms-intro__text">
+        By accessing or using the BBCxMaster website (bbcxmaster.com), you agree to be bound by these
+        Terms of Service. Please read them carefully before making a purchase.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mobile Policy Navigation (Accordion) -->
+  <nav class="terms-mobile-nav" aria-label="Policy navigation">
+    <div class="terms-mobile-nav__container">
+      <button
+        type="button"
+        class="terms-mobile-nav__toggle"
+        aria-expanded="false"
+        aria-controls="terms-mobile-nav-list"
+        data-mobile-nav-toggle
+      >
+        <span class="terms-mobile-nav__label">On this page</span>
+        <span class="terms-mobile-nav__icon" aria-hidden="true"></span>
+      </button>
+      <ul id="terms-mobile-nav-list" class="terms-mobile-nav__list" hidden>
+        <li><a href="#acceptance">Acceptance of Terms</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#account">Account Registration</a></li>
+        <li><a href="#acceptable-use">Acceptable Use</a></li>
+        <li><a href="#user-conduct">User Conduct</a></li>
+        <li><a href="#intellectual-property">Intellectual Property</a></li>
+        <li><a href="#purchases">Purchases &amp; Payment</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#third-party">Third-Party Services</a></li>
+        <li><a href="#disclaimers">Disclaimers</a></li>
+        <li><a href="#liability">Limitation of Liability</a></li>
+        <li><a href="#indemnification">Indemnification</a></li>
+        <li><a href="#termination">Suspension &amp; Termination</a></li>
+        <li><a href="#changes">Changes to Terms</a></li>
+        <li><a href="#governing-law">Governing Law</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Desktop Two-Column Layout -->
+  <div class="terms-main-wrapper">
+    <!-- Desktop Sticky Table of Contents -->
+    <aside class="terms-toc-sidebar" aria-label="Table of Contents">
+      <nav aria-label="On this page">
+        <div class="toc-sticky-box">
+          <h2 class="toc-title">On this page</h2>
+          <ul class="toc-list">
+            <li><a href="#acceptance">Acceptance of Terms</a></li>
+            <li><a href="#eligibility">Eligibility</a></li>
+            <li><a href="#account">Account Registration</a></li>
+            <li><a href="#acceptable-use">Acceptable Use</a></li>
+            <li><a href="#user-conduct">User Conduct</a></li>
+            <li><a href="#intellectual-property">Intellectual Property</a></li>
+            <li><a href="#purchases">Purchases &amp; Payment</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#third-party">Third-Party Services</a></li>
+            <li><a href="#disclaimers">Disclaimers</a></li>
+            <li><a href="#liability">Limitation of Liability</a></li>
+            <li><a href="#indemnification">Indemnification</a></li>
+            <li><a href="#termination">Suspension &amp; Termination</a></li>
+            <li><a href="#changes">Changes to Terms</a></li>
+            <li><a href="#governing-law">Governing Law</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Legal Content Body -->
+    <div class="terms-content-body">
+
+      <!-- Section: Acceptance of Terms -->
+      <section id="acceptance" class="policy-section">
+        <div class="policy-section__number">01</div>
+        <h2 class="policy-section__title">Acceptance of Terms</h2>
+        <div class="policy-card">
+          <p>By accessing, browsing, or placing an order on <strong>BBCxMaster</strong> (the "Website" or "Service"), you agree to be legally bound by these Terms of Service ("Terms"). If you do not agree with any part of these Terms, you must discontinue use of our site and services immediately.</p>
+          <p>These Terms apply to all visitors, registered account holders, clients, and purchasers across all international regions.</p>
+        </div>
+      </section>
+
+      <!-- Section: Eligibility -->
+      <section id="eligibility" class="policy-section">
+        <div class="policy-section__number">02</div>
+        <h2 class="policy-section__title">Eligibility</h2>
+        <div class="policy-card">
+          <p>BBCxMaster offerings, products, and communications are strictly intended for adult individuals who are at least <strong>18 years of age</strong> (or the legal age of majority in your jurisdiction of residence).</p>
+          <p>By accessing or using our Website, you represent and warrant that you possess the legal capacity and authority to enter into a binding contract with BBCxMaster.</p>
+        </div>
+      </section>
+
+      <!-- Section: Account Registration & Responsibilities -->
+      <section id="account" class="policy-section">
+        <div class="policy-section__number">03</div>
+        <h2 class="policy-section__title">Account Registration &amp; Responsibilities</h2>
+        <div class="policy-card">
+          <p>When creating a client account or purchasing on BBCxMaster, you agree to:</p>
+          <ul class="styled-list">
+            <li>Provide accurate, current, and complete information during registration and checkout.</li>
+            <li>Maintain the confidentiality of your account credentials, passwords, and access authorization.</li>
+            <li>Accept full responsibility for all activities, transactions, and instructions submitted under your account credentials.</li>
+            <li>Notify Client Support immediately upon becoming aware of any security breach or unauthorized account activity.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section: Acceptable Use -->
+      <section id="acceptable-use" class="policy-section">
+        <div class="policy-section__number">04</div>
+        <h2 class="policy-section__title">Acceptable Use</h2>
+        <div class="policy-card">
+          <p>You agree to utilize BBCxMaster exclusively for lawful personal and educational purposes in compliance with all local, state, national, and international laws and regulations.</p>
+          <p>You may not use our Website or products for any unlawful, illegal, fraudulent, or harmful purpose, or in connection with any illegal activity.</p>
+        </div>
+      </section>
+
+      <!-- Section: User Conduct -->
+      <section id="user-conduct" class="policy-section">
+        <div class="policy-section__number">05</div>
+        <h2 class="policy-section__title">User Conduct</h2>
+        <div class="policy-card">
+          <p>Clients and visitors are expected to maintain dignified, respectful interaction. Prohibited conduct includes, but is not limited to:</p>
+          <ul class="styled-list">
+            <li>Harassing, abusing, threatening, or impersonating BBCxMaster personnel or other clients.</li>
+            <li>Attempting to breach, disable, or circumvent Website security measures, access controls, or server infrastructures.</li>
+            <li>Transmitting malicious software, viruses, corrupted data, or automated scraping scripts.</li>
+            <li>Using BBCxMaster imagery, logos, or content for unauthorized commercial exploitation.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section: Content & Intellectual Property -->
+      <section id="intellectual-property" class="policy-section">
+        <div class="policy-section__number">06</div>
+        <h2 class="policy-section__title">Content &amp; Intellectual Property</h2>
+        <div class="policy-card">
+          <p>All content published on BBCxMaster—including visual artwork, luxury editorial photography, brand logotypes, design layouts, copywriting, product specifications, and software code—is the exclusive intellectual property of BBCxMaster and protected by international copyright, trademark, and trade dress laws.</p>
+          <p>No content from this site may be copied, reproduced, modified, republished, uploaded, posted, or distributed without prior explicit written consent from BBCxMaster.</p>
+        </div>
+      </section>
+
+      <!-- Section: Purchases, Payments & Transactions -->
+      <section id="purchases" class="policy-section">
+        <div class="policy-section__number">07</div>
+        <h2 class="policy-section__title">Purchases, Payments &amp; Transactions</h2>
+        <div class="policy-card">
+          <p>All purchases made through BBCxMaster are subject to product availability and order verification:</p>
+          <ul class="styled-list">
+            <li><strong>Pricing:</strong> Prices are displayed in the active store currency and are subject to change without notice prior to order confirmation.</li>
+            <li><strong>Payment Authorization:</strong> By submitting payment details, you authorize BBCxMaster to charge the designated payment method for the total order amount.</li>
+            <li><strong>Order Refusal:</strong> We reserve the right to refuse, limit, or cancel orders that appear fraudulent, unauthorized, or in violation of store policies.</li>
+            <li><strong>Discreet Billing:</strong> Billing transactions will be reflected under neutral corporate billing descriptors on financial statements.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section: Privacy & Data Protection -->
+      <section id="privacy" class="policy-section">
+        <div class="policy-section__number">08</div>
+        <h2 class="policy-section__title">Privacy &amp; Data Protection</h2>
+        <div class="policy-card">
+          <p>Your privacy and confidentiality are governed by our separate <a href="/pages/privacy-policy" class="terms-link">Privacy Policy</a>, which is incorporated into these Terms of Service by reference. Please review our Privacy Policy to understand our practices regarding data collection, encryption, discretion, and storage.</p>
+        </div>
+      </section>
+
+      <!-- Section: Third-Party Services -->
+      <section id="third-party" class="policy-section">
+        <div class="policy-section__number">09</div>
+        <h2 class="policy-section__title">Third-Party Services</h2>
+        <div class="policy-card">
+          <p>BBCxMaster may integrate or provide links to third-party payment portals, logistics systems, or external informational resources. BBCxMaster assumes no responsibility or liability for the availability, content, policies, or practices of third-party platforms.</p>
+        </div>
+      </section>
+
+      <!-- Section: Disclaimers -->
+      <section id="disclaimers" class="policy-section">
+        <div class="policy-section__number">10</div>
+        <h2 class="policy-section__title">Disclaimers</h2>
+        <div class="policy-card">
+          <p>BBCxMaster products and services are provided on an <strong>"as is"</strong> and <strong>"as available"</strong> basis without warranties of any kind, whether express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement, except as required by applicable law.</p>
+          <p>We do not guarantee uninterrupted, error-free site operation or that site servers are free of harmful elements.</p>
+        </div>
+      </section>
+
+      <!-- Section: Limitation of Liability -->
+      <section id="liability" class="policy-section">
+        <div class="policy-section__number">11</div>
+        <h2 class="policy-section__title">Limitation of Liability</h2>
+        <div class="policy-card">
+          <p>To the maximum extent permitted by applicable law, BBCxMaster, its owners, directors, officers, employees, or affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to your use of the site or products.</p>
+          <p>In no event shall BBCxMaster's total aggregate liability exceed the total amount paid by you to BBCxMaster in the transaction giving rise to the claim.</p>
+        </div>
+      </section>
+
+      <!-- Section: Indemnification -->
+      <section id="indemnification" class="policy-section">
+        <div class="policy-section__number">12</div>
+        <h2 class="policy-section__title">Indemnification</h2>
+        <div class="policy-card">
+          <p>You agree to defend, indemnify, and hold harmless BBCxMaster, its affiliates, officers, directors, and employees from and against any claims, liabilities, damages, judgments, awards, losses, costs, or expenses (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms of Service or unauthorized use of the Website.</p>
+        </div>
+      </section>
+
+      <!-- Section: Suspension & Termination -->
+      <section id="termination" class="policy-section">
+        <div class="policy-section__number">13</div>
+        <h2 class="policy-section__title">Suspension &amp; Termination</h2>
+        <div class="policy-card">
+          <p>BBCxMaster reserves the right to suspend or terminate your access to the Website or cancel pending orders at our sole discretion, without prior notice, if we believe your conduct violates these Terms, harms our brand reputation, or infringes upon the rights of others.</p>
+        </div>
+      </section>
+
+      <!-- Section: Changes to These Terms -->
+      <section id="changes" class="policy-section">
+        <div class="policy-section__number">14</div>
+        <h2 class="policy-section__title">Changes to These Terms</h2>
+        <div class="policy-card">
+          <p>We reserve the right to revise and update these Terms of Service at any time. All revisions are effective immediately upon publication on the Website. Your continued use of BBCxMaster following the posting of revised Terms constitutes your acceptance of the changes.</p>
+        </div>
+      </section>
+
+      <!-- Section: Governing Law -->
+      <section id="governing-law" class="policy-section">
+        <div class="policy-section__number">15</div>
+        <h2 class="policy-section__title">Governing Law</h2>
+        <div class="policy-card">
+          <p>These Terms of Service and any separate agreements under which we provide services shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.</p>
+        </div>
+      </section>
+
+      <!-- Section: Contact Us -->
+      <section id="contact" class="policy-section">
+        <div class="policy-section__number">16</div>
+        <h2 class="policy-section__title">Contact Us</h2>
+        <div class="policy-card terms-contact-card">
+          <p>If you have questions, comments, or legal inquiries regarding these Terms of Service, please contact Client Support:</p>
+          <div class="terms-contact-details">
+            <p><strong>BBCxMaster Legal &amp; Client Care</strong></p>
+            <p>Email: <a href="mailto:support@bbcxmaster.com" class="terms-link">support@bbcxmaster.com</a></p>
+            <p>Support Portal: <a href="/pages/contact" class="terms-link">Client Contact Form</a></p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</article>
+
+<script>
+  (function () {
+    var toggle = document.querySelector('[data-mobile-nav-toggle]');
+    var list = document.getElementById('terms-mobile-nav-list');
+    if (!toggle || !list) return;
+
+    toggle.addEventListener('click', function () {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      list.hidden = expanded;
+    });
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms of Service | BBCxMaster",
+  "url": "{{ shop.url }}/pages/terms-of-service",
+  "description": "Review the BBCxMaster Terms of Service, including eligibility, account responsibilities, acceptable use, purchases, privacy, liability, and governing terms.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "BBCxMaster",
+    "url": "{{ shop.url }}"
+  }
+}
+</script>
+
+<style>
+/* ==================================================================
+   BBCxMaster — Terms of Service Premium Dark Luxury Editorial Theme
+   Scoped to .terms-page to avoid affecting other pages.
+   ================================================================== */
+
+.terms-page {
+  background-color: var(--color-luxury-bg, #090909);
+  color: var(--color-luxury-text, #ffffff);
+  font-family: var(--font-body--family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  padding-bottom: 80px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                                  */
+/* ------------------------------------------------------------------ */
+
+.terms-hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--luxury-hairline, rgba(255, 255, 255, 0.08));
+}
+
+.terms-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.terms-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.terms-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 9, 0.45) 0%,
+    rgba(9, 9, 9, 0.85) 55%,
+    rgba(9, 9, 9, 0.96) 100%
+  );
+}
+
+.terms-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  padding: 70px 24px;
+}
+
+.terms-hero__kicker {
+  display: inline-block;
+  font-family: var(--font-body--family);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+  margin-bottom: 16px;
+}
+
+.terms-hero__title {
+  font-family: var(--font-heading--family, "Playfair Display", serif);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.terms-hero__subtitle {
+  font-size: 1.1rem;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+  line-height: 1.6;
+  margin: 0 auto 24px;
+  max-width: 600px;
+}
+
+.terms-last-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+}
+
+.terms-last-updated__icon {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-luxury-text-secondary, #a1a1aa);
+}
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumbs                                                            */
+/* ------------------------------------------------------------------ */
+
+.luxury-breadcrumbs {
+  margin-bottom: 24px;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+}
+
+.breadcrumb-separator {
+  opacity: 0.4;
+}
+
+.breadcrumb-item a {
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--color-luxury-accent, #9E2F45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Trust Cards                                                          */
+/* ------------------------------------------------------------------ */
+
+.terms-trust-cards {
+  margin: 40px auto 0;
+  max-width: 1280px;
+  padding: 0 24px;
+}
+
+.trust-cards__inner {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.trust-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+}
+
+.trust-card__num {
+  font-family: var(--font-heading--family, serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-luxury-accent, #9E2F45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Introduction                                                          */
+/* ------------------------------------------------------------------ */
+
+.terms-intro-wrapper {
+  margin: 40px auto 0;
+  max-width: 720px;
+  padding: 0 24px;
+}
+
+.terms-intro {
+  text-align: center;
+}
+
+.terms-intro__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile Navigation (Accordion)                                       */
+/* ------------------------------------------------------------------ */
+
+.terms-mobile-nav {
+  display: block;
+  margin: 32px auto 0;
+  max-width: 720px;
+  padding: 0 24px;
+}
+
+@media (min-width: 993px) {
+  .terms-mobile-nav {
+    display: none;
+  }
+}
+
+.terms-mobile-nav__container {
+  background: var(--luxury-surface, #121212);
+  border: 1px solid var(--luxury-hairline, rgba(255, 255, 255, 0.08));
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.terms-mobile-nav__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+
+.terms-mobile-nav__toggle:hover {
+  color: var(--color-luxury-accent, #9E2F45);
+}
+
+.terms-mobile-nav__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terms-mobile-nav__icon {
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background: var(--color-luxury-text-secondary, #a1a1aa);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .terms-mobile-nav__icon {
+    transition: transform 0.2s ease;
+  }
+}
+
+.terms-mobile-nav__toggle[aria-expanded="true"] .terms-mobile-nav__icon {
+  transform: rotate(90deg);
+}
+
+.terms-mobile-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 8px 8px;
+  display: none;
+}
+
+.terms-mobile-nav__list:not([hidden]) {
+  display: block;
+}
+
+.terms-mobile-nav__list li {
+  margin-bottom: 6px;
+}
+
+.terms-mobile-nav__list a {
+  display: block;
+  padding: 8px 16px;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.2s ease;
+}
+
+.terms-mobile-nav__list a:hover {
+  color: var(--color-luxury-accent, #9E2F45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Two-Column Layout                                                    */
+/* ------------------------------------------------------------------ */
+
+.terms-main-wrapper {
+  max-width: 1280px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
+}
+
+@media (max-width: 992px) {
+  .terms-main-wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .terms-toc-sidebar {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Desktop Sidebar Navigation                                           */
+/* ------------------------------------------------------------------ */
+
+.toc-sticky-box {
+  position: sticky;
+  top: 70px;
+  background: var(--luxury-surface, #121212);
+  border: 1px solid var(--luxury-hairline, rgba(255, 255, 255, 0.08));
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.toc-title {
+  font-family: var(--font-heading--family, serif);
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.toc-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-luxury-accent, #9E2F45) 50%, transparent);
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  margin-bottom: 8px;
+}
+
+.toc-list a {
+  display: block;
+  padding: 6px 0;
+  color: var(--color-luxury-text-secondary, #a1a1aa);
+  text-decoration: none;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+.toc-list a:hover {
+  color: var(--color-luxury-accent, #9E2F45);
+  padding-left: 10px;
+  border-left-color: var(--color-luxury-accent, #9E2F45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Policy Content Sections                                              */
+/* ------------------------------------------------------------------ */
+
+.policy-section {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+  position: relative;
+}
+
+.policy-section__number {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  font-family: var(--font-heading--family, serif);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 400;
+  color: var(--color-luxury-accent, #9E2F45);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .terms-hero {
+    min-height: 420px;
+  }
+
+  .terms-hero__content {
+    padding: 56px 16px 42px;
+  }
+
+  .terms-main-wrapper {
+    padding: 0 16px;
+    margin-top: 32px;
+  }
+
+  .terms-trust-cards,
+  .terms-intro-wrapper,
+  .terms-mobile-nav {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .trust-cards__inner {
+    gap: 12px;
+  }
+
+  .policy-card {
+    padding: 18px 16px;
+  }
+
+  .policy-section__number {
+    left: 0;
+    position: relative;
+    margin-bottom: 12px;
+  }
+}
+
+.policy-section__title {
+  font-family: var(--font-heading--family, serif);
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.policy-subsection__title {
+  font-family: var(--font-heading--family, serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--color-luxury-accent, #9E2F45);
+  margin: 24px 0 12px 0;
+  letter-spacing: 0.02em;
+}
+
+.policy-card {
+  background: var(--luxury-surface, #121212);
+  border: 1px solid var(--luxury-hairline, rgba(255, 255, 255, 0.08));
+  border-radius: 8px;
+  padding: 32px;
+  line-height: 1.7;
+  color: #d1d1d1;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .policy-card {
+    padding: 24px 20px;
+  }
+}
+
+.policy-card p {
+  margin: 0 0 16px 0;
+}
+
+.policy-card p:last-child {
+  margin-bottom: 0;
+}
+
+.styled-list {
+  padding-left: 20px;
+  margin: 16px 0;
+}
+
+.styled-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.terms-link {
+  color: var(--color-luxury-accent, #9E2F45);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.terms-link:hover {
+  color: #ffffff;
+}
+
+.terms-contact-card {
+  border-left: 2px solid var(--color-luxury-accent, #9E2F45);
+}
+
+.terms-contact-details {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--luxury-hairline, rgba(255, 255, 255, 0.08));
+  border-radius: 6px;
+}
+
+.terms-contact-details p {
+  margin: 6px 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                                */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 768px) {
+  .terms-hero {
+    min-height: 420px;
+  }
+  .terms-hero__content {
+    padding: 40px 16px;
+  }
+  .policy-section__title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-cards__inner {
+    justify-content: center;
+  }
+  .trust-card {
+    font-size: 0.75rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Terms of Service",
+  "settings": []
+}
+{% endschema %}

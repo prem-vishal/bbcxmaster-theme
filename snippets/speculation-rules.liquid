@@ -1,0 +1,84 @@
+{%- comment -%}
+  Speculation Rules for Prefetch/Prerender
+  Add to theme.liquid in <head> section
+{%- endcomment -%}
+
+<script type="speculationrules">
+{
+  "prefetch": [
+    {
+      "source": "list",
+      "urls": [
+        "{{ shop.url }}/collections/all",
+        "{{ shop.url }}/collections/new-arrivals",
+        "{{ shop.url }}/collections/bestsellers",
+        "{{ shop.url }}/blogs/news",
+        "{{ shop.url }}/pages/about-us",
+        "{{ shop.url }}/pages/contact",
+        "{{ shop.url }}/pages/shipping-policy",
+        "{{ shop.url }}/pages/return-policy"
+      ]
+    }
+  ],
+  "prerender": [
+    {
+      "source": "list",
+      "urls": [
+        "{{ shop.url }}/pages/contact"
+      ]
+    }
+  ]
+}
+</script>
+
+{%- comment -%}
+Dynamic Speculation Rules based on current page context
+{%- endcomment -%}
+{%- if template.name == 'collection' -%}
+<script type="speculationrules">
+{
+  "prefetch": [
+    {
+      "source": "list",
+      "urls": [
+        {%- for product in collection.products limit: 5 -%}
+          "{{ shop.url }}{{ product.url }}"{%- unless forloop.last %},{% endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  ]
+}
+</script>
+{%- elsif template.name == 'product' -%}
+<script type="speculationrules">
+{
+  "prefetch": [
+    {
+      "source": "list",
+      "urls": [
+        {%- for recommendation in product.recommendations.products limit: 4 -%}
+          "{{ shop.url }}{{ recommendation.url }}"{%- unless forloop.last %},{% endunless -%}
+        {%- endfor -%},
+        "{{ shop.url }}/cart"
+      ]
+    }
+  ]
+}
+</script>
+{%- elsif template.name == 'index' -%}
+<script type="speculationrules">
+{
+  "prefetch": [
+    {
+      "source": "list",
+      "urls": [
+        {%- for collection in collections.all limit: 6 -%}
+          "{{ shop.url }}{{ collection.url }}"{%- unless forloop.last %},{% endunless -%}
+        {%- endfor -%},
+        "{{ shop.url }}/blogs/news"
+      ]
+    }
+  ]
+}
+</script>
+{%- endif -%}

@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "about_master": {
+      "type": "about-master",
+      "settings": {
+        "hero_title": "About BBCxMaster",
+        "hero_subtitle": "Confidence, expertise, discretion, and a commitment to a premium experience."
+      }
+    }
+  },
+  "order": [
+    "about_master"
+  ]
+}

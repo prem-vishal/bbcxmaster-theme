@@ -1,0 +1,117 @@
+{%- assign section_settings = section.settings -%}
+
+<section class="about-hero">
+  <div class="about-hero__bg">
+    <div class="about-hero__overlay"></div>
+  </div>
+  <div class="about-hero__inner page-width">
+    {%- if section_settings.title != blank -%}
+      <h1 class="about-hero__title">{{ section_settings.title }}</h1>
+    {%- endif -%}
+    {%- if section_settings.subtitle != blank -%}
+      <p class="about-hero__subtitle">{{ section_settings.subtitle }}</p>
+    {%- endif -%}
+    {%- if section_settings.description != blank -%}
+      <p class="about-hero__description">{{ section_settings.description }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-hero {
+    position: relative;
+    padding: 140px 0 120px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .about-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('{{ 'about-hero.png' | asset_url }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .about-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95));
+  }
+
+  .about-hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-hero__title {
+    font-family: var(--font-heading--family);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 24px;
+    color: #ffffff;
+  }
+
+  .about-hero__subtitle {
+    font-family: var(--font-subheading--family);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    color: var(--color-luxury-accent);
+  }
+
+  .about-hero__description {
+    font-family: var(--font-body--family);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-hero {
+      padding: 100px 0 80px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About Hero",
+  "tag": "section",
+  "class": "about-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "BBCxMaster"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Crafted for Confidence."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Precision, discretion, and luxury in intimate wellness."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero"
+    }
+  ]
+}
+{% endschema %}

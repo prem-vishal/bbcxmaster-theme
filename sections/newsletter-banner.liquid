@@ -1,0 +1,141 @@
+{% comment %}
+  Full-bleed newsletter signup banner for the homepage. Hosts standard `@theme` blocks
+  (text heading/subtext + the native `email-signup` block).
+{% endcomment %}
+
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+%}
+
+<div
+  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+></div>
+
+<div
+  class="section section--{{ section.settings.section_width }}{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %} spacing-style newsletter-banner"
+  style="{% render 'spacing-style', settings: section.settings %}"
+  data-testid="newsletter-banner"
+>
+  <div
+    class="newsletter-banner__content luxury-glass"
+    data-reveal
+  >
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .newsletter-banner__content {
+    padding: var(--padding-6xl) var(--padding-4xl);
+    border-radius: var(--style-border-radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--gap-lg);
+    background-image: var(--luxury-gradient-radial);
+  }
+
+  .newsletter-banner__content .email-signup-block {
+    width: 100%;
+    max-width: 26rem;
+    margin-inline: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "class": "section-wrapper",
+  "blocks": [
+    { "type": "text" },
+    { "type": "email-signup" }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter",
+      "category": "t:categories.forms",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Join the Inner Circle</h2>",
+            "type_preset": "h2",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "subtext": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Early access to new drops, private offers, and nothing else.</p>",
+            "type_preset": "rte",
+            "width": "100%",
+            "alignment": "center"
+          }
+        },
+        "signup": {
+          "type": "email-signup",
+          "settings": {
+            "width": "fill",
+            "display_type": "text",
+            "label": "Subscribe",
+            "style_class": "button"
+          }
+        }
+      },
+      "block_order": ["heading", "subtext", "signup"]
+    }
+  ]
+}
+{% endschema %}

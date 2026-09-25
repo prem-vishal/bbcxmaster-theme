@@ -1,0 +1,803 @@
+{% comment %}
+  BBCxMaster - Premium Luxury About Us Page Section
+  Dark cinematic editorial design, precise brand styling, mobile responsive.
+{% endcomment %}
+
+{{ 'luxury-theme.css' | asset_url | stylesheet_tag }}
+
+{%- capture seo_title -%}
+  About Us | BBCxMaster
+{%- endcapture -%}
+
+{%- capture seo_description -%}
+  At BBCxMaster, we believe in freedom, confidence, and the power of self-expression. We’re more than a store — we’re a community built on trust, privacy and freedom.
+{%- endcapture -%}
+
+<head>
+  <title>{{ seo_title | strip }}</title>
+  <meta name="description" content="{{ seo_description | strip }}">
+  <link rel="canonical" href="{{ shop.url }}/pages/about-us">
+  <meta property="og:title" content="{{ seo_title | strip }}">
+  <meta property="og:description" content="{{ seo_description | strip }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ shop.url }}/pages/about-us">
+  <meta property="og:image" content="{{ 'about_story_img.png' | asset_url }}">
+</head>
+
+<!-- Schema.org AboutPage structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Us",
+  "description": "At BBCxMaster, we believe in freedom, confidence, and the power of self-expression. We’re more than a store — we’re a community built on trust, privacy and freedom.",
+  "url": "{{ shop.url }}/pages/about-us",
+  "publisher": {
+    "@type": "Organization",
+    "name": "BBCxMaster",
+    "url": "{{ shop.url }}"
+  }
+}
+</script>
+
+<article class="about-page-wrapper luxury-page-container">
+  
+  <!-- HERO SECTION -->
+  <header class="about-hero-cinematic">
+    <div class="about-hero__bg-container">
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ 'about_hero_750.webp' | asset_url }}" type="image/webp">
+        <source media="(max-width: 750px)" srcset="{{ 'about_hero_750.jpg' | asset_url }}" type="image/jpeg">
+        <source media="(max-width: 1440px)" srcset="{{ 'about_hero_1440.webp' | asset_url }}" type="image/webp">
+        <source media="(max-width: 1440px)" srcset="{{ 'about_hero_1440.jpg' | asset_url }}" type="image/jpeg">
+        <source media="(min-width: 1441px)" srcset="{{ 'about_hero_3840.webp' | asset_url }}" type="image/webp">
+        <img
+          src="{{ 'about_hero_1920.jpg' | asset_url }}"
+          alt="BBCxMaster Luxury Private Lifestyle Studio"
+          class="about-hero__image"
+          loading="eager"
+          width="1920"
+          height="1080"
+        >
+      </picture>
+      <div class="about-hero__overlay" aria-hidden="true"></div>
+    </div>
+
+    <div class="about-hero__content-inner page-width">
+      <div class="about-hero__left">
+        <span class="about-hero__eyebrow">OUR STORY</span>
+        <h1 class="about-hero__title">About Us</h1>
+        <p class="about-hero__subtitle">
+          "At BBCxMaster, we believe in freedom, confidence, and the power of self-expression. We’re more than a store — we’re a community built on trust, privacy and freedom."
+        </p>
+      </div>
+
+      <div class="about-hero__right" aria-hidden="true">
+        <div class="about-hero__tagline-stack">
+          <span>EXPLORE</span>
+          <div class="accent-line"></div>
+          <span>EXPRESS</span>
+          <div class="accent-line"></div>
+          <span>ENJOY</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <nav class="about-breadcrumbs page-width" aria-label="Breadcrumb">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="{{ shop.url }}" class="breadcrumbs__link">Home</a>
+      </li>
+      <li class="breadcrumbs__item" aria-current="page">
+        <span class="breadcrumbs__separator" aria-hidden="true">/</span>
+        <span class="breadcrumbs__current">About Us</span>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- OUR STORY SECTION -->
+  <section class="about-story-section page-width">
+    <div class="about-story__grid">
+      <div class="about-story__image-wrapper">
+        <img
+          src="{{ 'about_story_img.png' | asset_url }}"
+          alt="BBCxMaster Private Lifestyle Studio & Editorial Design"
+          class="about-story__img"
+          loading="lazy"
+          width="960"
+          height="1200"
+        >
+        <div class="image-frame-border"></div>
+      </div>
+
+      <div class="about-story__content">
+        <span class="section-eyebrow">OUR BRAND</span>
+        <h2 class="section-title">Redefining Intimacy & Self-Expression</h2>
+        
+        <div class="accent-divider"></div>
+
+        <div class="section-copy">
+          <p>
+            BBCxMaster was created for those who value their privacy, appreciate quality, and want access to a curated selection of premium adult and lifestyle products.
+          </p>
+          <p>
+            Your experience should be personal, comfortable and nothing less than exceptional.
+          </p>
+          <p>
+            Our mission is to provide a safe, discreet and enjoyable shopping experience that inspires confidence, curiosity and connection.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR VALUES SECTION -->
+  <section class="about-values-section">
+    <div class="page-width">
+      <div class="section-header text-center">
+        <span class="section-eyebrow">OUR VALUES</span>
+        <h2 class="section-title">What We Stand For</h2>
+        <div class="accent-divider center-divider"></div>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>PRIVACY FIRST</h3>
+          <p>"Your personal information deserves to remain private."</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>PREMIUM QUALITY</h3>
+          <p>"Carefully selected products with quality at the centre."</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3>OPEN MINDED</h3>
+          <p>"Freedom, exploration and self-expression without judgment."</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>COMMUNITY</h3>
+          <p>"A welcoming space built around confidence, respect and personal choice."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR COMMITMENT SECTION -->
+  <section class="about-commitment-section page-width">
+    <div class="commitment-split">
+      <div class="commitment-text">
+        <span class="section-eyebrow">OUR COMMITMENT</span>
+        <h2 class="section-title">A More Private Experience</h2>
+        <div class="accent-divider"></div>
+        <p>
+          "From discreet packaging to secure payments, we go the extra mile to create an experience that feels safe, comfortable and completely your own."
+        </p>
+        <p class="commitment-quote">
+          "Because your privacy isn't just important — it's everything."
+        </p>
+      </div>
+
+      <div class="commitment-image-wrapper">
+        <img
+          src="{{ 'about_hero_1440.jpg' | asset_url }}"
+          alt="BBCxMaster Discreet Packaging & Confidentiality"
+          class="commitment-img"
+          loading="lazy"
+          width="960"
+          height="640"
+        >
+        <div class="image-frame-border"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR PROMISE SECTION -->
+  <section class="about-promise-section">
+    <div class="promise-bg-container">
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ 'about_hero_750.webp' | asset_url }}" type="image/webp">
+        <source media="(max-width: 750px)" srcset="{{ 'about_hero_750.jpg' | asset_url }}" type="image/jpeg">
+        <source media="(max-width: 1440px)" srcset="{{ 'about_hero_1440.webp' | asset_url }}" type="image/webp">
+        <source media="(max-width: 1440px)" srcset="{{ 'about_hero_1440.jpg' | asset_url }}" type="image/jpeg">
+        <source media="(min-width: 1441px)" srcset="{{ 'about_hero_3840.webp' | asset_url }}" type="image/webp">
+        <img
+          src="{{ 'about_hero_1920.jpg' | asset_url }}"
+          alt="BBCxMaster Promise"
+          class="promise-bg__image"
+          loading="lazy"
+          width="1920"
+          height="1080"
+        >
+      </picture>
+      <div class="promise-bg-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="page-width text-center promise-content">
+      <span class="section-eyebrow accent-eyebrow">OUR PROMISE</span>
+      <h2 class="section-title white-title">Explore Without Limits</h2>
+      <div class="accent-divider center-divider"></div>
+      <p class="promise-tagline">
+        "Premium products. Discreet shopping. Unmatched privacy.<br>
+        That’s the BBCxMaster promise."
+      </p>
+    </div>
+  </section>
+
+  <!-- COMMUNITY CTA SECTION -->
+  <section class="about-cta-section page-width">
+    <div class="cta-border-box">
+      <div class="cta-content">
+        <h2 class="section-title">Join Our Community</h2>
+        <p>
+          "Be the first to know about new arrivals, exclusive offers and more."
+        </p>
+        <div class="cta-button-wrapper">
+          <a href="/account/register" class="luxury-button button-accent">
+            Subscribe Now &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL BRAND STATEMENT -->
+  <section class="about-final-statement page-width text-center">
+    <div class="statement-trust">
+      TRUST &bull; PRIVACY &bull; CONFIDENCE
+    </div>
+    <h2 class="statement-headline">More Than a Store.</h2>
+    <p class="statement-sub">
+      "Built for people who value freedom, confidence and discretion."
+    </p>
+  </section>
+
+</article>
+
+<style>
+/* ==========================================================================
+   BBCxMaster - Luxury About Us Page Styles
+   ========================================================================== */
+
+.about-page-wrapper {
+  background-color: var(--color-luxury-bg);
+  color: var(--color-luxury-text);
+  font-family: var(--font-body-family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+
+/* Cinematic Hero */
+.about-hero-cinematic {
+  position: relative;
+  width: 100%;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 100px 0;
+}
+
+.about-hero__bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.about-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.03);
+  transition: transform 10s ease;
+}
+
+.about-hero-cinematic:hover .about-hero__image {
+  transform: scale(1);
+}
+
+.about-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(11,11,11,0.3) 0%, rgba(11,11,11,0.65) 100%), rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.about-hero__content-inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about-hero__left {
+  max-width: 720px;
+}
+
+.about-hero__eyebrow,
+.section-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-luxury-accent);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.about-hero__title,
+.section-title {
+  font-family: var(--font-heading-family, serif);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  color: var(--color-luxury-text);
+  line-height: 1.15;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
+}
+
+.about-hero__subtitle {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--color-luxury-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 300;
+}
+
+.about-hero__right {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-hero__right {
+    display: block;
+    padding-left: 60px;
+  }
+}
+
+.about-hero__tagline-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--color-luxury-accent);
+  font-weight: 500;
+}
+
+.about-hero__tagline-stack .accent-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-luxury-accent);
+  opacity: 0.6;
+}
+
+/* Breadcrumbs */
+.about-breadcrumbs {
+  padding: 24px 24px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.breadcrumbs__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.breadcrumbs__link {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--color-luxury-accent);
+}
+
+.breadcrumbs__separator {
+  color: #555;
+}
+
+.breadcrumbs__current {
+  color: var(--color-luxury-accent);
+}
+
+/* Shared Section Spacing */
+.about-story-section,
+.about-values-section,
+.about-commitment-section,
+.about-promise-section,
+.about-cta-section,
+.about-final-statement {
+  padding: 100px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Gold Divider */
+.accent-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-luxury-accent);
+  margin: 24px 0;
+}
+
+.center-divider {
+  margin: 24px auto;
+}
+
+/* Our Story Section */
+.about-story__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media screen and (min-width: 990px) {
+  .about-story__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+}
+
+.about-story__image-wrapper {
+  position: relative;
+}
+
+.about-story__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+.image-frame-border {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: -16px;
+  bottom: -16px;
+    border: 1px solid rgba(158, 168, 128, 0.25);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.section-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--color-luxury-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Our Values Section */
+.about-values-section {
+  background-color: var(--color-luxury-bg);
+  max-width: 100% !important;
+  padding: 120px 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.about-values-section .page-width {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+@media screen and (min-width: 768px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .values-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.value-card {
+  background: var(--color-luxury-card);
+   border: 1px solid rgba(158, 47, 69, 0.15);
+  padding: 40px 30px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.value-card:hover {
+   border-color: rgba(158, 47, 69, 0.4);
+  transform: translateY(-4px);
+  background: var(--color-luxury-card);
+}
+
+.value-icon {
+  color: var(--color-luxury-accent);
+  margin-bottom: 24px;
+}
+
+.value-card h3 {
+  font-family: var(--font-heading-family, serif);
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  color: var(--color-luxury-text);
+  margin: 0 0 16px 0;
+}
+
+.value-card p {
+  color: var(--color-luxury-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Our Commitment Section */
+.commitment-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media screen and (min-width: 990px) {
+  .commitment-split {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+  }
+}
+
+.commitment-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.commitment-text p {
+  color: var(--color-luxury-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin: 0;
+}
+
+.commitment-quote {
+  font-family: var(--font-heading-family, serif);
+  font-style: italic;
+  color: var(--color-luxury-text) !important;
+  font-size: 1.2rem !important;
+  margin-top: 10px !important;
+}
+
+.commitment-image-wrapper {
+  position: relative;
+}
+
+.commitment-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Our Promise Section */
+.about-promise-section {
+  position: relative;
+  overflow: hidden;
+  padding: 140px 24px;
+  max-width: 100% !important;
+}
+
+.promise-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.promise-bg__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.promise-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 11, 11, 0.6);
+  z-index: 2;
+}
+
+.about-promise-section .promise-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.accent-eyebrow {
+  color: var(--color-luxury-accent);
+}
+
+.white-title {
+  color: var(--color-luxury-text);
+}
+
+.promise-tagline {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  color: var(--color-luxury-text-secondary);
+  line-height: 1.8;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 24px;
+}
+
+/* Community CTA Section */
+.about-cta-section {
+  padding: 80px 24px;
+}
+
+.cta-border-box {
+   border: 1px solid rgba(158, 47, 69, 0.3);
+  padding: 60px 40px;
+  background: #111111;
+  text-align: center;
+  position: relative;
+}
+
+.cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta-content p {
+  color: var(--color-luxury-text-secondary);
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+  font-weight: 300;
+}
+
+.cta-button-wrapper {
+  margin-top: 10px;
+}
+
+.luxury-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.button-accent {
+  background-color: var(--color-luxury-accent);
+  color: var(--color-luxury-text);
+   border: 1px solid var(--color-luxury-accent);
+}
+
+.button-accent:hover {
+  background-color: transparent;
+  color: var(--color-luxury-accent);
+}
+
+/* Final Brand Statement */
+.about-final-statement {
+  padding: 60px 24px 100px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.statement-trust {
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  color: var(--color-luxury-accent);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.statement-headline {
+  font-family: var(--font-heading-family, serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--color-luxury-text);
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
+
+.statement-sub {
+  color: var(--color-luxury-text-secondary);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .about-hero-cinematic {
+    min-height: 60vh;
+    padding: 80px 0;
+  }
+  
+  .about-story-section,
+  .about-values-section,
+  .about-commitment-section,
+  .about-promise-section,
+  .about-cta-section {
+    padding: 60px 16px;
+  }
+  
+  .cta-border-box {
+    padding: 40px 20px;
+  }
+}
+</style>

@@ -1,0 +1,193 @@
+{% comment %}
+  Icon-led trust/feature grid (e.g. "Why Choose BBCxMaster"). Hosts `_feature-item` blocks.
+{% endcomment %}
+
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+%}
+
+<div
+  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+></div>
+
+<div
+  class="section section--{{ section.settings.section_width }}{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %} spacing-style feature-grid"
+  style="{% render 'spacing-style', settings: section.settings %} --feature-grid-columns: {{ section.settings.columns }};"
+  data-testid="feature-grid"
+>
+  {% if section.settings.heading != blank %}
+    <div
+      class="feature-grid__header"
+      data-reveal
+    >
+      <p class="luxury-kicker">{{ section.settings.kicker }}</p>
+      <h2 class="feature-grid__heading">{{ section.settings.heading }}</h2>
+    </div>
+  {% endif %}
+
+  <div
+    class="feature-grid__items"
+    data-reveal-group
+  >
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .feature-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3xl);
+  }
+
+  .feature-grid__header {
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .feature-grid__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: var(--font-size--h2);
+    margin: 0;
+  }
+
+  .feature-grid__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-xl);
+  }
+
+  @media screen and (min-width: 750px) {
+    .feature-grid__items {
+      grid-template-columns: repeat(var(--feature-grid-columns, 4), 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Feature Grid",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "_feature-item"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "The Standard"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose BBCxMaster"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:settings.columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose BBCxMaster",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "feature-1": {
+          "type": "_feature-item",
+          "settings": {
+            "icon": "lock",
+            "heading": "Discreet by default",
+            "text": "<p>Plain packaging, private billing, every time.</p>"
+          }
+        },
+        "feature-2": {
+          "type": "_feature-item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Fast, tracked shipping",
+            "text": "<p>Every order ships with tracking, straight to your door.</p>"
+          }
+        },
+        "feature-3": {
+          "type": "_feature-item",
+          "settings": {
+            "icon": "box",
+            "heading": "Premium materials",
+            "text": "<p>Body-safe, medical-grade materials on every piece.</p>"
+          }
+        },
+        "feature-4": {
+          "type": "_feature-item",
+          "settings": {
+            "icon": "lock",
+            "heading": "Secure checkout",
+            "text": "<p>Encrypted, PCI-compliant checkout through Shopify.</p>"
+          }
+        }
+      },
+      "block_order": ["feature-1", "feature-2", "feature-3", "feature-4"]
+    }
+  ]
+}
+{% endschema %}

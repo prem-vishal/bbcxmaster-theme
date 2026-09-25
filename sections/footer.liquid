@@ -1,0 +1,304 @@
+
+
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+%}
+
+<div class="luxury-footer-wrapper" style="background-color: var(--color-luxury-bg); padding: 60px 0 20px; border-top: 1px solid var(--color-luxury-border);">
+  <div class="page-width">
+    <!-- Main Footer Grid -->
+    <div class="footer-main-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 2fr; gap: 40px; padding-bottom: 40px;">
+      <!-- Brand Col -->
+      <div>
+        <h2 style="font-size: 24px; margin: 0 0 10px; color: #fff;">BBCxMaster</h2>
+        <p style="font-size: 12px; color: var(--color-luxury-accent); text-transform: uppercase; margin-bottom: 20px;">PREMIUM BDSM GEAR</p>
+        <p style="font-size: 14px; color: var(--color-luxury-text-secondary);">Premium products for your desires.<br>Discreet. Safe. Luxurious.</p>
+      </div>
+      <!-- Shop Col -->
+      <div>
+        <h4 style="font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">SHOP</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+          <li><a href="/collections/all" style="color: var(--color-luxury-text-secondary); font-size: 14px;">All Products</a></li>
+          <li><a href="/collections/best-sellers" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Best Sellers</a></li>
+          <li><a href="/collections/new-arrivals" style="color: var(--color-luxury-text-secondary); font-size: 14px;">New Arrivals</a></li>
+          <li><a href="/collections/sale" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Sale</a></li>
+        </ul>
+      </div>
+      <!-- Customer Care Col -->
+      <div>
+        <h4 style="font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">CUSTOMER CARE</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+          <li><a href="/pages/contact" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Contact Us</a></li>
+          <li><a href="/pages/knowledge-base" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Knowledge Base</a></li>
+          <li><a href="/pages/shipping-policy" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Shipping Information</a></li>
+          <li><a href="/pages/frequently-asked-questions" style="color: var(--color-luxury-text-secondary); font-size: 14px;">FAQs</a></li>
+        </ul>
+      </div>
+      <!-- Info Col -->
+      <div>
+        <h4 style="font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">INFORMATION</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+          <li><a href="/pages/about-us" style="color: var(--color-luxury-text-secondary); font-size: 14px;">About Us</a></li>
+          <li><a href="/pages/privacy-policy" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Privacy Policy</a></li>
+          <li><a href="/pages/terms-of-service" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Terms of Service</a></li>
+          {% if shop.refund_policy != blank %}
+            <li><a href="{{ shop.refund_policy.url }}" style="color: var(--color-luxury-text-secondary); font-size: 14px;">{{ shop.refund_policy.title | default: 'Refund Policy' }}</a></li>
+          {% else %}
+            <li><a href="/policies/refund-policy" style="color: var(--color-luxury-text-secondary); font-size: 14px;">Refund Policy</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- Newsletter Col -->
+      <div>
+        <h4 style="font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">STAY UPDATED</h4>
+        <p style="font-size: 14px; color: var(--color-luxury-text-secondary); margin-bottom: 20px;">Get exclusive offers and updates</p>
+        <form style="display: flex;">
+          <input type="email" placeholder="Enter your email" style="background: #000; border: 1px solid var(--color-luxury-border); color: var(--color-luxury-text); padding: 12px; flex-grow: 1; outline: none; border-radius: 4px 0 0 4px;">
+          <button type="submit" style="background: var(--color-luxury-accent); border: none; padding: 12px 20px; border-radius: 0 4px 4px 0; cursor: pointer;">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--color-luxury-text);"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .footer-content {
+    contain: content;
+    content-visibility: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--footer-gap);
+    align-items: start;
+  }
+
+  .footer-content .menu__heading__default {
+    font-weight: var(--font-heading--weight);
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .footer-content {
+      grid-template-columns: repeat(min(var(--grid-columns), 3), 1fr);
+      grid-auto-flow: row;
+    }
+
+    .footer-content[style*='--grid-columns: 4'] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content--isolated-grid-item-tablet > :last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .footer-content {
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
+    }
+
+    /* Single item centered */
+    .footer-content[style*='--grid-columns: 1'] {
+      justify-items: center;
+    }
+
+    .footer-content--isolated-grid-item-desktop > :last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* ===== Mobile Alignment Fixes ===== */
+  /* Main footer grid - collapse to single column on mobile */
+  @media screen and (max-width: 768px) {
+    .luxury-footer-wrapper .footer-main-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+
+    /* Brand column - center its content on mobile */
+    .luxury-footer-wrapper .footer-main-grid > div:first-child {
+      text-align: center;
+    }
+  }
+
+  /* Bottom copyright bar - stack vertically on mobile */
+  @media screen and (max-width: 768px) {
+    .luxury-footer-wrapper .page-width > div:last-child {
+      flex-direction: column !important;
+      gap: 12px !important;
+      text-align: center !important;
+    }
+
+    .luxury-footer-wrapper .page-width > div:last-child > div:last-child {
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.footer",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "_divider"
+    },
+    {
+      "type": "@app"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "follow-on-shop"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "icon"
+    },
+    {
+      "type": "image"
+    },
+    {
+      "type": "menu"
+    },
+    {
+      "type": "payment-icons"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "logo"
+    },
+    {
+      "type": "jumbo-text"
+    },
+    {
+      "type": "social-links"
+    },
+    {
+      "type": "email-signup"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "{{ settings.color_palette.foreground }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.footer",
+      "category": "t:categories.footer",
+      "settings": {
+        "gap": 20,
+        "padding-block-start": 36,
+        "padding-block-end": 36
+      },
+      "blocks": {
+        "newsletter-group": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "gap": 6,
+            "width": "fill"
+          },
+          "blocks": {
+            "newsletter-heading": {
+              "type": "text",
+              "settings": {
+                "text": "t:html_defaults.join_our_email_list",
+                "width": "100%",
+                "alignment": "left",
+                "type_preset": "h3"
+              }
+            },
+            "newsletter-text": {
+              "type": "text",
+              "settings": {
+                "text": "t:html_defaults.get_exclusive_deals_and_early_access_to_new_products",
+                "width": "100%",
+                "alignment": "left",
+                "type_preset": "rte"
+              }
+            }
+          },
+          "block_order": ["newsletter-heading", "newsletter-text"]
+        },
+        "newsletter-form": {
+          "type": "email-signup",
+          "settings": {
+            "width": "fill"
+          }
+        }
+      },
+      "block_order": ["newsletter-group", "newsletter-form"]
+    }
+  ]
+}
+{% endschema %}

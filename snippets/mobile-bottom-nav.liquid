@@ -1,0 +1,156 @@
+{% comment %}
+  Fixed bottom tab bar, mobile viewports only (hidden at desktop via CSS).
+  Reuses the theme's existing search-modal and cart-drawer trigger conventions.
+{% endcomment %}
+
+<nav
+  class="mobile-bottom-nav"
+  aria-label="Primary mobile"
+>
+  <a
+    href="{{ routes.root_url }}"
+    class="mobile-bottom-nav__item{% if request.page_type == 'index' %} mobile-bottom-nav__item--active{% endif %}"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      class="mobile-bottom-nav__icon"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 11.5 12 4l9 7.5M5.5 10v9a1 1 0 0 0 1 1H10v-6h4v6h3.5a1 1 0 0 0 1-1v-9"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      />
+    </svg>
+    <span>Home</span>
+  </a>
+
+  <button
+    type="button"
+    class="mobile-bottom-nav__item"
+    on:click="#search-modal/showDialog"
+  >
+    <span class="mobile-bottom-nav__icon svg-wrapper">
+      {{- 'icon-search.svg' | inline_asset_content -}}
+    </span>
+    <span>Search</span>
+  </button>
+
+  {% if settings.wishlist_page_url != blank %}
+    <a
+      href="{{ settings.wishlist_page_url }}"
+      class="mobile-bottom-nav__item"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        class="mobile-bottom-nav__icon"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 21s-7.5-4.5-10-9.5C.5 7.5 2.5 4 6 4c2 0 3.5 1 4.5 2.5C11.5 5 13 4 15 4c3.5 0 5.5 3.5 4 7.5C16.5 16.5 12 21 12 21z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>Wishlist</span>
+    </a>
+  {% endif %}
+
+  {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
+    <button
+      type="button"
+      class="mobile-bottom-nav__item"
+      on:click="#cart-drawer/toggle"
+      aria-haspopup="dialog"
+      aria-controls="cart-drawer"
+    >
+      <span class="mobile-bottom-nav__icon svg-wrapper">
+        {{- 'icon-cart.svg' | inline_asset_content -}}
+      </span>
+      <span>Cart{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</span>
+    </button>
+  {% else %}
+    <a
+      href="{{ routes.cart_url }}"
+      class="mobile-bottom-nav__item"
+    >
+      <span class="mobile-bottom-nav__icon svg-wrapper">
+        {{- 'icon-cart.svg' | inline_asset_content -}}
+      </span>
+      <span>Cart{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</span>
+    </a>
+  {% endif %}
+
+  {% if shop.customer_accounts_enabled %}
+    <a
+      href="{{ routes.account_url }}"
+      class="mobile-bottom-nav__item"
+    >
+      <span class="mobile-bottom-nav__icon svg-wrapper">
+        {{- 'icon-account.svg' | inline_asset_content -}}
+      </span>
+      <span>Account</span>
+    </a>
+  {% endif %}
+</nav>
+
+{% stylesheet %}
+  .mobile-bottom-nav {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .mobile-bottom-nav {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: var(--layer-menu-drawer);
+      background: rgb(var(--luxury-surface-rgb) / 0.92);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-top: 1px solid var(--luxury-hairline);
+      padding-block: var(--padding-xs);
+      padding-bottom: calc(var(--padding-xs) + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Leave room so the last section isn't hidden behind the fixed bar */
+    body {
+      padding-bottom: calc(3.75rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  .mobile-bottom-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 48px;
+    min-width: 48px;
+    padding-block: var(--padding-3xs);
+    background: transparent;
+    border: none;
+    color: var(--color-foreground-subdued);
+    font-size: 0.625rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+
+  .mobile-bottom-nav__icon,
+  .mobile-bottom-nav__icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+{% endstylesheet %}

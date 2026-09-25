@@ -1,0 +1,142 @@
+{%- comment -%}
+  Article schema for blog/journal posts. Renders on request.page_type == 'article'.
+  Supplements Shopify's minimal default Article block, which uses Person (not Organization)
+  as author and omits publisher.logo (required for Article rich-result eligibility).
+
+  Also renders Blog + ItemList schema on blog listing pages (request.page_type == 'blog'),
+  which Shopify does not emit by default.
+{%- endcomment -%}
+
+{%- if request.page_type == 'article' and article != blank -%}
+  {%- assign article_image_url = article.image | image_url: width: 1200 -%}
+  {%- if article_image_url != blank -%}
+    {%- unless article_image_url contains 'https:' -%}{% assign article_image_url = article_image_url | prepend: 'https:' %}{% endunless -%}
+  {%- endif -%}
+  {%- assign logo_url = settings.logo | image_url: width: 600 -%}
+  {%- if logo_url != blank -%}
+    {%- unless logo_url contains 'https:' -%}{% assign logo_url = logo_url | prepend: 'https:' %}{% endunless -%}
+  {%- endif -%}
+  
+  {%- capture article_images -%}
+    [
+      {%- for media in article.media -%}
+        {{ media | image_url: width: 1200 | json }}{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+      {%- if article.media == empty and article.image -%}
+        {{ article.image | image_url: width: 1200 | json }}
+      {%- endif -%}
+    ]
+  {%- endcapture -%}
+  
+  {%- assign author_name = article.author.name | default: shop.name -%}
+  {%- assign author_url = shop.url | append: '/blogs/' | append: article.blog.handle | append: '/authors/' | append: article.author.handle -%}
+  {%- assign publisher_name = shop.name -%}
+  {%- assign publisher_logo = settings.logo | image_url: width: 120 | json -%}
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ article.title | json }},
+    "description": {{ article.excerpt_or_content | strip_html | truncate: 300 | json }},
+    "url": {{ shop.url | append: article.url | json }},
+    "image": {{ article_images }},
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+    "author": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      "url": {{ shop.url | json }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ publisher_name | json }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ publisher_logo }},
+        "width": 120,
+        "height": 120
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ shop.url | append: article.url | json }}
+    },
+    "articleSection": {{ article.blog.title | json }},
+    "keywords": [
+      {%- for tag in article.tags limit: 10 -%}
+        {{ tag | json }}{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+    ],
+    "inLanguage": "en",
+    "isAccessibleForFree": true
+  }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'blog' and blog != blank -%}
+  {%- assign blog_logo_url = settings.logo | image_url: width: 120 -%}
+  {%- if blog_logo_url != blank -%}
+    {%- unless blog_logo_url contains 'https:' -%}{% assign blog_logo_url = blog_logo_url | prepend: 'https:' %}{% endunless -%}
+  {%- endif -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": {{ shop.url | append: blog.url | append: '#blog' | json }},
+    "name": {{ blog.title | json }},
+    "url": {{ shop.url | append: blog.url | json }},
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ blog_logo_url | json }},
+        "width": 120,
+        "height": 120
+      }
+    },
+    "blogPost": [
+      {%- for post in blog.articles limit: 20 -%}
+        {
+          "@type": "BlogPosting",
+          "headline": {{ post.title | json }},
+          "url": {{ shop.url | append: post.url | json }},
+          "datePublished": {{ post.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+          "dateModified": {{ post.updated_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+          "description": {{ post.excerpt_or_content | strip_html | truncate: 200 | json }}
+          {%- if post.image %},
+          "image": {{ post.image | image_url: width: 1200 | prepend: 'https:' | json }}
+          {%- endif %},
+          "author": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }}
+          }
+        }{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": {{ blog.title | json }},
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": {{ blog.articles_count }},
+    "itemListElement": [
+      {%- for post in blog.articles limit: 20 -%}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "name": {{ post.title | json }},
+          "url": {{ shop.url | append: post.url | json }}
+        }{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "returns_policy": {
+      "type": "returns-policy",
+      "settings": {}
+    }
+  },
+  "order": [
+    "returns_policy"
+  ]
+}

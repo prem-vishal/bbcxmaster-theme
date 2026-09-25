@@ -1,0 +1,14 @@
+{%- doc -%}
+  Loads the Revive Adserver async delivery script once per page. Rendered
+  from layout/theme.liquid; do not render again from individual ad slots.
+  Safe to include even when no slot ends up rendering — the script alone
+  does not display anything.
+{%- enddoc -%}
+
+{%- if settings.ads_enabled and settings.ads_server_url != blank -%}
+  <script
+    type="text/javascript"
+    src="{{ settings.ads_server_url | strip }}/www/delivery/asyncjs.php"
+    async
+  ></script>
+{%- endif -%}

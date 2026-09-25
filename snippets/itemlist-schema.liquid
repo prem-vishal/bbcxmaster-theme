@@ -1,0 +1,43 @@
+{%- comment -%}
+  ItemList JSON-LD Schema for Product Grids (homepage, search, etc.)
+  Use wherever product cards are rendered in a list
+  Pass in: products (collection), list_title, list_description, products_count
+{%- endcomment -%}
+
+{%- if products != blank -%}
+{%- capture list_items -%}
+  [
+    {%- for product in products limit: 50 -%}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "url": {{ shop.url | append: product.url | json }},
+        "name": {{ product.title | json }},
+        "image": {{ product.featured_image | image_url: width: 600 | json }},
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": {{ shop.currency | json }},
+          "price": {{ product.price_min | divided_by: 100.0 | json }},
+          "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+          "url": {{ shop.url | append: product.url | json }}
+        },
+        "brand": {
+          "@type": "Brand",
+          "name": {{ product.vendor | json }}
+        }
+      }{%- unless forloop.last %},{% endunless -%}
+    {%- endfor -%}
+  ]
+{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": {{ list_title | json }},
+  "description": {{ list_description | strip_html | truncate: 300 | json }},
+  "numberOfItems": {{ products_count | json }},
+  "itemListElement": {{ list_items }}
+}
+</script>
+{%- endif -%}

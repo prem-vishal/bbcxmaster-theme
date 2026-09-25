@@ -1,0 +1,63 @@
+{%- comment -%}
+  CollectionPage JSON-LD Schema for Shopify
+  Add to collection template (main-collection.liquid or collection.json section)
+  Includes ItemList for product grid
+{%- endcomment -%}
+
+{%- if request.page_type == 'collection' and collection != blank -%}
+  {%- assign collection_image_url = collection.image | image_url: width: 1200 -%}
+  {%- if collection_image_url != blank -%}
+    {%- unless collection_image_url contains 'https:' -%}{% assign collection_image_url = collection_image_url | prepend: 'https:' %}{% endunless -%}
+  {%- endif -%}
+  
+  {%- capture product_list_items -%}
+    [
+      {%- for product in collection.products limit: 50 -%}
+        {%- assign item_image_url = product.featured_image | image_url: width: 600 -%}
+        {%- if item_image_url != blank -%}
+          {%- unless item_image_url contains 'https:' -%}{% assign item_image_url = item_image_url | prepend: 'https:' %}{% endunless -%}
+        {%- endif -%}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "url": {{ shop.url | append: product.url | json }},
+          "name": {{ product.title | json }},
+          "image": {{ item_image_url | json }},
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": {{ shop.currency | json }},
+            "price": {{ product.price_min | divided_by: 100.0 | json }},
+            "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+            "url": {{ shop.url | append: product.url | json }}
+          }
+        }{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+    ]
+  {%- endcapture -%}
+  
+  {%- capture collection_images -%}
+    [
+      {%- if collection.image -%}
+        {{ collection.image | image_url: width: 1200 | json }}
+      {%- elsif collection.products.first.featured_image -%}
+        {{ collection.products.first.featured_image | image_url: width: 1200 | json }}
+      {%- endif -%}
+    ]
+  {%- endcapture -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": {{ collection.title | json }},
+    "description": {{ collection.description | strip_html | truncate: 300 | json }},
+    "url": {{ shop.url | append: collection.url | json }},
+    "image": {{ collection_images }},
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": {{ collection.products_count | json }},
+      "itemListElement": {{ product_list_items }}
+    }
+  }
+  </script>
+{%- endif -%}

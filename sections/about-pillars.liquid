@@ -1,0 +1,195 @@
+{%- assign section_settings = section.settings -%}
+
+<section class="about-pillars">
+  <div class="page-width">
+    {%- if section_settings.label != blank -%}
+      <span class="about-pillars__label">{{ section_settings.label }}</span>
+    {%- endif -%}
+    <div class="about-pillars__grid">
+      {%- if section_settings.pillar_1_title != blank -%}
+        <div class="about-pillar">
+          <h3 class="about-pillar__title">{{ section_settings.pillar_1_title }}</h3>
+          <p class="about-pillar__text">{{ section_settings.pillar_1_text }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section_settings.pillar_2_title != blank -%}
+        <div class="about-pillar">
+          <h3 class="about-pillar__title">{{ section_settings.pillar_2_title }}</h3>
+          <p class="about-pillar__text">{{ section_settings.pillar_2_text }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section_settings.pillar_3_title != blank -%}
+        <div class="about-pillar">
+          <h3 class="about-pillar__title">{{ section_settings.pillar_3_title }}</h3>
+          <p class="about-pillar__text">{{ section_settings.pillar_3_text }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section_settings.pillar_4_title != blank -%}
+        <div class="about-pillar">
+          <h3 class="about-pillar__title">{{ section_settings.pillar_4_title }}</h3>
+          <p class="about-pillar__text">{{ section_settings.pillar_4_text }}</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-pillars {
+    padding: 100px 0;
+    background-color: var(--color-background-secondary);
+  }
+
+  .about-pillars__label {
+    display: block;
+    font-family: var(--font-body--family);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-luxury-accent);
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .about-pillars__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+
+  .about-pillar {
+    padding: 40px;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .about-pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .about-pillar__title {
+    font-family: var(--font-heading--family);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--color-foreground);
+  }
+
+  .about-pillar__text {
+    font-family: var(--font-body--family);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    color: var(--color-foreground-rgb);
+    opacity: 0.85;
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-pillars {
+      padding: 60px 0;
+    }
+
+    .about-pillars__label {
+      margin-bottom: 40px;
+    }
+
+    .about-pillars__grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .about-pillar {
+      padding: 28px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About Pillars",
+  "tag": "section",
+  "class": "about-pillars-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "What Sets Us Apart"
+    },
+    {
+      "type": "header",
+      "content": "Pillar 1"
+    },
+    {
+      "type": "text",
+      "id": "pillar_1_title",
+      "label": "Title",
+      "default": "Uncompromised Quality"
+    },
+    {
+      "type": "textarea",
+      "id": "pillar_1_text",
+      "label": "Text",
+      "default": "We source only body-safe, medical-grade materials — premium silicone, genuine leather, and high-grade metals — that are rigorously tested for durability and real-world comfort. Every product meets exacting standards before it reaches our collection."
+    },
+    {
+      "type": "header",
+      "content": "Pillar 2"
+    },
+    {
+      "type": "text",
+      "id": "pillar_2_title",
+      "label": "Title",
+      "default": "Absolute Discretion"
+    },
+    {
+      "type": "textarea",
+      "id": "pillar_2_text",
+      "label": "Text",
+      "default": "Your privacy is never an afterthought. Every order ships in plain, unmarked packaging with private billing descriptors. Your purchases remain your business — no exceptions."
+    },
+    {
+      "type": "header",
+      "content": "Pillar 3"
+    },
+    {
+      "type": "text",
+      "id": "pillar_3_title",
+      "label": "Title",
+      "default": "Trust & Consent"
+    },
+    {
+      "type": "textarea",
+      "id": "pillar_3_text",
+      "label": "Text",
+      "default": "We believe in empowering consensual exploration through education, safe design, and transparent communication. Our products are built to support trust between partners and confidence in every experience."
+    },
+    {
+      "type": "header",
+      "content": "Pillar 4"
+    },
+    {
+      "type": "text",
+      "id": "pillar_4_title",
+      "label": "Title",
+      "default": "Elevated Design"
+    },
+    {
+      "type": "textarea",
+      "id": "pillar_4_text",
+      "label": "Text",
+      "default": "Intimate products should be as visually and tactilely refined as any luxury object. We partner with designers and artisans who understand that form and function must coexist without compromise."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Pillars"
+    }
+  ]
+}
+{% endschema %}

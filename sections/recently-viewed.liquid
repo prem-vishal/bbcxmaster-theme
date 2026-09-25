@@ -1,0 +1,128 @@
+{% comment %}
+  Displays the shopper's recently viewed products (tracked client-side via
+  @theme/recently-viewed-products in localStorage). Renders empty on a normal page
+  load; assets/recently-viewed-display.js fetches this section's rendered HTML via
+  the Section Rendering API against a real `/search?q=id:X OR id:Y&type=product`
+  request, so the products shown are always real store data, never fabricated.
+{% endcomment %}
+
+{% liquid
+  if search.performed and search.terms contains 'id:'
+    assign id_parts = search.terms | remove: 'id:' | split: ' OR '
+  endif
+%}
+
+<recently-viewed-display
+  section-id="{{ section.id }}"
+  exclude-product-id="{{ product.id }}"
+>
+  <div
+    id="recently-viewed-section"
+    class="recently-viewed{% unless search.performed and search.results.size > 0 %} recently-viewed--empty{% endunless %}"
+    data-testid="recently-viewed"
+  >
+    {% if search.performed and search.results.size > 0 %}
+      <div class="section section--{{ section.settings.section_width }} spacing-style recently-viewed__inner">
+        <p class="luxury-kicker">{{ section.settings.kicker | default: 'Just for You' }}</p>
+        <h2 class="recently-viewed__heading">{{ section.settings.heading | default: 'Recently Viewed' }}</h2>
+
+        <ul class="recently-viewed__list list-unstyled">
+          {% for id_string in id_parts %}
+            {% assign int_id = id_string | times: 1 %}
+            {% assign product = search.results | where: 'id', int_id | first %}
+            {% if product %}
+              <li class="recently-viewed__item">
+                {% render 'resource-card',
+                  resource_type: 'product',
+                  resource: product,
+                  image_width: 500,
+                  image_hover: true,
+                  image_aspect_ratio: '4 / 5',
+                  product_view_context: 'recently_viewed'
+                %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</recently-viewed-display>
+
+{% stylesheet %}
+  .recently-viewed--empty {
+    display: none;
+  }
+
+  .recently-viewed__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-lg);
+    padding-block: var(--padding-5xl);
+  }
+
+  .recently-viewed__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: var(--font-heading--weight);
+    font-size: var(--font-size--h2);
+    margin: 0;
+  }
+
+  .recently-viewed__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-lg);
+    margin: 0;
+    padding: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .recently-viewed__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Recently Viewed",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Just for You"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Recently Viewed"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently Viewed",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

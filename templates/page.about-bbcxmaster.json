@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about_hero": {
+      "type": "about-hero",
+      "settings": {
+        "title": "BBCxMaster",
+        "subtitle": "Crafted for Confidence.",
+        "description": "Precision, discretion, and luxury in intimate wellness."
+      }
+    },
+    "about_mission": {
+      "type": "about-mission",
+      "settings": {
+        "label": "Our Mission",
+        "heading": "Redefining Luxury Intimacy",
+        "text": "<p>BBCxMaster was founded on a simple belief: intimacy deserves the same standard of craftsmanship, discretion, and care as any luxury pursuit. We exist to bridge the gap between premium quality and complete privacy, offering a curated collection of adult wellness products, luxury BDSM gear, and intimate accessories that meet the expectations of modern, discerning adults.</p><p>Every product we offer is selected with intention — for its material integrity, design sophistication, and ability to enhance consensual exploration. From the moment you browse our collection to the instant your order arrives, the experience is designed to feel as refined as the products themselves.</p>"
+      }
+    },
+    "about_pillars": {
+      "type": "about-pillars",
+      "settings": {
+        "label": "What Sets Us Apart",
+        "pillar_1_title": "Uncompromised Quality",
+        "pillar_1_text": "We source only body-safe, medical-grade materials — premium silicone, genuine leather, and high-grade metals — that are rigorously tested for durability and real-world comfort. Every product meets exacting standards before it reaches our collection.",
+        "pillar_2_title": "Absolute Discretion",
+        "pillar_2_text": "Your privacy is never an afterthought. Every order ships in plain, unmarked packaging with private billing descriptors. Your purchases remain your business — no exceptions.",
+        "pillar_3_title": "Trust & Consent",
+        "pillar_3_text": "We believe in empowering consensual exploration through education, safe design, and transparent communication. Our products are built to support trust between partners and confidence in every experience.",
+        "pillar_4_title": "Elevated Design",
+        "pillar_4_text": "Intimate products should be as visually and tactilely refined as any luxury object. We partner with designers and artisans who understand that form and function must coexist without compromise."
+      }
+    },
+    "about_privacy": {
+      "type": "about-privacy",
+      "settings": {
+        "label": "Privacy Promise",
+        "heading": "Your Privacy, Our Priority",
+        "text": "<p>At BBCxMaster, discretion isn't a feature — it's a promise. Every transaction is processed through encrypted, bank-grade secure checkout. Your billing statement displays a neutral descriptor that reveals nothing about the contents of your order.</p><p>Packaging is plain, unmarked, and shipped without any external indication of its contents. We do not include invoices or product descriptions inside the package unless you specifically request one. Your personal data is handled with the same rigor as your order, protected by industry-standard security measures and never shared with third parties for unauthorized purposes.</p><p>Whether you're exploring for the first time or building a trusted collection, you can shop with the certainty that your privacy is fully protected at every step.</p>"
+      }
+    },
+    "about_cta": {
+      "type": "about-cta",
+      "settings": {
+        "button_label": "Explore the Collection",
+        "button_link": "/collections/all"
+      }
+    }
+  },
+  "order": [
+    "about_hero",
+    "about_mission",
+    "about_pillars",
+    "about_privacy",
+    "about_cta"
+  ]
+}

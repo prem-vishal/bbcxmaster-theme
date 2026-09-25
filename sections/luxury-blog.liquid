@@ -1,0 +1,557 @@
+<section class="luxury-blog-section">
+  <div class="luxury-blog-header">
+    <div class="luxury-blog-title-area">
+      <h4 class="luxury-blog-kicker">THE BBCxJOURNAL</h4>
+      <h2 class="luxury-blog-heading">
+        Knowledge. Safety.<br>
+        <span style="color: var(--color-luxury-accent);">Pleasure.</span>
+      </h2>
+      <p class="luxury-blog-subtext">Expert guides, tips and inspiration to elevate your experience with confidence.</p>
+      <a href="#luxury-blog-grid" class="button button--outline luxury-blog-view-all">VIEW ALL ARTICLES &nbsp; →</a>
+    </div>
+    
+    <div class="luxury-blog-featured">
+      <img
+        src="{{ "blog_featured_900.jpg" | asset_url }}"
+        srcset="{{ "blog_featured_900.jpg" | asset_url }} 900w, {{ "blog_featured.jpg" | asset_url }} 1376w"
+        sizes="(max-width: 749px) 100vw, 50vw"
+        alt="Featured article: Beginner's Guide to BDSM" class="luxury-blog-featured-bg" loading="lazy">
+      <div class="luxury-blog-featured-overlay" aria-hidden="true"></div>
+      <div class="luxury-blog-featured-content">
+        <h5 class="luxury-blog-featured-kicker">FEATURED ARTICLE</h5>
+        <h3 class="luxury-blog-featured-title">Beginner's Guide<br>to BDSM</h3>
+        <p class="luxury-blog-featured-desc">Everything you need to know to start your journey safely, confidently and respectfully.</p>
+        <a href="/blogs/news/bdsm-for-beginners-a-complete-guide-to-getting-started" class="luxury-blog-read-more">READ ARTICLE &nbsp; →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="luxury-blog-latest-header">
+    <h4 class="luxury-blog-latest-kicker">LATEST ARTICLES</h4>
+    <div class="luxury-blog-nav">
+      <button class="luxury-blog-nav-btn" aria-label="Previous articles">←</button>
+      <button class="luxury-blog-nav-btn" aria-label="Next articles">→</button>
+    </div>
+  </div>
+
+  <div class="luxury-blog-grid" id="luxury-blog-grid">
+    <!-- Article 1 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/how-to-choose-your-first-bdsm-harness-a-body-harness-buying-guide" class="luxury-blog-card">
+      <img
+        src="{{ "blog_harness_900.jpg" | asset_url }}"
+        srcset="{{ "blog_harness_900.jpg" | asset_url }} 900w, {{ "blog_harness.jpg" | asset_url }} 1200w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="How to Choose Your First Harness" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">How to Choose Your First Harness</h4>
+        <span class="luxury-blog-card-readtime">🕒 6 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 2 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/bondage-safety-checklist-the-complete-pre-session-guide" class="luxury-blog-card">
+      <img
+        src="{{ "cat_bondage_1785888945809_900.jpg" | asset_url }}"
+        srcset="{{ "cat_bondage_1785888945809_900.jpg" | asset_url }} 900w, {{ "cat_bondage_1785888945809.jpg" | asset_url }} 1024w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Bondage Safety Checklist" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">SAFETY</span>
+        <h4 class="luxury-blog-card-title">Bondage Safety Checklist</h4>
+        <span class="luxury-blog-card-readtime">🕒 5 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 3 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/bdsm-for-beginners-a-complete-guide-to-getting-started" class="luxury-blog-card">
+      <img
+        src="{{ "hero_submissive_premium_900.jpg" | asset_url }}"
+        srcset="{{ "hero_submissive_premium_900.jpg" | asset_url }} 900w, {{ "hero_submissive_premium.jpg" | asset_url }} 896w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="BDSM for Beginners" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">BDSM for Beginners: A Complete Guide</h4>
+        <span class="luxury-blog-card-readtime">🕒 8 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 4 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/kink-safety-the-complete-guide-to-safe-bdsm-play" class="luxury-blog-card">
+      <img
+        src="{{ "cat_accessories_1785888906858_900.jpg" | asset_url }}"
+        srcset="{{ "cat_accessories_1785888906858_900.jpg" | asset_url }} 900w, {{ "cat_accessories_1785888906858.jpg" | asset_url }} 1024w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Kink Safety" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">SAFETY</span>
+        <h4 class="luxury-blog-card-title">Kink Safety: The Complete Guide</h4>
+        <span class="luxury-blog-card-readtime">🕒 7 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 5 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/choosing-restraints-cuffs-rope-and-bondage-gear-explained" class="luxury-blog-card">
+      <img
+        src="{{ "cat_cuffs_1785888870033_900.jpg" | asset_url }}"
+        srcset="{{ "cat_cuffs_1785888870033_900.jpg" | asset_url }} 900w, {{ "cat_cuffs_1785888870033.jpg" | asset_url }} 1024w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Choosing Restraints" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">Choosing Restraints: Cuffs, Rope & More</h4>
+        <span class="luxury-blog-card-readtime">🕒 6 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 6 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/chastity-play-for-beginners-the-complete-how-to-guide" class="luxury-blog-card">
+      <img
+        src="{{ "cat_chastity_1785888935375_900.jpg" | asset_url }}"
+        srcset="{{ "cat_chastity_1785888935375_900.jpg" | asset_url }} 900w, {{ "cat_chastity_1785888935375.jpg" | asset_url }} 1024w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Chastity Play for Beginners" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">Chastity Play for Beginners: The Complete How-To Guide</h4>
+        <span class="luxury-blog-card-readtime">🕒 9 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 7 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/gags-explained-types-safety-and-how-to-choose-yours" class="luxury-blog-card">
+      <img
+        src="{{ "cat_gags_1785888857681_900.jpg" | asset_url }}"
+        srcset="{{ "cat_gags_1785888857681_900.jpg" | asset_url }} 900w, {{ "cat_gags_1785888857681.jpg" | asset_url }} 1024w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Gags Explained" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">Gags Explained: Types & Safety</h4>
+        <span class="luxury-blog-card-readtime">🕒 6 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 8 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/the-complete-guide-to-body-safe-lubricants" class="luxury-blog-card">
+      <img
+        src="{{ "cat_lubricants_1785888879975_900.jpg" | asset_url }}"
+        srcset="{{ "cat_lubricants_1785888879975_900.jpg" | asset_url }} 900w, {{ "cat_lubricants_1785888879975.jpg" | asset_url }} 1024w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Body-Safe Lubricants Guide" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">The Complete Guide to Body-Safe Lubricants</h4>
+        <span class="luxury-blog-card-readtime">🕒 5 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 9 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/leather-vs-silicone-which-bondage-gear-material-is-right-for-you" class="luxury-blog-card">
+      <img
+        src="{{ "blog_silicone_900.jpg" | asset_url }}"
+        srcset="{{ "blog_silicone_900.jpg" | asset_url }} 900w, {{ "blog_silicone.jpg" | asset_url }} 1200w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Leather vs Silicone: Which Material Is Right for You" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">Leather vs Silicone: Which Material Is Right for You?</h4>
+        <span class="luxury-blog-card-readtime">🕒 6 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 10 (renders only when blog is published in Shopify) -->
+    {% if blogs['news'] != blank %}
+    <a href="/blogs/news/chastity-devices-materials-buying-guide" class="luxury-blog-card">
+      <img
+        src="{{ "cat_chastity_1785888935375_900.jpg" | asset_url }}"
+        srcset="{{ "cat_chastity_1785888935375_900.jpg" | asset_url }} 900w, {{ "cat_chastity_1785888935375.jpg" | asset_url }} 1024w"
+        sizes="(max-width: 749px) 100vw, 400px"
+        alt="Chastity Devices: Materials & Buying Guide" class="luxury-blog-card-img" loading="lazy">
+      <div class="luxury-blog-card-content">
+        <span class="luxury-blog-card-category">GUIDES</span>
+        <h4 class="luxury-blog-card-title">Chastity Devices: Materials &amp; Buying Guide</h4>
+        <span class="luxury-blog-card-readtime">🕒 6 MIN READ &nbsp; →</span>
+      </div>
+    </a>
+    {% endif %}
+
+    <!-- Article 11: legacy article, relinked from orphaned /blogs/news -->
+    {% comment %}
+      Two independent bugs kept this card from rendering:
+      1. blog.articles doesn't respect a for-loop's `limit:` (unlike collection.products)
+         — it only fetches the blog's default page size unless wrapped in {% paginate %}.
+         This article is the oldest of the 11 in the News blog (published 2026-08-06 vs.
+         2026-08-19 for the rest), so it fell outside that default fetch window. Fixed by
+         wrapping in {% paginate %} with a size above the blog's article count (confirmed
+         via debug output: paginate.items=11, all 11 handles present).
+         https://shopify.dev/docs/storefronts/themes/best-practices/performance/limit-product-queries-with-pagination
+      2. blog_article.handle returns the blog-scoped form ("news/how-to-choose-your-first-
+         sex-toy"), not the bare article handle — confirmed via the same debug output — so
+         the `== 'how-to-choose-your-first-sex-toy'` equality check never matched. Fixed
+         with `contains` instead of `==`, which matches regardless of the blog-handle
+         prefix and is still unique to this one article's handle.
+    {% endcomment %}
+    {% if blogs['news'] != blank %}
+      {% paginate blogs['news'].articles by 20 %}
+        {% for blog_article in blogs['news'].articles %}
+          {% if blog_article.handle contains 'how-to-choose-your-first-sex-toy' %}
+          <a href="{{ blog_article.url }}" class="luxury-blog-card">
+            <img
+              src="{{ "cat_accessories_1785888906858_900.jpg" | asset_url }}"
+              srcset="{{ "cat_accessories_1785888906858_900.jpg" | asset_url }} 900w, {{ "cat_accessories_1785888906858.jpg" | asset_url }} 1024w"
+              sizes="(max-width: 749px) 100vw, 400px"
+              alt="{{ blog_article.title | escape }}" class="luxury-blog-card-img" loading="lazy">
+            <div class="luxury-blog-card-content">
+              <span class="luxury-blog-card-category">GUIDES</span>
+              <h4 class="luxury-blog-card-title">{{ blog_article.title }}</h4>
+              <span class="luxury-blog-card-readtime">🕒 5 MIN READ &nbsp; →</span>
+            </div>
+          </a>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .luxury-blog-section {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 64px 32px;
+    background-color: var(--color-luxury-bg);
+  }
+
+  .luxury-blog-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .luxury-blog-header {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .luxury-blog-section {
+      padding: 40px 16px;
+    }
+    .luxury-blog-heading {
+      font-size: 2.2rem;
+    }
+    .luxury-blog-featured {
+      min-height: 300px;
+    }
+    .luxury-blog-featured-content {
+      padding: 24px;
+      max-width: 85%;
+    }
+    .luxury-blog-featured-title {
+      font-size: 1.8rem;
+    }
+    .luxury-blog-featured-bg {
+      object-position: center;
+    }
+    .luxury-blog-featured-overlay {
+      background: linear-gradient(to bottom, rgba(9,9,9,0.2) 0%, rgba(9,9,9,0.9) 100%);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .luxury-blog-featured-content {
+      max-width: 100%;
+      padding: 20px;
+    }
+    .luxury-blog-featured-title {
+      font-size: 1.5rem;
+    }
+    .luxury-blog-card-content {
+      padding: 16px;
+    }
+    .luxury-blog-view-all {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+    .luxury-blog-card-img {
+      aspect-ratio: 16/10;
+    }
+  }
+
+  .luxury-blog-kicker {
+    font-family: var(--font-body--family);
+    color: var(--color-luxury-accent);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .luxury-blog-kicker::before {
+    content: "— ";
+  }
+
+  .luxury-blog-heading {
+    font-family: var(--font-heading--family);
+    font-size: 3rem;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .luxury-blog-subtext {
+    color: var(--color-luxury-text-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    max-width: 400px;
+  }
+
+  .luxury-blog-view-all {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--color-luxury-accent) !important;
+    color: var(--color-luxury-accent) !important;
+    background: transparent !important;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .luxury-blog-view-all:hover {
+    background: var(--color-luxury-accent) !important;
+    color: #000 !important;
+  }
+
+  /* Featured Article */
+  .luxury-blog-featured {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-luxury-border);
+  }
+
+  .luxury-blog-featured-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    z-index: 0;
+  }
+  .luxury-blog-featured-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(to right, rgba(9,9,9,1) 0%, rgba(9,9,9,0.7) 40%, transparent 100%);
+  }
+
+  .luxury-blog-featured-content {
+    position: relative;
+    z-index: 1;
+    padding: 48px;
+    max-width: 60%;
+  }
+
+  .luxury-blog-featured-kicker {
+    color: var(--color-luxury-accent);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .luxury-blog-featured-title {
+    font-family: var(--font-heading--family);
+    font-size: 2.5rem;
+    color: #fff;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+  }
+
+  .luxury-blog-featured-desc {
+    color: #bbb;
+    font-size: 15px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .luxury-blog-read-more {
+    color: var(--color-luxury-accent);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-luxury-accent);
+    padding-bottom: 4px;
+  }
+  .luxury-blog-read-more:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  /* Latest Articles Header */
+  .luxury-blog-latest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--color-luxury-border);
+    padding-bottom: 16px;
+  }
+  
+  .luxury-blog-latest-kicker {
+    color: var(--color-luxury-accent);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  .luxury-blog-nav-btn {
+    background: transparent;
+    border: 1px solid var(--color-luxury-border);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+  }
+  .luxury-blog-nav-btn:hover {
+    border-color: var(--color-luxury-accent);
+    color: var(--color-luxury-accent);
+  }
+
+  /* Grid */
+  .luxury-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media screen and (max-width: 992px) {
+    .luxury-blog-featured-content {
+      padding: 32px;
+      max-width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .luxury-blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .luxury-blog-featured-content {
+      padding: 24px 20px;
+      max-width: 100%;
+      text-align: center;
+    }
+    .luxury-blog-featured {
+      min-height: 420px;
+    }
+    .luxury-blog-featured-title {
+      font-size: 1.6rem;
+    }
+    .luxury-blog-latest-header {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .luxury-blog-featured-title {
+      font-size: 1.4rem;
+    }
+  }
+
+  .luxury-blog-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-luxury-card);
+    border: 1px solid var(--color-luxury-border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .luxury-blog-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-luxury-accent);
+  }
+
+  .luxury-blog-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .luxury-blog-card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .luxury-blog-card-category {
+    color: var(--color-luxury-accent);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .luxury-blog-card-title {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0 0 24px 0;
+    line-height: 1.4;
+    font-family: var(--font-heading--family);
+  }
+
+  .luxury-blog-card-readtime {
+    margin-top: auto;
+    color: var(--color-luxury-text-secondary);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .luxury-blog-card:hover .luxury-blog-card-readtime {
+    color: var(--color-luxury-accent);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Luxury Blog Section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Luxury Blog Section"
+    }
+  ]
+}
+{% endschema %}

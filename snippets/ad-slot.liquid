@@ -1,0 +1,139 @@
+{%- doc -%}
+  Renders one Revive Adserver ad zone as a responsive slot.
+
+  @param {string} placement - 'header' | 'sidebar' | 'in_content' | 'mobile'
+    Selects the default zone ID from theme settings and the responsive
+    size/visibility rules for that placement.
+  @param {string} [zone_id] - Explicit zone ID, overrides the placement's
+    default zone from theme settings. Lets a single placement type serve
+    different zones in different spots (e.g. two different in-content zones).
+  @param {string} [label] - Visible "Advertisement" label text override.
+
+  Requires snippets/ad-scripts.liquid to have been rendered once on the
+  page (done globally in layout/theme.liquid) so the Revive delivery
+  script is loaded before this slot's markup is scanned.
+{%- enddoc -%}
+
+{%- liquid
+  assign resolved_zone_id = zone_id
+  if resolved_zone_id == blank
+    case placement
+      when 'header'
+        assign resolved_zone_id = settings.ads_zone_header
+      when 'sidebar'
+        assign resolved_zone_id = settings.ads_zone_sidebar
+      when 'in_content'
+        assign resolved_zone_id = settings.ads_zone_in_content
+      when 'mobile'
+        assign resolved_zone_id = settings.ads_zone_mobile
+    endcase
+  endif
+
+  assign label = label | default: 'Advertisement'
+-%}
+
+{%- if settings.ads_enabled
+  and settings.ads_server_url != blank
+  and settings.ads_delivery_id != blank
+  and resolved_zone_id != blank
+-%}
+  <div
+    class="ad-slot ad-slot--{{ placement }}{% if settings.ads_lazy_load %} ad-slot--lazy{% endif %}"
+    data-ad-placement="{{ placement }}"
+    data-ad-zone="{{ resolved_zone_id }}"
+  >
+    <span class="ad-slot__label">{{ label }}</span>
+    <ins
+      class="ad-slot__unit"
+      data-revive-zoneid="{{ resolved_zone_id }}"
+      data-revive-id="{{ settings.ads_delivery_id }}"
+    ></ins>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .ad-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+
+  .ad-slot__label {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-luxury-text-secondary, rgb(var(--color-foreground-rgb) / var(--opacity-55)));
+    opacity: 0.7;
+  }
+
+  .ad-slot__unit {
+    display: block;
+    max-width: 100%;
+  }
+
+  .ad-slot--lazy {
+    content-visibility: auto;
+  }
+
+  /* Header: leaderboard on desktop, mobile banner on small screens */
+  .ad-slot--header {
+    width: 100%;
+    max-width: 728px;
+    min-height: 90px;
+    contain-intrinsic-size: 728px 90px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ad-slot--header {
+      max-width: 320px;
+      min-height: 50px;
+      contain-intrinsic-size: 320px 50px;
+    }
+  }
+
+  /* Sidebar: fixed-width skyscraper/medium rectangle, desktop only */
+  .ad-slot--sidebar {
+    width: 300px;
+    min-height: 250px;
+    contain-intrinsic-size: 300px 250px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ad-slot--sidebar {
+      display: none;
+    }
+  }
+
+  /* In-content: medium rectangle, scales down on narrow viewports */
+  .ad-slot--in_content {
+    width: 100%;
+    max-width: 336px;
+    min-height: 280px;
+    contain-intrinsic-size: 336px 280px;
+  }
+
+  @media screen and (max-width: 374px) {
+    .ad-slot--in_content {
+      max-width: 300px;
+      min-height: 250px;
+      contain-intrinsic-size: 300px 250px;
+    }
+  }
+
+  /* Mobile: small banner, hidden on desktop */
+  .ad-slot--mobile {
+    width: 100%;
+    max-width: 320px;
+    min-height: 50px;
+    contain-intrinsic-size: 320px 50px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ad-slot--mobile {
+      display: none;
+    }
+  }
+{% endstylesheet %}

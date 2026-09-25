@@ -1,0 +1,23 @@
+{%- comment -%}
+  Shared SVG sprite. Emitted ONCE per page in theme.liquid.
+
+  Why: collection pages inlined the same checkmark 496 times (221 KB, ~17% of
+  the HTML document) because every filter checkbox embedded the full SVG.
+  A <symbol> + <use> reference costs ~40 bytes per instance instead of ~460.
+
+  IMPORTANT for styling: content inside <symbol> is cloned into a shadow tree,
+  so `.icon-checkmark path { ... }` can NOT reach it. Style the <use> element
+  instead. The path uses stroke="currentColor", so setting `color` on <use>
+  controls the stroke.
+{%- endcomment -%}
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="icon-checkmark" viewBox="0 0 20 20" fill="none">
+    <path
+      d="M4.75439 10.7485L7.68601 14.5888C7.79288 14.7288 7.84632 14.7988 7.91174 14.8242C7.96907 14.8466 8.03262 14.8469 8.09022 14.8253C8.15596 14.8007 8.21026 14.7314 8.31886 14.5927L15.2475 5.74658"
+      stroke="currentColor"
+      stroke-width="var(--icon-stroke-width)"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </symbol>
+</svg>

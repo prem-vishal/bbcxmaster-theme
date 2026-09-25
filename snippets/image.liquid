@@ -1,0 +1,67 @@
+{%- doc -%}
+  Renders the <img> element using provided image object
+
+  @param {object} image - image object
+  @param {number} [height] - custom image height
+  @param {string} [width] - custom image width (used for width-based responsive srcset)
+  @param {string} [class] - additional classes
+  @param {string} [text_fallback] - text to display if image is blank
+  @param {boolean} [unset_image_tag] - if true, ignores the image focal point
+  @param {string} [style] - additional styles
+  @param {string} [alt_text_fallback] - Optional text to display if image alt text is blank
+  @param {string} [sizes] - responsive sizes attribute (e.g. "(min-width: 1200px) 400px, (min-width: 750px) 33vw, 100vw")
+  @param {string} [loading] - loading strategy: 'lazy' (default) or 'eager'
+  @param {string} [fetchpriority] - fetch priority: 'auto' (default), 'high', or 'low'
+
+  @example
+  {% render 'image', image: product.featured_image, height: 300, class: 'product-image' %}
+  {% render 'image', image: section.settings.image, sizes: '(min-width: 750px) 50vw, 100vw', loading: 'eager', fetchpriority: 'high' %}
+{%- enddoc -%}
+{% if image != blank %}
+  {% assign image_height = height | default: image.height %}
+  {% assign image_height_2x = height | default: image_height | times: 2 %}
+  {% assign image_height_3x = height | default: image_height | times: 3 %}
+  {% assign image_alt_text = image.alt | default: alt_text_fallback | default: '' %}
+
+  {%- comment -%}
+    Width-based responsive srcset: if a `sizes` attribute is provided, emit a
+    width-descriptor srcset so the browser can pick the most efficient size for
+    each viewport. Falls back to the legacy height-based 1x/2x/3x srcset when
+    no sizes are given, preserving backward compatibility with all existing
+    callers.
+  {%- endcomment -%}
+  {%- if sizes != blank -%}
+    {%- capture image_srcset -%}
+      {{ image | image_url: width: 200 }} 200w, {{ image | image_url: width: 400 }} 400w, {{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 800 }} 800w, {{ image | image_url: width: 1000 }} 1000w, {{ image | image_url: width: 1200 }} 1200w
+    {%- endcapture -%}
+  {%- else -%}
+    {%- capture image_srcset -%}
+      {{ image | image_url: height: image_height }} 1x, {{ image | image_url: height: image_height_2x }} 2x, {{ image | image_url: height: image_height_3x }} 3x
+    {%- endcapture -%}
+  {%- endif -%}
+
+  {% assign style_value = style | default: '' %}
+
+  {% if unset_image_tag %}
+    {% assign style_value = style_value | append: 'object-position: inherit;' %}
+  {% endif %}
+
+  {% assign loading_value = loading | default: 'lazy' %}
+  {% assign fetchpriority_value = fetchpriority | default: 'auto' %}
+
+  {%- if sizes != blank -%}
+    {{
+      image
+      | image_url: height: image_height
+      | image_tag: class: class, srcset: image_srcset, sizes: sizes, style: style_value, alt: image_alt_text, loading: loading_value, fetchpriority: fetchpriority_value
+    }}
+  {%- else -%}
+    {{
+      image
+      | image_url: height: image_height
+      | image_tag: class: class, srcset: image_srcset, style: style_value, alt: image_alt_text, loading: loading_value, fetchpriority: fetchpriority_value
+    }}
+  {%- endif -%}
+{% elsif text_fallback %}
+  {{ text_fallback }}
+{% endif %}

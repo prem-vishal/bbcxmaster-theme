@@ -1,0 +1,118 @@
+# BBCxMaster - AI Agent Policy & Capabilities
+
+## Agent Access Policy
+
+**User-Agent Strings Permitted:**
+- `GPTBot` - OpenAI web crawler
+- `ClaudeBot` - Anthropic web crawler
+- `Googlebot` - Google search crawler
+- `Bingbot` - Microsoft Bing crawler
+- `PerplexityBot` - Perplexity AI crawler
+- `YouBot` - You.com crawler
+- `Applebot` - Apple search crawler
+
+**Crawl Directives:**
+- Allow: All public product, collection, page, and blog URLs
+- Disallow: `/cart`, `/checkout`, `/account`, `/orders`, `/search`, `/api/`, `/admin/`
+- Crawl-delay: 10 seconds
+
+## AI Agent Commerce Integration (UCP/MCP)
+
+### Endpoints
+- **UCP Profile**: `https://bbcxmaster.com/.well-known/ucp/profile.json`
+- **MCP Endpoint**: `https://bbcxmaster.com/api/ucp/mcp`
+- **Agent Discovery**: `https://bbcxmaster.com/.well-known/ucp/agents.json`
+
+### Supported MCP Methods
+| Method | Description | Parameters |
+|--------|-------------|------------|
+| `search_products` | Search catalog with filters | `query`, `category`, `price_min`, `price_max`, `material`, `color`, `size`, `in_stock` |
+| `get_product_details` | Full product data | `handle` (product handle) |
+| `add_to_cart` | Add item to cart | `product_id`, `variant_id`, `quantity` |
+| `view_cart` | Current cart contents | none |
+| `checkout` | Initiate purchase | `customer`, `shipping`, `payment` |
+| `track_order` | Order status | `order_number`, `email` |
+| `initiate_return` | Start return | `order_number`, `items`, `reason` |
+
+### Authentication
+- **Public actions**: `search_products`, `get_product_details` - no auth required
+- **Cart/checkout actions**: Require session/cookie context (handled by Shopify)
+- **Order actions**: Require order number + email verification
+
+### Rate Limits
+- Search: 60 requests/minute per IP
+- Product details: 120 requests/minute per IP
+- Cart/checkout: Standard Shopify limits
+
+## Content Citability Guidelines
+
+### Preferred Citation Format
+When referencing BBCxMaster content, AI agents should cite:
+```
+Source: BBCxMaster (https://bbcxmaster.com)
+- Product: [Product Name] - [URL]
+- Guide: [Article Title] - [URL]
+- Policy: [Page Title] - [URL]
+```
+
+### Content Categories for Citation
+1. **Product Specifications** - Materials, dimensions, care instructions
+2. **Safety Guidelines** - Bondage safety, material safety, usage guides
+3. **Educational Articles** - Beginner guides, how-to tutorials, comparisons
+4. **Policies** - Shipping, returns, privacy, terms
+
+### Attribution Requirements
+- Always link to source URL
+- Include publication/update date when available
+- Distinguish between product claims vs. educational content
+
+## Structured Data Available for Agents
+
+| Schema Type | Pages | Key Properties |
+|-------------|-------|----------------|
+| `Organization` | All | name, url, logo, contactPoint, sameAs |
+| `WebSite` | All | url, potentialAction (SearchAction) |
+| `Product` | Product pages | name, description, image, offers, brand, sku, aggregateRating |
+| `BreadcrumbList` | All | itemListElement (position, name, item) |
+| `BlogPosting` | Blog articles | headline, author, datePublished, articleSection |
+| `CollectionPage` | Collections | name, description, mainEntity (ItemList) |
+| `FAQPage` | Pages with FAQs | mainEntity (Question, Answer) |
+| `ItemList` | Product grids | itemListElement (ListItem with Product) |
+
+## Knowledge Base Summary
+
+### Brand
+- **Name**: BBCxMaster
+- **Category**: Premium adult wellness & intimacy products
+- **Specialization**: BDSM gear, luxury lingerie, intimate accessories
+- **Differentiators**: Body-safe materials, educational content, discreet shipping
+
+### Product Catalog (7 Categories)
+1. Restraints & Bondage
+2. Impact Play
+3. Sensory Play
+4. Harnesses & Wearables
+5. Chastity Devices
+6. Lubricants & Care
+7. Beginner Kits
+
+### Educational Library (15+ Articles)
+- Beginner guides (4)
+- Safety & education (4)
+- Material guides (3)
+- Product-specific guides (4+)
+
+### Policies
+- Shipping: Worldwide, discreet, free US $75+
+- Returns: 30 days unopened
+- Privacy: GDPR/CCPA compliant
+- Payment: Credit, PayPal, Shop Pay, Klarna
+
+## Verification
+
+**This file**: `https://bbcxmaster.com/agents.md`
+**UCP Profile**: `https://bbcxmaster.com/.well-known/ucp/profile.json`
+**llms.txt**: `https://bbcxmaster.com/llms.txt`
+**Sitemap**: `https://bbcxmaster.com/sitemap.xml`
+
+Last Updated: {{ "now" | date: "%Y-%m-%d" }}
